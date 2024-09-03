@@ -1,0 +1,70 @@
+header nav li::after {
+  pointer-events: none;
+  border-radius: 2rem;
+  white-space: nowrap;
+  line-height: 0;
+  color: var(--white);
+  position: absolute;
+  padding: 1rem 1.5rem;
+}
+
+header nav li:nth-child(2)::after {
+  content: 'Personal';
+}
+
+header nav li:nth-child(3)::after {
+  content: 'Education';
+}
+
+/* header nav li:nth-child(4)::after {
+content: 'Work Experience';
+} */
+
+header nav li:nth-child(4)::after {
+  content: 'Skills';
+}
+
+header nav li:nth-child(5)::after {
+  content: 'Portfolio';
+}
+
+header nav li:nth-child(6)::after {
+  content: 'Contact';
+}
+
+header nav li:nth-child(7)::after {
+  content: 'Translate';
+  margin-right: 0.5rem;
+}
+
+@media only screen and (width > 50em) {
+  header nav li::after {
+    background-color: #0009;
+    font-size: 0.8rem;
+    top: 50%;
+    right: 5rem;
+    opacity: 0;
+    transform: translateY(-50%) translateZ(0) scale(0.75);
+    transition: opacity 150ms ease, transform 150ms ease;
+  }
+
+  header nav li:hover::after,
+  header nav li:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) translateZ(0);
+  }
+}
+
+@media only screen and (width <= 50em) {
+  header nav li::after {
+    font-weight: bold;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateZ(0);
+    transition: color 150ms ease, opacity 150ms ease, transform 150ms ease;
+  }
+
+  header nav li.active::after {
+    color: var(--pri);
+  }
+}

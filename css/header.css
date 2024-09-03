@@ -1,0 +1,187 @@
+@import 'navTitles.css';
+
+header {
+  padding: 1.5rem 1rem;
+  color: var(--pri);
+  z-index: 9;
+}
+
+header nav {
+  height: 100%;
+  max-height: calc(100vh - 3rem);
+}
+
+header nav ul {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+header nav li {
+  position: relative;
+}
+
+header nav li:first-child {
+  margin-bottom: auto;
+}
+
+header nav li:last-child {
+  margin-top: auto;
+}
+
+header nav img {
+  border-radius: 0.3rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+header nav li:first-child img:has(+ a:hover),
+header nav li:first-child img:has(+ a:focus-visible) {
+  animation: invert 0.48s ease-in-out infinite alternate;
+}
+
+header nav a:not(.overlay) {
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  border-radius: 6rem;
+  color: var(--white);
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+header nav li a:hover,
+header nav li a:focus-visible {
+  background-color: #fff1;
+}
+
+header nav li .icon:active {
+  transform: scale(0.85);
+}
+
+header nav li.active a {
+  transform: scale(1.2);
+}
+
+header nav li.active .icon {
+  transform: scale(1.1);
+}
+
+header nav li.active .icon:active {
+  transform: scale(0.95);
+}
+
+header nav .icon {
+  font-size: 2rem;
+  color: var(--gray);
+  padding: 0.5rem;
+  transition: font-size 150ms ease, color 150ms ease-in-out, transform 150ms ease;
+}
+
+header nav a:hover .icon,
+header nav a:focus-visible .icon {
+  color: var(--light-gray);
+}
+
+header nav li.active .icon {
+  color: var(--pri);
+}
+
+header nav li:last-child .icon {
+  font-size: 3rem;
+  color: var(--pri);
+}
+
+#open-nav,
+#close-nav {
+  display: none;
+}
+
+@media only screen and (width <= 50em) {
+  header {
+    background-color: var(--dark-gray);
+    box-shadow: 0 0 1rem var(--black);
+    position: fixed;
+    top: 0;
+    --header-width: 8rem;
+    left: calc(0% - var(--header-width));
+    padding-bottom: 4rem;
+    width: var(--header-width);
+    height: 100vh;
+    opacity: 0.95;
+    transition: left 300ms ease-in-out;
+  }
+
+  header nav ul {
+    gap: 3rem;
+  }
+
+  header nav img {
+    border-radius: 0.4rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  header:has(nav[aria-expanded='true']) {
+    left: 0;
+  }
+
+  #open-nav,
+  #close-nav {
+    display: initial;
+    border: 0;
+    border-radius: 0 0.3rem 0.3rem 0;
+    box-shadow: 0 0 0.9rem 0.1rem var(--dark-gray);
+    position: fixed;
+    top: 1.5rem;
+    left: 0;
+    width: 3rem;
+    height: 3rem;
+    transition: color 300ms ease-in-out, left 300ms ease-in-out, opacity 300ms ease-in-out, filter 150ms ease;
+  }
+
+  header #open-nav {
+    background: var(--pri);
+    color: var(--white);
+    pointer-events: initial;
+  }
+
+  header #close-nav {
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--dark-gray), var(--red));
+    color: var(--white);
+    opacity: 0;
+  }
+
+  header :is(#open-nav, #close-nav):is(:hover, :focus-visible) {
+    filter: brightness(1.2);
+  }
+
+  header :is(#open-nav, #close-nav):active {
+    filter: brightness(0.8);
+  }
+
+  header nav[aria-expanded='true'] ~ #open-nav {
+    pointer-events: none;
+    left: var(--header-width);
+  }
+
+  header nav[aria-expanded='true'] ~ #close-nav {
+    pointer-events: initial;
+    left: var(--header-width);
+    opacity: 1;
+  }
+}
+
+@keyframes invert {
+  from {
+    filter: invert(0);
+  }
+
+  to {
+    filter: invert(1);
+  }
+}

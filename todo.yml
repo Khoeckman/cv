@@ -1,0 +1,13 @@
+first:
+
+important:
+  - 'Finish skills part'
+  - 'add fade in observer'
+
+bugs:
+  - 'tracker blocks scroll events (magic fixed?)'
+  - 'make profile image scroll on desktop'
+
+optional:
+  - 'make tracker outline over the target element'
+  - 'make white shadow on timeline buttons roatte with 3d effect'
