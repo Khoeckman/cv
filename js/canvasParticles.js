@@ -314,7 +314,7 @@ export const canvasParticles = function (selector, options = {}) {
       if (++this.updateCount >= this.options.framesPerUpdate) {
         this.updateCount = 0
 
-        if (window.innerWidth > 800) {
+        if (window.innerWidth > 960) {
           this.update()
           this.render()
         }

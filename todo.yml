@@ -1,13 +1,27 @@
 first:
+  - 'make fancy link css'
+  - 'make loading bar, hint use :after z-index -1; before might render above it'
+  - 'make lanuages part'
+  - 'Finish skills part'
 
 important:
-  - 'Finish skills part'
-  - 'add fade in observer'
+  - 'make icon animate on loading screen'
+  - 'move profile part to top instead of dissapear'
+  - 'place nav buttons ::after in span for semantics'
+  - 'make tracker outline over the target element'
 
-bugs:
-  - 'tracker blocks scroll events (magic fixed?)'
+problems:
+  - 'make timeline button animation better on black side'
+  - 'scrollintoview doesnt work on mobile'
+  - ' nav should be unfocusable when hidden + the opposite nav button'
   - 'make profile image scroll on desktop'
+  - 'reset transition ? no longer ? works'
+  - 'tracker blocks scroll events (magic fix?)'
 
 optional:
-  - 'make tracker outline over the target element'
   - 'make white shadow on timeline buttons roatte with 3d effect'
+  - 'loading bar on loading screen check for use of after or .progress-bar class'
+
+other:
+  - 'add weatherfy and horseacademy to portfolio'
+  - 'grid van cubes 22.5deg gedraaid (dus geen recht grid). ze gaan met golven en randomness omhooog en omlaag in (fake) 3D. Muis laat blokjes erond omhoog gaan'

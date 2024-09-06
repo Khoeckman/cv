@@ -43,7 +43,7 @@
   <div id="app">
     <header>
       <nav>
-        <ul class="list">
+        <ul class="card-list">
           <li>
             <img src="./img/favicon.webp" alt="Logo with my initials" width="48" height="48">
             <a href="/" class="overlay transparent"></a>
@@ -67,7 +67,7 @@
           <h1>Kyle Hoeckman</h1>
           <h2>Full-Stack Developer</h2>
 
-          <ul class="list">
+          <ul class="card-list">
             <li><a href="https://www.linkedin.com/in/kyle-hoeckman-0ab0272a6/" target="_blank" title="linkedin"
                 aria-label="linkedin">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
@@ -95,22 +95,21 @@
         </div>
 
         <div></div>
-        <!-- <img src="./img/dave-ruck-OqaavL4MpJQ-unsplash.jpg" alt="Picture of me"> -->
       </section>
 
       <section class="container">
         <article id="personal">
-          <div>
-            <h1><a href="#personal" id="main" tabindex="-1">About me</a></h1>
+          <h1>
+            <a href="#personal" id="main" tabindex="-1">About me</a>
             <span class="icon">person</span>
-          </div>
+          </h1>
           <p>Passionate ICT student focused on software development. I have a creative mind and excel at digitalizing
             design ideas through CSS and JS. I am driven to work on innovative projects and learn about new
             technologies.</p>
 
-          <h2 class="pseudo-hidden">Personal information</h2>
+          <h2 class="sr-only">Personal information</h2>
 
-          <ul class="list">
+          <ul class="card-list personal-info">
             <li>
               <div>
                 <h3>Name</h3>
@@ -178,24 +177,50 @@
               </a>
             </li>
           </ul>
+
+          <h2>Languages</h2>
+
+          <ul class="card-list languages">
+            <li>
+              <h3>Dutch</h3>
+              <div class="progress-bar" progress="100%"><span>Native</span></div>
+            </li>
+            <li>
+              <h3>English</h3>
+              <div class="progress-bar" progress="80%"><span>Conversational</span></div>
+            </li>
+            <li>
+              <h3>French</h3>
+              <div class="progress-bar" progress="40%"><span>Basic</span></div>
+            </li>
+          </ul>
+
+          <h2>Hobbies</h2>
+
+          <ul>
+            <li>I like solving programming challenges in my freetime on
+              <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
+              and
+              <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
+            </li>
+            <li>I love doing sports and go to the gym multiple times a week since 2019.</li>
+          </ul>
         </article>
 
         <article id="education">
-          <div>
-            <h1><a href="#education" tabindex="-1">Education</a></h1>
+          <h1>
+            <a href="#education" tabindex="-1">Education</a>
             <span class="icon">school</span>
-          </div>
+          </h1>
 
-          <ul class="list timeline">
+          <ul class="card-list timeline">
             <li class="odisee">
               <div>
                 <div>
                   <h2>Odisee - Technologiecampus Gent</h2>
-                  <p>2022 - now</p>
+                  <span>2022 - now</span>
                 </div>
-                <p>
-                  <span class="bold">Highschool</span> Bachelor Of Electronics - ICT
-                </p>
+                <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
                 <a href="https://www.odisee.be/" class="overlay external" target="_blank">Odisee</a>
               </div>
             </li>
@@ -203,40 +228,127 @@
               <div>
                 <div>
                   <h2>Donbosco Sint-denijs-westrem</h2>
-                  <p>2020 - 2022</p>
+                  <span>2020 - 2022</span>
                 </div>
-                <p><span class="bold">3<sup>th</sup> grade of TSO</span> Industrial ICT</p>
+                <p><strong>3<sup>th</sup> grade of TSO</strong> Industrial ICT</p>
               </div>
             </li>
             <li>
               <div>
                 <div>
                   <h2>Sint-paulus-gent</h2>
-                  <p>2016 - 2020</p>
+                  <span>2016 - 2020</span>
                 </div>
-                <p><span class="bold">2<sup>nd</sup> grade of ASO</span> Science</p>
-                <p><span class="bold">1<sup>st</sup> grade of ASO</span> Modern Science</p>
+                <p><strong>2<sup>nd</sup> grade of ASO</strong> Science</p>
+                <p><strong>1<sup>st</sup> grade of ASO</strong> Modern Science</p>
               </div>
             </li>
           </ul>
         </article>
 
         <article id="skills">
-          <div>
-            <h1><a href="#skills" tabindex="-1">Skills</a></h1>
+          <h1>
+            <a href="#skills" tabindex="-1">Skills</a>
             <span class="icon">mouse</span>
+          </h1>
+
+          <div class="programming-skills">
+            <div>
+              <h2>Programming Skills</h2>
+              <button>Expand</button>
+            </div>
+
+            <div>
+              <ul class="card-list">
+                <li><input tag="lang" type="checkbox" checked>Languages</input></li>
+                <li><input tag="fw" type="checkbox" checked>Frameworks</input></li>
+                <li><input tag="fun" type="checkbox" checked>Fun</input></li>
+              </ul>
+
+              <div class="skills-list">
+                <fieldset tags="lang">
+                  <legend>JavaScript</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="fw">
+                  <legend>Vue.js</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>Python</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>PHP</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="fw">
+                  <legend>Laravel</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>Java</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>C#</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>MySQL</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>HTML</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="lang">
+                  <legend>CSS</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="fun">
+                  <legend>Scratch</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+                <fieldset tags="fun">
+                  <legend>Minecraft Command Blocks</legend>
+
+                  <img src="./img/skills/js.webp" alt="JavaScript Logo">
+                </fieldset>
+              </div>
+            </div>
           </div>
 
-          <ul class="list">
-            <li></li>
-          </ul>
+          <div class="communicative-skills">
+            <div>
+              <h2>Communicative Skills</h2>
+              <button>Expand</button>
+            </div>
+
+            <div class="skills-list">
+              <fieldset>
+                <legend></legend>
+              </fieldset>
+            </div>
+          </div>
         </article>
 
         <article id="portfolio">
-          <div>
-            <h1><a href="#portfolio" tabindex="-1">Portfolio</a></h1>
+          <h1>
+            <a href="#portfolio" tabindex="-1">Portfolio</a>
             <span class="icon">dashboard</span>
-          </div>
+          </h1>
           <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
             lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
             lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
@@ -260,10 +372,10 @@
         </article>
 
         <article id="contact">
-          <div>
-            <h1><a href="#contact" tabindex="-1">Contact</a></h1>
+          <h1>
+            <a href="#contact" tabindex="-1">Contact</a>
             <span class="icon">mail</span>
-          </div>
+          </h1>
           <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
             lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
             lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
@@ -308,6 +420,7 @@
 
         <footer>
           <p>Copyright (c) Kyle Hoeckman 2024, All rights reserved.</p>
+          <p>This is made with pure HTML, CSS and JS</p>
         </footer>
       </section>
 

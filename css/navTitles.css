@@ -37,7 +37,7 @@ header nav li:nth-child(7)::after {
   margin-right: 0.5rem;
 }
 
-@media only screen and (width > 50em) {
+@media only screen and (width > 60em) {
   header nav li::after {
     background-color: #0009;
     font-size: 0.8rem;
@@ -48,14 +48,13 @@ header nav li:nth-child(7)::after {
     transition: opacity 150ms ease, transform 150ms ease;
   }
 
-  header nav li:hover::after,
-  header nav li:focus-visible::after {
+  header nav li:is(:hover, :focus-visible)::after {
     opacity: 1;
     transform: translateY(-50%) translateZ(0);
   }
 }
 
-@media only screen and (width <= 50em) {
+@media only screen and (width <= 60em) {
   header nav li::after {
     font-weight: bold;
     top: 100%;
@@ -66,5 +65,11 @@ header nav li:nth-child(7)::after {
 
   header nav li.active::after {
     color: var(--pri);
+  }
+}
+
+@media only screen and (width <= 60em) and (height <= 42.5em) {
+  header nav li:not(:last-child)::after {
+    opacity: 0;
   }
 }

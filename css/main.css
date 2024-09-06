@@ -2,7 +2,6 @@ main {
   display: flex;
   flex-flow: row nowrap;
   flex: 0 1 80rem;
-  padding-left: 0;
 }
 
 /* line */
@@ -25,7 +24,7 @@ main .profile {
 
 main .profile div:last-child {
   order: -1;
-  background-image: linear-gradient(#0000 75%, #000), url('../img/profile.webp');
+  background-image: linear-gradient(#0000 75%, #000), url('../img/profile-ver.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -75,8 +74,7 @@ main .profile .info li a {
   transition: background 150ms ease;
 }
 
-main .profile .info li a:hover,
-main .profile .info li a:focus-visible {
+main .profile .info li a:is(:hover, :focus-visible) {
   background-color: #fff3;
 }
 
@@ -88,6 +86,7 @@ main .profile .info li svg {
 main .container {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  border: 0.0625rem solid var(--dark-gray);
   --scroll-width: 0.6875rem;
   padding: 1.5rem calc(3rem - var(--scroll-width)) 1.5rem 3rem;
 }
@@ -100,31 +99,29 @@ main .container article:not(:first-child) {
   margin-top: 3.75rem; /* 5 - 1.25 */
 }
 
-main .container article > div:first-child {
+main .container article h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
   padding-top: 1.25rem; /* 1.25 */
 }
 
-main .container article > div:first-child h1 {
-  margin: 0;
-}
-
-main .container article > div:first-child h1 a {
+main .container article h1 a {
+  display: block;
   text-decoration: none;
-  color: inherit;
+  color: var(--white);
 }
 
-main .container article > div:first-child + p {
-  text-align: justify;
+main .container article h1 a:focus-visible {
+  outline: thin solid;
 }
 
-main .container article > div:first-child h1 a:is(:hover, :focus-visible) {
+main .container article h1 a:is(:hover, :focus-visible) {
   text-decoration: underline;
 }
 
-main .container article > div:first-child h1 a::before {
+main .container article h1 a::before {
   content: '#';
   display: inline-block;
   font-size: 0.8em;
@@ -137,17 +134,17 @@ main .container article > div:first-child h1 a::before {
   transition: opacity 150ms ease;
 }
 
-main .container article > div:first-child h1 a:is(:hover, :focus-visible)::before {
+main .container article h1 a:is(:hover, :focus-visible)::before {
   opacity: 1;
 }
 
-main .container article > div:first-child .icon {
+main .container article h1 .icon {
   font-size: 3rem;
   color: var(--light-gray);
   transition: color 150ms ease;
 }
 
-main .container article > div:first-child .icon:hover {
+main .container article:hover h1 .icon {
   color: var(--pri);
 }
 
@@ -178,7 +175,7 @@ main .container::-webkit-scrollbar-thumb:hover {
   line-height: 1.5;
 }
 
-#personal ul {
+#personal .personal-info {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -186,7 +183,11 @@ main .container::-webkit-scrollbar-thumb:hover {
   margin: 3rem 0;
 }
 
-#personal li {
+#personal .personal-info .material-symbols-rounded {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+#personal .personal-info li {
   flex: 1 0 14rem;
   display: flex;
   align-items: center;
@@ -199,36 +200,55 @@ main .container::-webkit-scrollbar-thumb:hover {
   transition: border-color 150ms ease;
 }
 
-#personal li > * {
+#personal .personal-info li > * {
   will-change: transform;
   z-index: 1;
 }
 
-#personal li:hover {
+#personal .personal-info li:hover {
   border-color: var(--pri);
 }
 
-#personal li h3 {
+#personal .personal-info li h3 {
   color: var(--pri);
-  margin: 0 0 0.3rem 0;
+  margin: 0;
 }
 
-#personal li .icon {
+#personal .personal-info li .icon {
   order: -1;
   color: var(--pri);
   font-size: 2rem;
 }
 
-#personal li a.overlay {
+#personal .personal-info li a.overlay {
   justify-content: flex-end;
 }
 
-#personal li:nth-child(2) div:last-child {
+#personal .personal-info li:nth-child(2) div:last-child {
   order: -1;
   background: linear-gradient(90deg, black 33%, yellow 33%, yellow 67%, red 67%);
   border-radius: 0.1rem;
   width: 2rem;
   height: 2rem;
+}
+
+#education .timeline li > div {
+  opacity: 0;
+}
+
+#education .timeline li > div.anim-in {
+  animation: fade-from-right 300ms ease-out forwards;
+}
+
+@keyframes fade-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 #education .timeline li > div:hover {
@@ -249,13 +269,12 @@ main .container::-webkit-scrollbar-thumb:hover {
   color: var(--white);
 }
 
-#education .timeline li > div > div p {
+#education .timeline li > div > div span {
   font-weight: 700;
   color: var(--pri);
-  margin: 0;
 }
 
-#education .timeline .bold {
+#education .timeline li b {
   margin-right: 0.5em;
 }
 
@@ -264,33 +283,35 @@ main .container::-webkit-scrollbar-thumb:hover {
 }
 
 #education .timeline .odisee > div {
-  background: linear-gradient(90deg, #0bd89b, var(--pri));
-  background-image: url('../img/odisee.webp');
+  background: url('../img/odisee.webp'), linear-gradient(90deg, #0bd89b, var(--pri));
   background-repeat: repeat-y;
   background-position: center;
   box-shadow: inset 0 0 1rem var(--black);
+  padding: 0.5rem 1.5rem;
 }
 
 #education .timeline .odisee > div h2 {
   color: var(--black);
 }
 
-#education .timeline .odisee > div :is(h2, p) {
+#education .timeline .odisee > div :is(h2, h2 + span, p) {
   background-color: #fffb;
   border-radius: 0.3rem;
   padding: 0.25rem 0.5rem;
-}
-
-#education .timeline .odisee > div > :is(div, p) {
-  margin: 0.75rem 0;
+  will-change: transform;
 }
 
 #education .timeline .odisee > div > p {
   color: var(--dark-gray);
+  width: fit-content;
 }
 
 #education .timeline .odisee > div:hover {
   border-color: var(--white);
+}
+
+#skills .programming-skills li legend {
+  text-align: center;
 }
 
 @media only screen and (width <= 85em) {
@@ -303,8 +324,9 @@ main .container::-webkit-scrollbar-thumb:hover {
   }
 }
 
-@media only screen and (width <= 50em) {
+@media only screen and (width <= 60em) {
   main .container {
+    border: none;
     padding: 4.5rem 3rem 1.5rem 3rem;
   }
 

@@ -12,9 +12,10 @@ const updateLoaded = () => {
   loadingBar.style.right = 100 - loaded + '%'
 }
 let loaded = 20
+updateLoaded()
 
 let loader = setInterval(() => {
-  loaded += (98 - loaded) / 8
+  loaded += (95 - loaded) / 8
   updateLoaded()
 }, 500)
 
@@ -42,16 +43,50 @@ document.querySelectorAll('a.external').forEach(a => {
   a.innerHTML = '<span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>'
 })
 
+// Apply class to active nav button
+const navButtons = document.querySelectorAll('header nav li a')
+
+navButtons.forEach(el =>
+  el.addEventListener('click', e => {
+    if (e.currentTarget.ariaLabel === 'Translate') return
+
+    document.querySelector('header nav .active').classList.remove('active')
+    e.currentTarget.parentElement.classList.add('active')
+  })
+)
+
 // Toggle nav
+
+const resetTransition = elements =>
+  [elements].flat().forEach(el => {
+    el.style.transition = 'none'
+    el.getBoundingClientRect() // Force reset transition
+    el.removeAttribute('style')
+
+    // Randomly doesn't work if done immediately
+    setTimeout(() => el.removeAttribute('style'), 500)
+  })
+
 openNav.addEventListener('click', () => (nav.ariaExpanded = true))
 closeNav.addEventListener('click', () => (nav.ariaExpanded = false))
 
-document.addEventListener('resize', () => (nav.ariaExpanded = window.innerWidth > 800))
-header.ariaExpanded = window.innerWidth > 800
+// Mobile / desktop switch
+
+let oldWidth = window.innerWidth
+
+window.addEventListener('resize', () => {
+  if ((oldWidth > 960) ^ (window.innerWidth > 960)) {
+    nav.ariaExpanded = window.innerWidth > 960
+
+    resetTransition(header)
+    resetTransition([openNav, closeNav])
+    resetTransition([...document.querySelectorAll('header nav li::after')])
+  }
+  oldWidth = window.innerWidth
+})
+nav.ariaExpanded = window.innerWidth > 960
 
 // Auto change active nav button on scroll
-let debounceNav
-
 const computeArticleOffsets = () => {
   let titles = []
   let i = 1
@@ -66,17 +101,20 @@ const computeArticleOffsets = () => {
     titles.unshift({
       navButton: document.querySelector('header nav ul').children[i],
       innerText: h1?.innerText,
-      offsetTop: article.offsetTop - paddingTop - 80, // Select next article 80 pixels before it scrolling past the top
+      offsetTop: article.offsetTop - paddingTop - ~~(window.innerHeight * 0.25), // Select next article when its scrolled past half the screen
     })
     i++
   }
   return titles
 }
 
-const scrollEventHandler = scrollTop => {
-  // Scroll image
-  odiseeImage.style.backgroundPosition = 'center ' + (-scrollTop / odiseeImage.offsetHeight) * 25 + '%'
+let debounceNav
 
+const scrollEventHandler = scrollTop => {
+  // Odisee image parallax effect
+  odiseeImage.style.backgroundPosition = 'center ' + -scrollTop / 5 + '%'
+
+  // Auto update active nav button on scroll
   clearTimeout(debounceNav)
 
   debounceNav = setTimeout(() => {
@@ -84,22 +122,14 @@ const scrollEventHandler = scrollTop => {
       if (article.offsetTop <= scrollTop) {
         document.querySelector('header nav .active').classList.remove('active')
         article.navButton.classList.add('active')
+
+        // Update url with current article
+        history?.pushState(null, null, article.navButton.children[0].hash)
         break
       }
     }
   }, 500)
 }
 
-document.addEventListener('scroll', () => scrollEventHandler(document.documentElement.scrollTop), { passive: true })
-container.addEventListener('scroll', () => scrollEventHandler(container.scrollTop), { passive: true })
-
-const navButtons = document.querySelectorAll('header nav li a')
-
-navButtons.forEach(el =>
-  el.addEventListener('click', e => {
-    if (e.currentTarget.ariaLabel === 'Translate') return
-
-    document.querySelector('header nav .active').classList.remove('active')
-    e.currentTarget.parentElement.classList.add('active')
-  })
-)
+document.addEventListener('scroll', () => scrollEventHandler(document.documentElement.scrollTop))
+container.addEventListener('scroll', () => scrollEventHandler(container.scrollTop))

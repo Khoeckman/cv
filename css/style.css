@@ -4,7 +4,6 @@
 .material-symbols-rounded {
   user-select: none;
   display: block;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
@@ -25,14 +24,10 @@
 }
 
 html {
-  /* cursor: none; */
   scroll-behavior: smooth;
-  background: var(--black);
-  /* background-image: url('/img/ibrahim-mushan-qnjKufYqIIE-unsplash.jpg'); */
-  /* background-image: url('/img/jason-ortego-TznjqhCHR9g-unsplash.jpg'); */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
-  /* background-position: -50px -30px; */
+  background: /* url('/img/ibrahim-mushan-qnjKufYqIIE-unsplash.jpg'), */ var(--black);
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   color: var(--white);
@@ -67,9 +62,25 @@ footer {
   color: var(--white);
 }
 
+/* ATOMS */
+
 p,
 span {
   max-width: 40em;
+}
+
+a {
+  color: var(--pri);
+}
+
+@keyframes grow-up {
+  from {
+    /* height: 0; */
+  }
+  to {
+    color: var(--white);
+    /* height: 100%; */
+  }
 }
 
 button {
@@ -77,24 +88,182 @@ button {
   font-family: inherit;
 }
 
-/* a,
-button {
-  cursor: none;
-} */
-
 img,
 svg {
   display: inherit;
+}
+
+/* Custom Checkbox Tags */
+
+input[tag][type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+/* HELPER CLASSES */
+
+.overlay {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: background-color 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.card-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 150ms ease-in-out;
+}
+
+a.overlay .icon {
+  font-size: 2rem;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  color: var(--black);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+a.overlay:not(.transparent):is(:hover, :focus-visible) {
+  background-color: #fff9;
+}
+
+a.overlay:is(:hover, :focus-visible) .icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+a.overlay.transparent .icon {
+  background-color: #1119;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+a.fancy {
+  position: relative;
+}
+
+a.fancy:is(:hover, :focus-visible)::before {
+  content: '';
+  display: block;
+  background-color: var(--pri);
+  position: absolute;
+  animation: grow-up 300ms ease-in-out;
+}
+
+/* Progress bar */
+
+/* .progress-bar span {
+  background-color: var(--dark-gray);
+  border: 0.125rem solid var(--gray);
+  border-radius: 3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--lighter-gray);
+  position: relative;
+  width: 10rem;
+} */
+
+.progress-bar {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+}
+
+/* Timeline */
+
+.timeline {
+  position: relative;
+  margin: 1.5rem 0;
+  --shadow-x: 0.3rem;
+  --shadow-y: 0.3rem;
+}
+
+.timeline::after {
+  content: '';
+  background-color: var(--gray);
+  border-radius: 1rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1rem;
+  margin-left: -0.3rem;
+  width: 0.6rem;
+}
+
+.timeline li {
+  padding: 2rem 0;
+  position: relative;
+  width: 100%;
+}
+
+/* The circles on the timeline */
+.timeline li::after {
+  content: '';
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  box-shadow: inset var(--shadow-x) var(--shadow-y) 0.5rem #fff,
+    inset calc(0px - var(--shadow-x) / 2) calc(0px - var(--shadow-y) / 2) 0.3rem #0006;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline li > div {
+  background-color: var(--black);
+  border: 0.0625rem solid var(--gray);
+  border-radius: 0.3rem;
+  color: var(--light-gray);
+  position: relative;
+  margin-left: 3rem;
+  padding: 1rem 1.5rem;
+  transition: border-color 150ms ease;
 }
 
 /* Skiplink */
 
 #skip-to-content:not(:focus-visible) {
   overflow: hidden;
-  left: -9px;
-  padding: 0;
-  width: 1px;
-  height: 1px;
+  user-select: none;
+  text-indent: -100%;
+  white-space: nowrap;
+  position: absolute;
 }
 
 #skip-to-content:focus-visible {
@@ -116,12 +285,7 @@ svg {
   display: flex;
   flex-flow: row nowrap;
   background: var(--dark-gray);
-  box-shadow: 0 0 2rem var(--black);
-  border-radius: 0.3rem;
-  margin: auto;
-  max-width: 80rem;
-  height: 45.5rem;
-  /* max-height: calc(100vh - var(--my) * 2); */
+  position: relative; /* For overlay shadow */
 }
 
 /* Loading screen */
@@ -137,7 +301,7 @@ svg {
   left: 0;
   width: 100%;
   height: 100%;
-  transform-origin: 50% 110%;
+  /* transform-origin: 50% 110%; */
   z-index: 1000;
 }
 
@@ -148,7 +312,7 @@ svg {
 #loading-screen h2 {
   overflow: hidden;
   border: 0.125rem solid var(--gray);
-  border-radius: 3rem;
+  border-radius: 0.3rem;
   font-size: 1rem;
   position: relative;
   color: var(--white);
@@ -176,12 +340,24 @@ svg {
 }
 
 #loading-screen.anim-out {
-  animation: fall-down 1s ease-in 150ms forwards;
+  animation: shrink 300ms ease-in 300ms forwards;
 }
 
-#loading-screen[hidden] {
-  display: none;
+@keyframes shrink {
+  form {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    display: none;
+    opacity: 0;
+    transform: scale(1.3);
+  }
 }
+
+/* #loading-screen.anim-out {
+  animation: fall-down 1s ease-in 150ms forwards;
+} */
 
 @keyframes fall-down {
   form {
@@ -233,127 +409,19 @@ svg {
   z-index: -1;
 }
 
-/* HELPER CLASSES */
-
-.overlay {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transition: background-color 0.2s ease-in-out;
-  z-index: 1;
-}
-
-.pseudo-hidden {
-  user-select: none;
-  display: block;
-  position: absolute;
-  text-indent: -100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-a.overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: background 150ms ease-in-out;
-}
-
-a.overlay .icon {
-  font-size: 2rem;
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
-  color: var(--black);
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-}
-
-a.overlay:not(.transparent):hover,
-a.overlay:not(.transparent):focus-visible {
-  background-color: #fff9;
-}
-
-a.overlay:hover .icon,
-a.overlay:focus-visible .icon {
-  opacity: 1;
-  transform: scale(1);
-}
-
-a.overlay.transparent .icon {
-  background-color: #1119;
-  border-radius: 50%;
-  padding: 0.5rem;
-}
-
-/* Timeline */
-
-.timeline {
-  position: relative;
-  margin: 1.5rem 0;
-}
-
-.timeline::after {
-  content: '';
-  background-color: var(--gray);
-  border-radius: 1rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 1rem;
-  margin-left: -0.3rem;
-  width: 0.6rem;
-}
-
-.timeline li {
-  padding: 2rem 0;
-  position: relative;
-  width: 100%;
-}
-
-/* The circles on the timeline */
-.timeline li::after {
-  content: '';
-  background-color: var(--light-gray);
-  border-radius: 50%;
-  box-shadow: inset 0.3rem 0.3rem 0.5rem #fff9;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 2rem;
-  height: 2rem;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
-.timeline li > div {
-  background-color: var(--black);
-  border: 0.0625rem solid var(--gray);
-  border-radius: 0.3rem;
-  color: var(--light-gray);
-  position: relative;
-  margin-left: 3rem;
-  padding: 1rem 1.5rem;
-  transition: border-color 150ms ease;
-}
-
 /* BREAKPOINTS */
 
-@media only screen and (width <= 50em) {
+@media only screen and (width > 60em) {
+  #app {
+    box-shadow: 0 0 2rem var(--black);
+    border-radius: 0.3rem;
+    margin: auto;
+    max-width: 80rem;
+    height: 45.5rem;
+  }
+}
+
+@media only screen and (width <= 60em) {
   html {
     font-size: 14px;
   }
@@ -377,11 +445,6 @@ a.overlay.transparent .icon {
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--light-gray);
-  }
-
-  #app {
-    margin: 0;
-    height: initial;
   }
 
   #canvas-particles {
