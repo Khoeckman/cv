@@ -5,10 +5,11 @@ first:
   - 'Finish skills part'
 
 important:
-  - 'make icon animate on loading screen'
+  - 'change all h1 to h2 and h2 to h3 ...'
   - 'move profile part to top instead of dissapear'
   - 'place nav buttons ::after in span for semantics'
   - 'make tracker outline over the target element'
+  - 'make js copy for email'
 
 problems:
   - 'make timeline button animation better on black side'

@@ -13,12 +13,12 @@ header nav {
 
 header nav ul {
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   height: 100%;
-  transition: gap 150ms ease;
+  transition: gap 150ms;
 }
 
 header nav li {
@@ -34,7 +34,7 @@ header nav li:last-child {
 }
 
 header nav img {
-  border-radius: 0.3rem;
+  border-radius: var(--radius-s);
   width: 3rem;
   height: 3rem;
 }
@@ -57,9 +57,9 @@ header nav a:not(.overlay) {
   text-decoration: none;
   display: block;
   background-color: transparent;
-  border-radius: 6rem;
+  border-radius: 50%;
   color: var(--white);
-  transition: background 150ms ease, transform 150ms ease;
+  transition: background 150ms, transform 150ms;
 }
 
 header nav li a:is(:hover, :focus-visible) {
@@ -86,7 +86,7 @@ header nav .icon {
   font-size: 2rem;
   color: var(--gray);
   padding: 0.5rem;
-  transition: font-size 150ms ease, color 150ms ease-in-out, transform 150ms ease;
+  transition: font-size 150ms, color 150ms ease-in-out, transform 150ms;
 }
 
 header nav a:is(:hover, :focus-visible) .icon {
@@ -127,7 +127,6 @@ header nav li:last-child .icon {
   }
 
   header nav img {
-    border-radius: 0.4rem;
     width: 4rem;
     height: 4rem;
   }
@@ -140,14 +139,14 @@ header nav li:last-child .icon {
   #close-nav {
     display: initial;
     border: 0;
-    border-radius: 0 0.3rem 0.3rem 0;
+    border-radius: 0 var(--radius-s) var(--radius-s) 0;
     box-shadow: 0 0 0.9rem 0.1rem var(--dark-gray);
     position: fixed;
     top: 1.5rem;
     left: 0;
     width: 3rem;
     height: 3rem;
-    transition: color 300ms ease-in-out, left 300ms ease-in-out, opacity 300ms ease-in-out, filter 150ms ease;
+    transition: color 300ms ease-in-out, left 300ms ease-in-out, opacity 300ms ease-in-out, filter 150ms;
   }
 
   header #open-nav {

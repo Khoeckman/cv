@@ -5,6 +5,10 @@ const popout = document.querySelector('main .profile')
 const container = document.querySelector('main .container')
 const aboutList = [...document.querySelectorAll('#personal li > *')]
 const odiseeContent = [...document.querySelectorAll('#education .timeline .odisee > div :is(h2, h2 + span, p)')]
+const contactContent = [
+  ...document.querySelectorAll('#contact .email > *'),
+  ...document.querySelectorAll('#contact form > *'),
+]
 
 let currentRotX = 0
 let currentRotY = 0
@@ -37,7 +41,6 @@ setInterval(() => {
     return
   }
 
-  return
   // Rotate timeline dots light shine
   timeline.style.setProperty('--shadow-x', (-rotY * 16).toFixed(2) + 'px')
   timeline.style.setProperty('--shadow-y', (-rotX * 16).toFixed(2) + 'px')
@@ -45,18 +48,20 @@ setInterval(() => {
   // 3D rotation effect towards mouse
   app.style.transform =
     'perspective(160rem) rotateX(' + (-rotX * 16).toFixed(2) + 'deg) rotateY(' + (rotY * 16).toFixed(2) + 'deg)'
-  depth(popout, 16)
-  depth(popout.children[0], 8)
-  depth(aboutList, 6)
-  depth(odiseeContent, 6)
-}, 10)
 
-const depth = (elements, depth) =>
-  [elements]
-    .flat()
-    .forEach(
-      el => (el.style.transform = 'translate(' + (rotY * depth).toFixed(2) + 'px, ' + (rotX * depth).toFixed(2) + 'px)')
-    )
+  // depth(popout, 16)
+  // depth(popout.children[0], 8)
+  // depth(aboutList, 6)
+  // depth(odiseeContent, 6)
+  // depth(contactContent, 6)
+}, 16)
+
+// const depth = (elements, depth) =>
+//   [elements]
+//     .flat()
+//     .forEach(
+//       el => (el.style.transform = 'translate(' + (rotY * depth).toFixed(2) + 'px, ' + (rotX * depth).toFixed(2) + 'px)')
+//     )
 
 document.addEventListener('mousedown', () => tracker.classList.add('active'))
 document.addEventListener('mouseup', () => tracker.classList.remove('active'))

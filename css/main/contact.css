@@ -1,0 +1,149 @@
+#contact form[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+  position: relative;
+  filter: brightness(0.25);
+}
+
+#contact form {
+  background-color: hsl(216, 100%, 98%);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-s);
+  color: var(--black);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+}
+
+#contact form :is(label, button) {
+  font-family: -apple-system, BlinkMacSystemFont, 'Mukta Malar', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+}
+
+#contact form textarea {
+  min-height: 5rem;
+}
+
+#contact form :is(label, input, textarea) {
+  padding-bottom: 0.25rem;
+  width: 100%;
+  /* max-width: 24em; */
+}
+
+#contact form :is(label, textarea) {
+  will-change: transform;
+}
+
+#contact form :is(input, textarea) {
+  outline: 0;
+  display: block;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-s);
+  padding: 0.5rem 1rem;
+  transition: border-color 150ms;
+}
+
+#contact form :is(input, textarea):focus-within {
+  border-color: var(--pri);
+}
+
+#contact form :is(input, textarea):not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+#contact form button {
+  background-color: var(--pri);
+  border: 1px solid var(--pri-d);
+  border-radius: var(--radius-s);
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  height: 3rem;
+  transition: all 150ms;
+}
+
+#contact form button:is(:hover, :focus-visible) {
+  background-color: var(--pri-l);
+}
+
+#contact form button:active {
+  background-color: var(--pri-d);
+}
+
+#contact .hr {
+  display: block;
+  font-variant-caps: all-small-caps;
+  text-align: center;
+  position: relative;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+#contact .hr::before,
+#contact .hr::after {
+  content: '';
+  display: block;
+  background-color: var(--gray);
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 1.5rem);
+  height: 2px;
+}
+
+#contact .hr::before {
+  left: 0;
+}
+
+#contact .hr::after {
+  right: 0;
+}
+
+#contact .email {
+  flex: 1 0 14rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--black);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius-s);
+  white-space: nowrap;
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: border-color 150ms;
+}
+
+#contact .email > * {
+  will-change: transform;
+  z-index: 1;
+}
+
+#contact .email:hover {
+  border-color: var(--pri);
+}
+
+#contact .email:first-of-type {
+  margin: 1.5rem 0;
+}
+
+#contact .email h3 {
+  color: var(--pri);
+  margin: 0;
+}
+
+#contact .email:first-of-type span:first-child {
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+  line-height: 1.5;
+}
+
+#contact .email .icon {
+  order: -1;
+  color: var(--pri);
+  font-size: 2rem;
+}
+
+#contact .email .overlay .icon {
+  color: var(--black);
+}

@@ -1,0 +1,160 @@
+/* Skiplink */
+
+#skip-to-content:not(:focus-visible) {
+  overflow: hidden;
+  user-select: none;
+  text-indent: -100%;
+  white-space: nowrap;
+  position: absolute;
+}
+
+#skip-to-content:focus-visible {
+  background-color: var(--black);
+  border-radius: var(--radius-s);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--white);
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  z-index: 999;
+}
+
+/* Loading screen */
+
+#loading-screen {
+  cursor: wait;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* transform-origin: 50% 110%; */
+  z-index: 1000;
+}
+
+#loading-screen h1 {
+  margin-bottom: 0;
+}
+
+#loading-screen h2 {
+  overflow: hidden;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-s);
+  font-size: 1rem;
+  position: relative;
+  color: var(--white);
+  padding: 0.25rem 5.5rem;
+}
+
+#loading-screen h2 span:first-child {
+  background-color: var(--white);
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: right 500ms ease-in-out;
+}
+
+#loading-screen h2 span:last-child {
+  mix-blend-mode: difference;
+}
+
+#loading-screen img {
+  order: -1;
+  border-radius: var(--radius-m);
+  animation: invert 0.48s ease-in-out infinite alternate;
+}
+
+@keyframes invert {
+  from {
+    filter: invert(0);
+  }
+  to {
+    filter: invert(1);
+  }
+}
+
+#loading-screen.anim-out {
+  animation: shrink 300ms ease-in 300ms forwards;
+}
+
+@keyframes shrink {
+  form {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    display: none;
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+/* #loading-screen.anim-out {
+  animation: fall-down 1s ease-in 150ms forwards;
+}
+
+@keyframes fall-down {
+  form {
+    opacity: 1;
+    transform: perspective(100vh) rotateX(0deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+    transform: perspective(100vh) rotateX(100deg);
+  }
+} */
+
+/* Mouse tracker */
+
+#tracker,
+#tracker div {
+  pointer-events: none;
+  background-color: #0006;
+  border: 0.2rem solid var(--pri);
+  border-radius: 50%;
+  box-shadow: 0 0 0.3rem #000, 0 0 1rem #fff;
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  /* transition: border 150ms, width 150ms, height 150ms; */
+  transition: background 150ms;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+#tracker.active {
+  background-color: var(--pri);
+}
+
+/* Background particles */
+
+#canvas-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media only screen and (width <= 60em) {
+  #canvas-particles {
+    display: none;
+  }
+}

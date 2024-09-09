@@ -45,7 +45,7 @@ header nav li:nth-child(7)::after {
     right: 5rem;
     opacity: 0;
     transform: translateY(-50%) translateZ(0) scale(0.75);
-    transition: opacity 150ms ease, transform 150ms ease;
+    transition: opacity 150ms, transform 150ms;
   }
 
   header nav li:is(:hover, :focus-visible)::after {
@@ -56,11 +56,11 @@ header nav li:nth-child(7)::after {
 
 @media only screen and (width <= 60em) {
   header nav li::after {
-    font-weight: bold;
+    font-weight: 700;
     top: 100%;
     left: 50%;
     transform: translateX(-50%) translateZ(0);
-    transition: color 150ms ease, opacity 150ms ease, transform 150ms ease;
+    transition: color 150ms, opacity 150ms, transform 150ms;
   }
 
   header nav li.active::after {
