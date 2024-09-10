@@ -16,6 +16,59 @@ document.addEventListener('readystatechange', () => {
     clearInterval(loader)
     loaded = 100
     updateLoaded()
+
+    // Auto change active nav button on scroll
+
+    const container = document.querySelector('main .container')
+    const articles = [...container.querySelectorAll('article')]
+
+    const computeArticleOffsets = () => {
+      let titles = []
+      let i = 1
+
+      for (let article of articles) {
+        const h1 = article.querySelector('h1')
+        const paddingTop = window
+          .getComputedStyle(container)
+          .getPropertyValue('padding-top')
+          .match(/(\d*)([\s\S]*)/)[1]
+
+        titles.unshift({
+          navButton: nav.querySelector('ul').children[i],
+          innerText: h1?.innerText,
+          offsetTop: article.offsetTop - paddingTop - ~~(container.offsetHeight / 3), // Select next article when its scrolled past half the screen
+        })
+        i++
+      }
+      return titles
+    }
+
+    const odiseeImage = document.querySelector('#education .timeline .odisee > div')
+    let debounceNav
+
+    const scrollEventHandler = scrollTop => {
+      // Odisee image parallax effect
+      odiseeImage.style.backgroundPosition = 'center ' + -scrollTop / 5 + '%'
+
+      // Auto update active nav button on scroll
+      clearTimeout(debounceNav)
+
+      debounceNav = setTimeout(() => {
+        for (let article of computeArticleOffsets()) {
+          if (article.offsetTop <= scrollTop) {
+            nav.querySelector('.active').classList.remove('active')
+            article.navButton.classList.add('active')
+
+            // Update url with current article
+            history?.pushState(null, null, article.navButton.children[0].hash)
+            break
+          }
+        }
+      }, 500)
+    }
+
+    document.addEventListener('scroll', () => scrollEventHandler(document.documentElement.scrollTop))
+    container.addEventListener('scroll', () => scrollEventHandler(container.scrollTop))
   }
 })
 
@@ -41,7 +94,7 @@ document.querySelectorAll('.image-blur').forEach(a => (a.innerHTML += a.innerHTM
 // Apply class to active nav button
 const header = document.querySelector('header')
 const nav = header.querySelector('nav')
-const navButtons = nav.querySelectorAll('li a')
+const navButtons = nav.querySelectorAll('li:not(:first-child):not(:last-child) a')
 
 navButtons.forEach(el =>
   el.addEventListener('click', e => {
@@ -54,13 +107,6 @@ navButtons.forEach(el =>
 
 // Toggle nav
 
-const resetTransition = elements =>
-  [elements].flat().forEach(el => {
-    el.style.transition = 'none'
-    el.getBoundingClientRect() // Force reset transition
-    el.removeAttribute('style')
-  })
-
 const openNav = document.getElementById('open-nav')
 const closeNav = document.getElementById('close-nav')
 
@@ -71,70 +117,53 @@ closeNav.addEventListener('click', () => (nav.ariaExpanded = false))
 
 let oldWidth = window.innerWidth
 
+const resetCSSTransition = elements =>
+  [elements].flat().forEach(el => {
+    el.style.transition = 'none'
+    el.getBoundingClientRect() // Force reset transition
+    el.removeAttribute('style')
+  })
+
 window.addEventListener('resize', () => {
   if ((oldWidth > 960) ^ (window.innerWidth > 960)) {
     nav.ariaExpanded = window.innerWidth > 960
 
-    resetTransition(header)
-    resetTransition([openNav, closeNav])
-    resetTransition([...nav.querySelectorAll('li::after')])
+    resetCSSTransition(header)
+    resetCSSTransition([openNav, closeNav])
+    resetCSSTransition([...nav.querySelectorAll('li::after')])
+    resetCSSTransition(app.querySelector(':scope > div'))
   }
   oldWidth = window.innerWidth
 })
 nav.ariaExpanded = window.innerWidth > 960
 
-// Auto change active nav button on scroll
+// Flip app
 
-const container = document.querySelector('main .container')
-const articles = [...container.querySelectorAll('article')]
+const settingsButton = nav.querySelector('li:last-child a')
+const exitSettingsButton = document.getElementById('exit-settings')
 
-const computeArticleOffsets = () => {
-  let titles = []
-  let i = 1
+const frontFocuseable = [
+  ...app.querySelectorAll(':is(header, main:first-of-type) :is(a, button, input, select, textarea'),
+]
+const backFocuseable = [...app.querySelectorAll('main:last-of-type :is(a, button, input, select, textarea')]
 
-  for (let article of articles) {
-    const h1 = article.querySelector('h1')
-    const paddingTop = window
-      .getComputedStyle(container)
-      .getPropertyValue('padding-top')
-      .match(/(\d*)([\s\S]*)/)[1]
+settingsButton.addEventListener('click', () => {
+  app.setAttribute('data-flip', true)
+  app.querySelector('main:last-of-type').focus()
 
-    titles.unshift({
-      navButton: nav.querySelector('ul').children[i],
-      innerText: h1?.innerText,
-      offsetTop: article.offsetTop - paddingTop - ~~(window.innerHeight * 0.25), // Select next article when its scrolled past half the screen
-    })
-    i++
-  }
-  return titles
-}
+  frontFocuseable.forEach(el => (el.tabindex = -1))
+  backFocuseable.forEach(el => el.removeAttribute('tabindex'))
+})
 
-const odiseeImage = document.querySelector('#education .timeline .odisee > div')
-let debounceNav
+exitSettingsButton.addEventListener('click', () => {
+  app.setAttribute('data-flip', false)
+  app.querySelector('main:first-of-type').focus()
 
-const scrollEventHandler = scrollTop => {
-  // Odisee image parallax effect
-  odiseeImage.style.backgroundPosition = 'center ' + -scrollTop / 5 + '%'
-
-  // Auto update active nav button on scroll
-  clearTimeout(debounceNav)
-
-  debounceNav = setTimeout(() => {
-    for (let article of computeArticleOffsets()) {
-      if (article.offsetTop <= scrollTop) {
-        nav.querySelector('.active').classList.remove('active')
-        article.navButton.classList.add('active')
-
-        // Update url with current article
-        history?.pushState(null, null, article.navButton.children[0].hash)
-        break
-      }
-    }
-  }, 500)
-}
-
-document.addEventListener('scroll', () => scrollEventHandler(document.documentElement.scrollTop))
-container.addEventListener('scroll', () => scrollEventHandler(container.scrollTop))
+  backFocuseable.forEach(el => (el.tabindex = -1))
+  frontFocuseable.forEach(el => el.removeAttribute('tabindex'))
+})
+const disableEls = [...app.querySelectorAll('main:last-of-type :is(a, button, input, select, textarea')]
+disableEls.forEach(el => (el.tabindex = -1))
 
 // Toggle collapsibles
 

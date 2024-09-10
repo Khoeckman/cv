@@ -23,8 +23,10 @@
   /* --sec: #ff7; */
   --red: hsl(8, 100%, 50%);
   --red-d: hsl(8, 100%, 40%);
+  --red-l: hsl(8, 100%, 60%);
   --green: hsl(128, 100%, 50%);
   --green-d: hsl(128, 100%, 40%);
+  --green-l: hsl(128, 100%, 60%);
 
   --radius-xs: 0.1rem;
   --radius-s: 0.3rem;
@@ -70,10 +72,10 @@ footer {
   color: var(--white);
 }
 
-#app {
+#app > div {
   display: flex;
   background: var(--dark-gray);
-  position: relative; /* For overlay shadow */
+  position: relative;
 }
 
 /* ATOMS */
@@ -276,6 +278,7 @@ a.fancy:is(:hover, :focus-visible)::before {
   border-top: 0;
   margin-top: -0.5rem;
   padding: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 .collapsible > div:last-child[aria-expanded='false'] {
@@ -374,13 +377,28 @@ a.fancy:is(:hover, :focus-visible)::before {
 
 @media only screen and (width > 60em) {
   #app {
-    box-shadow: 0 0 2rem var(--black);
-    border-radius: var(--radius-s);
     margin: auto;
-    max-width: 80rem;
-    height: 45.5rem;
     perspective: 1600rem;
     transform-style: preserve-3d;
+    transform: perspective(160rem);
+  }
+
+  #app > div {
+    box-shadow: 0 0 2rem var(--black);
+    border-radius: var(--radius-s);
+    max-width: 80rem;
+    height: 45.5rem;
+    transition: transform 2s ease;
+    transform-style: preserve-3d;
+  }
+
+  #app[data-flip='true'] > div {
+    transform: perspective(160rem) rotateY(-180deg);
+  }
+
+  #app[data-flip='false'] main:last-of-type :is(a, button, input, select, textarea),
+  #app[data-flip='true'] :is(header, main:first-of-type) :is(a, button, input, select, textarea) {
+    pointer-events: none;
   }
 }
 

@@ -1,0 +1,45 @@
+main:last-of-type {
+  flex-flow: row wrap;
+  background-color: var(--dark-gray);
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  width: 100%;
+  height: 100%;
+}
+
+main:last-of-type .container {
+  width: 100%;
+  height: 100%;
+}
+
+main:last-of-type .container article {
+  height: 100%;
+}
+
+main:last-of-type .container article h1 {
+  margin-bottom: 1.5rem;
+}
+
+#exit-settings {
+  background-color: var(--red);
+  border: 0;
+  border-radius: var(--radius-s);
+  color: var(--white);
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: background 150ms;
+}
+
+#exit-settings:is(:hover, :focus-visible) {
+  background-color: var(--red-l);
+}
+
+#exit-settings:active {
+  background-color: var(--red-d);
+}

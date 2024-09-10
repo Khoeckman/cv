@@ -27,10 +27,11 @@
   position: relative;
   padding: 0.5rem 1rem;
   transition: border-color 150ms;
+  transform-style: preserve-3d;
 }
 
 #personal .personal-info li > * {
-  will-change: transform;
+  transform: translateZ(20rem);
   z-index: 1;
 }
 

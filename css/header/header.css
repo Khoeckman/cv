@@ -4,6 +4,7 @@ header {
   padding: 1.5rem 1rem;
   color: var(--pri);
   z-index: 9;
+  backface-visibility: hidden;
 }
 
 header nav {

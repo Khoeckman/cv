@@ -46,493 +46,526 @@
     </h2>
     <img src="./img/favicon.webp" alt="Logo with initials KH" width="160" height="160">
   </div>
-  <a href="#main" id="skip-to-content">Skip to content</a>
-  <div id="app">
-    <header>
-      <nav>
-        <ul class="card-list">
-          <li>
-            <img src="./img/favicon.webp" alt="Logo with initials KH" width="48" height="48">
-            <a href="/" class="overlay transparent"></a>
-          </li>
-          <li class="active"><a href="#personal" aria-label="Personal"><span class="icon">person</span></a></li>
-          <li><a href="#education" aria-label="Education"><span class="icon">school</span></a></li>
-          <!-- <li><a aria-label="Work Experience"><span class="icon">work</span></a></li> -->
-          <li><a href="#skills" aria-label="Skills"><span class="icon">mouse</span></a></li>
-          <li><a href="#portfolio" aria-label="Portfolio"><span class="icon">dashboard</span></a></li>
-          <li><a href="#contact" aria-label="Contact"><span class="icon">mail</span></a></li>
-          <li><a href="#translate" aria-label="Translate"><span class="icon">g_translate</span></a></li>
-        </ul>
-      </nav>
-      <button id="open-nav"><span class="icon">menu</span></button>
-      <button id="close-nav"><span class="icon">close</span></button>
-    </header>
 
-    <main>
-      <section class="profile">
-        <div class="info">
-          <h1>Kyle Hoeckman</h1>
-          <h2>Full-Stack Developer</h2>
+  <a href="#main" id="skip-to-content">Skip to content</a>
+
+  <div id="app" data-flip="false">
+    <div>
+      <header>
+        <nav>
 
           <ul class="card-list">
-            <li><a href="https://www.linkedin.com/in/kyle-hoeckman-0ab0272a6/" target="_blank" title="linkedin"
-                aria-label="linkedin">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
-                  <path fill="#fff"
-                    d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z">
-                  </path>
-                </svg>
-              </a></li>
-            <li><a href="https://github.com/Khoeckman/" target="_blank" title="github" aria-label="github">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
-                  <path fill="#fff"
-                    d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z">
-                  </path>
-                </svg>
-              </a></li>
-            <li><a href="https://www.instagram.com/kyle.hoeckman/" target="_blank" title="instagram"
-                aria-label="instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
-                  <path fill="#fff"
-                    d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 A 1 1 0 0 0 16 7 A 1 1 0 0 0 17 8 A 1 1 0 0 0 18 7 A 1 1 0 0 0 17 6 z M 12 7 C 9.243 7 7 9.243 7 12 C 7 14.757 9.243 17 12 17 C 14.757 17 17 14.757 17 12 C 17 9.243 14.757 7 12 7 z M 12 9 C 13.654 9 15 10.346 15 12 C 15 13.654 13.654 15 12 15 C 10.346 15 9 13.654 9 12 C 9 10.346 10.346 9 12 9 z">
-                  </path>
-                </svg>
-              </a></li>
+            <li>
+              <img src="./img/favicon.webp" alt="Logo with initials KH" width="48" height="48">
+              <a href="/" class="overlay transparent"></a>
+            </li>
+            <li class="active"><a href="#personal" aria-label="Personal"><span class="icon">person</span></a></li>
+            <li><a href="#education" aria-label="Education"><span class="icon">school</span></a></li>
+            <!-- <li><a aria-label="Work Experience"><span class="icon">work</span></a></li> -->
+            <li><a href="#skills" aria-label="Skills"><span class="icon">mouse</span></a></li>
+            <li><a href="#portfolio" aria-label="Portfolio"><span class="icon">dashboard</span></a></li>
+            <li><a href="#contact" aria-label="Contact"><span class="icon">mail</span></a></li>
+            <li><a href="#settings" aria-label="Settings"><span class="icon">settings</span></a></li>
           </ul>
-        </div>
+        </nav>
+        <button id="open-nav"><span class="icon">menu</span></button>
+        <button id="close-nav"><span class="icon">close</span></button>
+      </header>
 
-        <div></div>
-      </section>
+      <main>
+        <section class="profile">
+          <div class="info">
+            <h1>Kyle Hoeckman</h1>
+            <h2>Full-Stack Developer</h2>
 
-      <section class="container">
-        <article id="personal">
-          <h1>
-            <a href="#personal" id="main" tabindex="-1">About me</a>
-            <span class="icon">person</span>
-          </h1>
-          <p>Passionate ICT student focused on software development. I have a creative mind and excel at digitalizing
-            design ideas through CSS and JS. I am driven to work on innovative projects and learn about new
-            technologies.</p>
+            <ul class="card-list">
+              <li><a href="https://www.linkedin.com/in/kyle-hoeckman-0ab0272a6/" target="_blank" title="linkedin"
+                  aria-label="linkedin">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
+                    <path fill="#fff"
+                      d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z">
+                    </path>
+                  </svg>
+                </a></li>
+              <li><a href="https://github.com/Khoeckman/" target="_blank" title="github" aria-label="github">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
+                    <path fill="#fff"
+                      d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z">
+                    </path>
+                  </svg>
+                </a></li>
+              <li><a href="https://www.instagram.com/kyle.hoeckman/" target="_blank" title="instagram"
+                  aria-label="instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                    <path fill="#fff"
+                      d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 A 1 1 0 0 0 16 7 A 1 1 0 0 0 17 8 A 1 1 0 0 0 18 7 A 1 1 0 0 0 17 6 z M 12 7 C 9.243 7 7 9.243 7 12 C 7 14.757 9.243 17 12 17 C 14.757 17 17 14.757 17 12 C 17 9.243 14.757 7 12 7 z M 12 9 C 13.654 9 15 10.346 15 12 C 15 13.654 13.654 15 12 15 C 10.346 15 9 13.654 9 12 C 9 10.346 10.346 9 12 9 z">
+                    </path>
+                  </svg>
+                </a></li>
+            </ul>
+          </div>
 
-          <h2 class="sr-only">Personal information</h2>
+          <div></div>
+        </section>
 
-          <ul class="card-list personal-info">
-            <li>
-              <div>
-                <h3>Name</h3>
-                <span>Kyle Hoeckman</span>
-              </div>
-              <span class="icon">id_card</span>
-            </li>
-            <li>
-              <div>
-                <h3>Nationality</h3>
-                <span>Belgian</span>
-              </div>
-              <div></div>
-            </li>
-            <li>
-              <div>
-                <h3>Address</h3>
-                <span>9031 Drongen</span>
-              </div>
-              <span class="icon">home</span>
-            </li>
-            <li>
-              <div>
-                <h3>Phone number</h3>
-                <span>+32 479 466 177</span>
-              </div>
-              <span class="icon">call</span>
-            </li>
-            <li>
-              <div>
-                <h3>Age</h3>
-                <span id="age">--</span>
-              </div>
-              <span class="icon">cake</span>
-            </li>
-            <li>
-              <div>
-                <h3>Place of birth</h3>
-                <span>Ghent</span>
-              </div>
-              <span class="icon">location_on</span>
-            </li>
-            <li>
-              <div>
-                <h3>Gender</h3>
-                <span>Male</span>
-              </div>
-              <span class="icon">wc</span>
-            </li>
-            <li>
-              <div>
-                <h3>Driving license</h3>
-                <span>B (passenger car)</span>
-              </div>
-              <span class="icon">directions_car</span>
-            </li>
-            <li>
-              <div>
-                <h3>Email</h3>
-                <span>kyle.hoeckman@gmail.com</span>
-              </div>
-              <span class="icon">mail</span>
-              <a href="#contact" class="overlay transparent">
-                <span class="icon material-symbols-rounded" aria-hidden="true">send</span>
-              </a>
-            </li>
-          </ul>
+        <section class="container">
+          <article id="personal">
+            <h1>
+              <a href="#personal" id="main">About me</a>
+              <span class="icon">person</span>
+            </h1>
+            <p>Passionate ICT student focused on software development. I have a creative mind and excel at digitalizing
+              design ideas through CSS and JS. I am driven to work on innovative projects and learn about new
+              technologies.</p>
 
-          <h2>Languages</h2>
+            <h2 class="sr-only">Personal information</h2>
 
-          <ul class="card-list languages">
-            <li>
-              <h3>Dutch</h3>
-              <div class="progress-bar" data-progress="100%"><span>Native</span></div>
-            </li>
-            <li>
-              <h3>English</h3>
-              <div class="progress-bar" data-progress="80%"><span>Conversational</span></div>
-            </li>
-            <li>
-              <h3>French</h3>
-              <div class="progress-bar" data-progress="40%"><span>Basic</span></div>
-            </li>
-          </ul>
-
-          <h2>Hobbies</h2>
-
-          <ul>
-            <li>I like solving programming challenges in my freetime on
-              <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
-              and
-              <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
-            </li>
-            <li>I love doing sports and regularly lift weights since 2019.</li>
-          </ul>
-        </article>
-
-        <article id="education">
-          <h1>
-            <a href="#education" tabindex="-1">Education</a>
-            <span class="icon">school</span>
-          </h1>
-
-          <ul class="card-list timeline">
-            <li class="odisee">
-              <div>
+            <ul class="card-list personal-info">
+              <li>
                 <div>
-                  <h2>Odisee - Technologiecampus Gent</h2>
-                  <span>2022 - now</span>
+                  <h3>Name</h3>
+                  <span>Kyle Hoeckman</span>
                 </div>
-                <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
-                <a href="https://www.odisee.be/" class="overlay external" target="_blank">Odisee</a>
-              </div>
-            </li>
-            <li>
-              <div>
+                <span class="icon">id_card</span>
+              </li>
+              <li>
                 <div>
-                  <h2>Donbosco Sint-denijs-westrem</h2>
-                  <span>2020 - 2022</span>
+                  <h3>Nationality</h3>
+                  <span>Belgian</span>
                 </div>
-                <p><strong>3<sup>th</sup> grade of TSO</strong> Industrial ICT</p>
-              </div>
-            </li>
-            <li>
-              <div>
+                <div></div>
+              </li>
+              <li>
                 <div>
-                  <h2>Sint-paulus-gent</h2>
-                  <span>2016 - 2020</span>
+                  <h3>Address</h3>
+                  <span>9031 Drongen</span>
                 </div>
-                <p><strong>2<sup>nd</sup> grade of ASO</strong> Science</p>
-                <p><strong>1<sup>st</sup> grade of ASO</strong> Modern Science</p>
+                <span class="icon">home</span>
+              </li>
+              <li>
+                <div>
+                  <h3>Phone number</h3>
+                  <span>+32 479 466 177</span>
+                </div>
+                <span class="icon">call</span>
+              </li>
+              <li>
+                <div>
+                  <h3>Age</h3>
+                  <span id="age">--</span>
+                </div>
+                <span class="icon">cake</span>
+              </li>
+              <li>
+                <div>
+                  <h3>Place of birth</h3>
+                  <span>Ghent</span>
+                </div>
+                <span class="icon">location_on</span>
+              </li>
+              <li>
+                <div>
+                  <h3>Gender</h3>
+                  <span>Male</span>
+                </div>
+                <span class="icon">wc</span>
+              </li>
+              <li>
+                <div>
+                  <h3>Driving license</h3>
+                  <span>B (passenger car)</span>
+                </div>
+                <span class="icon">directions_car</span>
+              </li>
+              <li>
+                <div>
+                  <h3>Email</h3>
+                  <span>kyle.hoeckman@gmail.com</span>
+                </div>
+                <span class="icon">mail</span>
+                <a href="#contact" class="overlay transparent">
+                  <span class="icon material-symbols-rounded" aria-hidden="true">send</span>
+                </a>
+              </li>
+            </ul>
+
+            <h2>Languages</h2>
+
+            <ul class="card-list languages">
+              <li>
+                <h3>Dutch</h3>
+                <div class="progress-bar" data-progress="100%"><span>Native</span></div>
+              </li>
+              <li>
+                <h3>English</h3>
+                <div class="progress-bar" data-progress="80%"><span>Conversational</span></div>
+              </li>
+              <li>
+                <h3>French</h3>
+                <div class="progress-bar" data-progress="40%"><span>Basic</span></div>
+              </li>
+            </ul>
+
+            <h2>Hobbies</h2>
+
+            <ul>
+              <li>I like solving programming challenges in my freetime on
+                <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
+                and
+                <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
+              </li>
+              <li>I love doing sports and regularly lift weights since 2019.</li>
+            </ul>
+          </article>
+
+          <article id="education">
+            <h1>
+              <a href="#education">Education</a>
+              <span class="icon">school</span>
+            </h1>
+
+            <ul class="card-list timeline">
+              <li class="odisee">
+                <div>
+                  <div>
+                    <h2>Odisee - Technologiecampus Gent</h2>
+                    <span>2022 - now</span>
+                  </div>
+                  <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
+                  <a href="https://www.odisee.be/" class="overlay external" target="_blank">Odisee</a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <div>
+                    <h2>Donbosco Sint-denijs-westrem</h2>
+                    <span>2020 - 2022</span>
+                  </div>
+                  <p><strong>3<sup>th</sup> grade of TSO</strong> Industrial ICT</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <div>
+                    <h2>Sint-paulus-gent</h2>
+                    <span>2016 - 2020</span>
+                  </div>
+                  <p><strong>2<sup>nd</sup> grade of ASO</strong> Science</p>
+                  <p><strong>1<sup>st</sup> grade of ASO</strong> Modern Science</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article id="skills">
+            <h1>
+              <a href="#skills">Skills</a>
+              <span class="icon">mouse</span>
+            </h1>
+
+            <div class="programming-skills collapsible">
+              <div>
+                <h2>Programming</h2>
+                <button class="overlay transparent toggle-collapse" formtarget="programming-skills">Toggle
+                  collapse</button>
+                <span class="icon">expand_circle_down</span>
+                <span class="icon">code</span>
               </div>
-            </li>
-          </ul>
-        </article>
 
-        <article id="skills">
-          <h1>
-            <a href="#skills" tabindex="-1">Skills</a>
-            <span class="icon">mouse</span>
-          </h1>
+              <div id="programming-skills" aria-expanded="false">
+                <form>
+                  <h3>Filter</h3>
 
-          <div class="programming-skills collapsible">
-            <div>
-              <h2>Programming</h2>
-              <button class="overlay transparent toggle-collapse" formtarget="programming-skills">Toggle
-                collapse</button>
-              <span class="icon">expand_circle_down</span>
-              <span class="icon">code</span>
+                  <fieldset>
+                    <label>
+                      <input data-tag="lang" type="radio" name="ps-filter" checked>
+                      <span>Languages</span>
+                    </label>
+
+                    <label>
+                      <input data-tag="fw" type="radio" name="ps-filter">
+                      <span>Frameworks</span>
+                    </label>
+
+                    <label>
+                      <input data-tag="db" type="radio" name="ps-filter">
+                      <span>Data</span>
+                    </label>
+
+                    <label>
+                      <input data-tag="design" type="radio" name="ps-filter">
+                      <span>Design</span>
+                    </label>
+
+                    <label>
+                      <input data-tag="fun" type="radio" name="ps-filter">
+                      <span>Fun</span>
+                    </label>
+
+                    <label>
+                      <input data-tag="front" type="radio" name="ps-filter">
+                      <span>Front-end</span>
+                    </label>
+
+                    <label>
+                      <input data-tag="back" type="radio" name="ps-filter">
+                      <span>Back-end</span>
+                    </label>
+                  </fieldset>
+                </form>
+
+                <div class="skills-list">
+                  <fieldset data-tags="lang,front">
+                    <legend>JavaScript</legend>
+
+                    <h3>Experience</h3>
+
+                    <span>Skill level</span>
+                    <div class="progress-bar" data-progress="90%"></div>
+
+                    <span>Joy</span>
+                    <div class="progress-bar" data-progress="100%"></div>
+
+                    <p>
+                      <span>Using since</span>
+                      <span></span>
+                      <span>2019</span>
+                    </p>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/js.webp" alt="JavaScript logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="fw,front">
+                    <legend>Vue.js</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/vue-js.webp" alt="Vue.js logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="fw,back">
+                    <legend>Node.js</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/node-js.webp" alt="Node.js logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,back">
+                    <legend>Python</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/python.webp" alt="Python logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,back">
+                    <legend>PHP</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/php.webp" alt="PHP logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="fw,back">
+                    <legend>Laravel</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/laravel.webp" alt="Laravel logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,back">
+                    <legend>Java</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/java.webp" alt="Java logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,back">
+                    <legend>C#</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/c-sharp.webp" alt="C-sharp logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="db">
+                    <legend>MySQL</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/mysql.webp" alt="MySQL logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="db">
+                    <legend>MongoDB</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/mongodb.webp" alt="MongoDB logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,front">
+                    <legend>HTML5</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/html5.webp" alt="HTML5 logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,design,front">
+                    <legend>CSS3</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/CSS3.webp" alt="CSS3 logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="lang,design,front">
+                    <legend>Sass</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/sass.webp" alt="Sass logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="fun">
+                    <legend>Scratch</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/scratch.webp" alt="Scratch logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="fun">
+                    <legend>Minecraft CB</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/minecraft-cb.webp" alt="Minecraft command block" width="160" height="160">
+                    </div>
+                  </fieldset>
+
+                  <fieldset data-tags="design,front">
+                    <legend>Figma</legend>
+
+                    <div class="image-blur">
+                      <img src="./img/skills/figma.webp" alt="Figma logo" width="160" height="160">
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
             </div>
 
-            <div id="programming-skills" aria-expanded="false">
-              <form>
-                <h3>Filter</h3>
+            <div class="communicative-skills collapsible">
+              <div>
+                <h2>Communicative</h2>
+                <button class="overlay transparent toggle-collapse" formtarget="communicative-skills">Toggle
+                  collapse</button>
+                <span class="icon">expand_circle_down</span>
+                <span class="icon">groups</span>
+              </div>
 
+              <div id="communicative-skills" class="skills-list" aria-role="group" aria-expanded="false">
                 <fieldset>
-                  <label>
-                    <input data-tag="lang" type="radio" name="ps-filter" checked>
-                    <span>Languages</span>
-                  </label>
-
-                  <label>
-                    <input data-tag="fw" type="radio" name="ps-filter">
-                    <span>Frameworks</span>
-                  </label>
-
-                  <label>
-                    <input data-tag="db" type="radio" name="ps-filter">
-                    <span>Data</span>
-                  </label>
-
-                  <label>
-                    <input data-tag="design" type="radio" name="ps-filter">
-                    <span>Design</span>
-                  </label>
-
-                  <label>
-                    <input data-tag="fun" type="radio" name="ps-filter">
-                    <span>Fun</span>
-                  </label>
-
-                  <label>
-                    <input data-tag="front" type="radio" name="ps-filter">
-                    <span>Front-end</span>
-                  </label>
-
-                  <label>
-                    <input data-tag="back" type="radio" name="ps-filter">
-                    <span>Back-end</span>
-                  </label>
-                </fieldset>
-              </form>
-
-              <div class="skills-list">
-                <fieldset data-tags="lang,front">
-                  <legend>JavaScript</legend>
+                  <legend>Presenting</legend>
 
                   <h3>Experience</h3>
 
                   <span>Skill level</span>
                   <div class="progress-bar" data-progress="90%"></div>
 
-                  <span>Joy</span>
-                  <div class="progress-bar" data-progress="100%"></div>
-
-                  <p>
-                    <span>Using since</span>
-                    <span></span>
-                    <span>2019</span>
-                  </p>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/js.webp" alt="JavaScript logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="fw,front">
-                  <legend>Vue.js</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/vue-js.webp" alt="Vue.js logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="fw,back">
-                  <legend>Node.js</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/node-js.webp" alt="Node.js logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,back">
-                  <legend>Python</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/python.webp" alt="Python logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,back">
-                  <legend>PHP</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/php.webp" alt="PHP logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="fw,back">
-                  <legend>Laravel</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/laravel.webp" alt="Laravel logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,back">
-                  <legend>Java</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/java.webp" alt="Java logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,back">
-                  <legend>C#</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/c-sharp.webp" alt="C-sharp logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="db">
-                  <legend>MySQL</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/mysql.webp" alt="MySQL logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="db">
-                  <legend>MongoDB</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/mongodb.webp" alt="MongoDB logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,front">
-                  <legend>HTML5</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/html5.webp" alt="HTML5 logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,design,front">
-                  <legend>CSS3</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/CSS3.webp" alt="CSS3 logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="lang,design,front">
-                  <legend>Sass</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/sass.webp" alt="Sass logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="fun">
-                  <legend>Scratch</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/scratch.webp" alt="Scratch logo" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="fun">
-                  <legend>Minecraft CB</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/minecraft-cb.webp" alt="Minecraft command block" width="160" height="160">
-                  </div>
-                </fieldset>
-
-                <fieldset data-tags="design,front">
-                  <legend>Figma</legend>
-
-                  <div class="image-blur">
-                    <img src="./img/skills/figma.webp" alt="Figma logo" width="160" height="160">
-                  </div>
+                  <p>Bla bla bla ...</p>
                 </fieldset>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="communicative-skills collapsible">
-            <div>
-              <h2>Communicative</h2>
-              <button class="overlay transparent toggle-collapse" formtarget="communicative-skills">Toggle
-                collapse</button>
-              <span class="icon">expand_circle_down</span>
-              <span class="icon">groups</span>
-            </div>
+          <article id="portfolio">
+            <h1>
+              <a href="#portfolio">Portfolio</a>
+              <span class="icon">dashboard</span>
+            </h1>
+          </article>
 
-            <div id="communicative-skills" class="skills-list" aria-role="group" aria-expanded="false">
-              <fieldset>
-                <legend>Presenting</legend>
+          <article id="contact">
+            <h1>
+              <a href="#contact">Contact me</a>
+              <span class="icon">mail</span>
+            </h1>
 
-                <h3>Experience</h3>
-
-                <span>Skill level</span>
-                <div class="progress-bar" data-progress="90%"></div>
-
-                <p>Bla bla bla ...</p>
-              </fieldset>
-            </div>
-          </div>
-        </article>
-
-        <article id="portfolio">
-          <h1>
-            <a href="#portfolio" tabindex="-1">Portfolio</a>
-            <span class="icon">dashboard</span>
-          </h1>
-        </article>
-
-        <article id="contact">
-          <h1>
-            <a href="#contact" tabindex="-1">Contact me</a>
-            <span class="icon">mail</span>
-          </h1>
-
-          <div class="email">
-            <span>kyle.hoeckman@gmail.com</span>
-            <span class="icon">alternate_email</span>
-          </div>
-
-          <form action="#" aria-disabled="true" disabled>
-            <label for="contact-name">Name</label>
-            <input id="contact-name" name="name" type="text" autocomplete="name">
-
-            <label for="contact-email">Email</label>
-            <input id="contact-email" name="email" type="email" autocomplete="email">
-
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" rows="3" placeholder="I would like to ..."></textarea>
-
-            <button type="submit">
-              Send
-            </button>
-          </form>
-
-          <div class="hr">Or</div>
-
-          <div class="email">
-            <div>
-              <h3>Email</h3>
+            <div class="email">
               <span>kyle.hoeckman@gmail.com</span>
+              <span class="icon">alternate_email</span>
             </div>
-            <span class="icon">mail</span>
-            <a href="mailto:kyle.hoeckman@gmail.com" class="overlay external"></a>
-          </div>
-        </article>
 
-        <footer>
-          <p>Copyright &copy; Kyle Hoeckman 2024, All rights reserved.</p>
-          <p>This project was made without external code, libraries or frameworks.</p>
-        </footer>
-      </section>
+            <form action="#" aria-disabled="true" disabled tabindex="-1">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" tabindex="-1">
 
-      <div class="overlay shadow"></div>
-    </main>
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" tabindex="-1">
+
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="I would like to ..."
+                tabindex="-1"></textarea>
+
+              <button type="submit" tabindex="-1">
+                Send
+              </button>
+            </form>
+
+            <div class="hr">Or</div>
+
+            <div class="email">
+              <div>
+                <h3>Email</h3>
+                <span>kyle.hoeckman@gmail.com</span>
+              </div>
+              <span class="icon">mail</span>
+              <a href="mailto:kyle.hoeckman@gmail.com" class="overlay external"></a>
+            </div>
+          </article>
+
+          <footer>
+            <p>Copyright &copy; Kyle Hoeckman 2024, All rights reserved.</p>
+            <p>This project was made without external code, libraries or frameworks.</p>
+          </footer>
+        </section>
+
+        <div class="overlay shadow"></div>
+      </main>
+      <main>
+        <section class="container">
+          <article id="settings">
+            <form>
+              <h1>
+                <a href="#settings" tabindex="-1">Settings</a>
+                <span class="icon">settings</span>
+              </h1>
+
+              <label>
+                <span>Language</span>
+                <select>
+                  <option selected>English</option>
+                  <option>Dutch</option>
+                  <option>French</option>
+                </select>
+              </label>
+
+              <button type="submit">Apply</button>
+            </form>
+          </article>
+
+          <button id="exit-settings" aria-label="Exit settings">
+            <span class="icon">close</span>
+          </button>
+        </section>
+      </main>
+    </div>
   </div>
 
   <div id="tracker" hidden></div>

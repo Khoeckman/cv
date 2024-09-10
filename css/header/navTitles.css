@@ -33,7 +33,7 @@ header nav li:nth-child(6)::after {
 }
 
 header nav li:nth-child(7)::after {
-  content: 'Translate';
+  content: 'Settings';
   margin-right: 0.5rem;
 }
 

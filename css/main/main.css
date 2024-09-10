@@ -3,15 +3,16 @@
 @import 'skills.css';
 @import 'portfolio.css';
 @import 'contact.css';
+@import 'settings.css';
 
 main {
   display: flex;
-  transform-style: preserve-3d;
-  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 main .profile {
   display: flex;
+  backface-visibility: hidden;
   position: relative;
   height: 100%;
   z-index: 9;
@@ -175,13 +176,15 @@ main .container::-webkit-scrollbar-thumb:hover {
   background: var(--light-gray);
 }
 
+@media only screen and (width > 85em) {
+  main {
+    transform-style: preserve-3d;
+  }
+}
+
 @media only screen and (width <= 85em) {
   main .profile {
     display: none;
-  }
-
-  main .container {
-    padding: 4.5rem calc(3rem - var(--scroll-width)) 1.5rem 2rem;
   }
 }
 

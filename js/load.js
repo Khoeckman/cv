@@ -2,17 +2,14 @@ document.addEventListener('readystatechange', () => {
   document.readyState
   if (document.readyState === 'complete') {
     const timelineElements = [...document.querySelectorAll('#education .timeline li > div')]
+    const loadingScreen = document.getElementById('loading-screen')
 
-    document.getElementById('loading-screen').className = 'anim-out'
+    loadingScreen.className = 'anim-out'
 
-    // Scroll to url hash
-    if (window.location.hash === '' || !(document.querySelector(window.location.hash) instanceof HTMLElement)) return
+    loadingScreen.addEventListener('animationend', function () {
+      this.style.display = 'none'
 
-    document.querySelector(window.location.hash).scrollIntoView({ block: 'start', behavior: 'instant' })
-    document.querySelector(window.location.hash + ' h1 a').focus()
-
-    // Scroll animations for education
-    setTimeout(function () {
+      // Scroll animations for education
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
@@ -21,9 +18,15 @@ document.addEventListener('readystatechange', () => {
         },
         { threshold: 0.75 }
       )
-
       timelineElements.forEach(el => observer.observe(el))
-    }, 300)
+    })
+
+    // Scroll to url hash
+    if (window.location.hash === '' || !(document.querySelector(window.location.hash) instanceof HTMLElement)) return
+    if (window.location.hash === '#settings') app.setAttribute('data-flip', true)
+
+    document.querySelector(window.location.hash).scrollIntoView({ block: 'start', behavior: 'instant' })
+    document.querySelector(window.location.hash + ' h1 a').focus()
   } else {
     document.addEventListener('DOMContentLoaded', () => (document.getElementById('loading-screen').className = ''))
   }
