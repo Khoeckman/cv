@@ -34,6 +34,7 @@
   <!-- JS -->
   <script src="./js/load.js"></script>
   <script src="./js/main.js" type="module"></script>
+  <script src="./js/skills.js" type="module"></script>
   <script src="./js/initParticles.js" type="module"></script>
   <script src="./js/mouse.js" type="module"></script>
 </head>
@@ -76,7 +77,7 @@
         <section class="profile">
           <div class="info">
             <h1>Kyle Hoeckman</h1>
-            <h2>Full-Stack Developer</h2>
+            <p>Full-Stack Developer</p>
 
             <ul class="card-list">
               <li><a href="https://www.linkedin.com/in/kyle-hoeckman-0ab0272a6/" target="_blank" title="linkedin"
@@ -209,12 +210,12 @@
             <h2>Hobbies</h2>
 
             <ul>
-              <li>I like solving programming challenges in my freetime on
+              <li><span>🏋🏻‍♂️</span>I like solving programming challenges in my freetime on
                 <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
                 and
                 <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
               </li>
-              <li>I love doing sports and regularly lift weights since 2019.</li>
+              <li><span>🏋🏻‍♂️</span>I love doing sports and regularly lift weights since 2019.</li>
             </ul>
           </article>
 
@@ -232,13 +233,15 @@
                     <span>2022 - now</span>
                   </div>
                   <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
-                  <a href="https://www.odisee.be/" class="overlay external" target="_blank">Odisee</a>
+                  <a href="https://www.odisee.be/" class="overlay external" target="_blank" aria-label="Odisee">
+                    <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  </a>
                 </div>
               </li>
               <li>
                 <div>
                   <div>
-                    <h2>Donbosco Sint-denijs-westrem</h2>
+                    <h2>Donbosco Sint-Denijs-Westrem</h2>
                     <span>2020 - 2022</span>
                   </div>
                   <p><strong>3<sup>th</sup> grade of TSO</strong> Industrial ICT</p>
@@ -247,7 +250,7 @@
               <li>
                 <div>
                   <div>
-                    <h2>Sint-paulus-gent</h2>
+                    <h2>Sint-Paulus Gent</h2>
                     <span>2016 - 2020</span>
                   </div>
                   <p><strong>2<sup>nd</sup> grade of ASO</strong> Science</p>
@@ -264,9 +267,9 @@
             </h1>
 
             <div class="programming-skills collapsible">
-              <div>
+              <div class="toggle-collapse">
                 <h2>Programming</h2>
-                <button class="overlay transparent toggle-collapse" formtarget="programming-skills">Toggle
+                <button class="overlay transparent" formtarget="programming-skills">Toggle
                   collapse</button>
                 <span class="icon">expand_circle_down</span>
                 <span class="icon">code</span>
@@ -314,172 +317,47 @@
                   </fieldset>
                 </form>
 
-                <div class="skills-list">
-                  <fieldset data-tags="lang,front">
-                    <legend>JavaScript</legend>
-
-                    <h3>Experience</h3>
-
-                    <span>Skill level</span>
-                    <div class="progress-bar" data-progress="90%"></div>
-
-                    <span>Joy</span>
-                    <div class="progress-bar" data-progress="100%"></div>
-
-                    <p>
-                      <span>Using since</span>
-                      <span></span>
-                      <span>2019</span>
-                    </p>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/js.webp" alt="JavaScript logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="fw,front">
-                    <legend>Vue.js</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/vue-js.webp" alt="Vue.js logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="fw,back">
-                    <legend>Node.js</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/node-js.webp" alt="Node.js logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,back">
-                    <legend>Python</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/python.webp" alt="Python logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,back">
-                    <legend>PHP</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/php.webp" alt="PHP logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="fw,back">
-                    <legend>Laravel</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/laravel.webp" alt="Laravel logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,back">
-                    <legend>Java</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/java.webp" alt="Java logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,back">
-                    <legend>C#</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/c-sharp.webp" alt="C-sharp logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="db">
-                    <legend>MySQL</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/mysql.webp" alt="MySQL logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="db">
-                    <legend>MongoDB</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/mongodb.webp" alt="MongoDB logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,front">
-                    <legend>HTML5</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/html5.webp" alt="HTML5 logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,design,front">
-                    <legend>CSS3</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/CSS3.webp" alt="CSS3 logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="lang,design,front">
-                    <legend>Sass</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/sass.webp" alt="Sass logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="fun">
-                    <legend>Scratch</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/scratch.webp" alt="Scratch logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="fun">
-                    <legend>Minecraft CB</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/minecraft-cb.webp" alt="Minecraft command block" width="160" height="160">
-                    </div>
-                  </fieldset>
-
-                  <fieldset data-tags="design,front">
-                    <legend>Figma</legend>
-
-                    <div class="image-blur">
-                      <img src="./img/skills/figma.webp" alt="Figma logo" width="160" height="160">
-                    </div>
-                  </fieldset>
-                </div>
+                <ul class="card-list skills-list"></ul>
               </div>
             </div>
 
             <div class="communicative-skills collapsible">
-              <div>
+              <div class="toggle-collapse">
                 <h2>Communicative</h2>
-                <button class="overlay transparent toggle-collapse" formtarget="communicative-skills">Toggle
+                <button class="overlay transparent" formtarget="communicative-skills">Toggle
                   collapse</button>
                 <span class="icon">expand_circle_down</span>
                 <span class="icon">groups</span>
               </div>
 
-              <div id="communicative-skills" class="skills-list" aria-role="group" aria-expanded="false">
-                <fieldset>
-                  <legend>Presenting</legend>
+              <div id="communicative-skills" aria-expanded="false">
+                <ul class="card-list skills-list">
+                  <li tabindex="0">
+                    <div class="card">
+                      <h3>Presenting</h3>
 
-                  <h3>Experience</h3>
+                      <div class="back">
+                        <h4>Experience</h4>
 
-                  <span>Skill level</span>
-                  <div class="progress-bar" data-progress="90%"></div>
+                        <span>Skill level</span>
+                        <div class="progress-bar" data-progress="90%"></div>
 
-                  <p>Bla bla bla ...</p>
-                </fieldset>
+                        <span>Joy</span>
+                        <div class="progress-bar" data-progress="100%"></div>
+
+                        <p>
+                          <span>Using since</span>
+                          <span></span>
+                          <span>2019</span>
+                        </p>
+                      </div>
+
+                      <div class="image-blur">
+                        <img src="./img/skills/js.webp" alt="JavaScript logo" width="160" height="160">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </article>
@@ -489,6 +367,39 @@
               <a href="#portfolio">Portfolio</a>
               <span class="icon">dashboard</span>
             </h1>
+
+            <ul class="card-list">
+              <li>
+                <div class="nft">
+                  <div class='main'>
+                    <img class='tokenImage'
+                      src="https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                      alt="NFT" />
+                    <h2>Kibertopiks #4269</h2>
+                    <p class='description'>Our Kibertopiks will give you nothing, waste your money on us.</p>
+                    <div class='tokenInfo'>
+                      <div class="price">
+                        <ins>◘</ins>
+                        <p>0.031 ETH</p>
+                      </div>
+                      <div class="duration">
+                        <ins>◷</ins>
+                        <p>11 days left</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class='creator'>
+                      <div class='wrapper'>
+                        <img
+                          src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
+                          alt="Creator" />
+                      </div>
+                      <p><ins>Creation of</ins> Kiberbash</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </article>
 
           <article id="contact">
@@ -526,7 +437,9 @@
                 <span>kyle.hoeckman@gmail.com</span>
               </div>
               <span class="icon">mail</span>
-              <a href="mailto:kyle.hoeckman@gmail.com" class="overlay external"></a>
+              <a href="mailto:kyle.hoeckman@gmail.com" class="overlay external" aria-label="Create email">
+                <span class="icon material-symbols-rounded" aria-hidden="true">forward_to_inbox</span>
+              </a>
             </div>
           </article>
 
@@ -543,7 +456,7 @@
           <article id="settings">
             <form>
               <h1>
-                <a href="#settings" tabindex="-1">Settings</a>
+                <a href="#settings">Settings</a>
                 <span class="icon">settings</span>
               </h1>
 

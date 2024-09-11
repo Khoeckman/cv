@@ -11,56 +11,126 @@
 #skills .skills-list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
-  gap: 1rem;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2rem auto;
 }
 
 #skills .skills-list[aria-expanded='false'] {
   display: none;
 }
 
-#skills .skills-list fieldset {
-  flex: 0 0;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--dark-gray);
-  /* border-radius: var(--radius-s); */
-  border-bottom: 0.5rem solid #0003;
-  margin: 0.5rem 0 0 0;
-  padding: 1.5rem 2rem;
+#skills .skills-list li {
+  width: 12rem;
+  height: 12rem;
+  perspective: 30rem;
 }
 
-#skills .skills-list legend {
-  background-color: var(--white);
-  border-radius: var(--radius-xs);
-  /* box-shadow: 0 0 1rem var(--pri); */
+#skills .skills-list .card {
+  display: block;
+  font-size: 2rem;
+  background-color: #1119;
+  width: 12em;
+  height: 12em;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform: translate(-25%, -25%) rotateY(0) scale(0.5);
+}
+
+#skills .skills-list .card::before,
+#skills .skills-list .card::after {
+  content: '';
+  border: 0.25em solid #fff9;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  bottom: 1em;
+  left: 1em;
+  opacity: 1;
+  transition: opacity 1s;
+  transform: translateZ(1em);
+}
+
+#skills .skills-list .card::after {
+  opacity: 0;
+  transform: translateZ(-1em) rotateY(180deg);
+}
+
+#skills .skills-list li:is(:hover, :focus-visible) .card {
+  transform: translate(-25%, -25%) rotateY(-180deg) scale(0.5);
+}
+
+#skills .skills-list li:is(:hover, :focus-visible) .card::before {
+  opacity: 0;
+}
+
+#skills .skills-list li:is(:hover, :focus-visible) .card::after {
+  opacity: 1;
+}
+
+#skills .skills-list .card h3 {
+  background-color: #fff9;
   color: var(--black);
+  font-size: 1em;
   font-weight: 500;
-  text-align: center;
-  padding: 0.25rem 1rem;
+  line-height: 1;
+  position: absolute;
+  left: 2em;
+  bottom: 1em;
+  padding: 0.25em 0.5em;
+  transform: translateZ(2em);
+  z-index: 1;
 }
 
-#skills .skills-list p {
+#skills .skills-list .card .image-blur {
+  display: block;
+  margin: 0 auto;
+  transition: filter 500ms;
+}
+
+#skills .skills-list .card .image-blur img {
+  border-radius: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+#skills .skills-list li:is(:hover, :focus-visible) .card .image-blur {
+  filter: brightness(0.3);
+}
+
+#skills .skills-list .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5em;
+  transform-style: preserve-3d;
+  transform: translateZ(-1px) rotateY(180deg);
+}
+
+#skills .skills-list .back > * {
+  display: inline-block;
+  backface-visibility: hidden;
+  transform: translateZ(2em);
+}
+
+#skills .skills-list .back h4 {
+  font-size: 1.25em;
+  margin-top: 0;
+}
+
+#skills .skills-list .back p {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.25em;
   margin-bottom: 0;
 }
 
-#skills .skills-list .image-blur {
-  order: -1;
-  display: block;
-  margin: 0 auto;
-}
-
-#skills .skills-list .image-blur img {
-  border-radius: 10%;
-  width: 10rem;
-  height: 10rem;
-}
-
 #programming-skills form {
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 #programming-skills form h3 {

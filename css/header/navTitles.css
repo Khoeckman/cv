@@ -1,6 +1,6 @@
 header nav li::after {
   pointer-events: none;
-  border-radius: 2rem;
+  border-radius: 9rem;
   white-space: nowrap;
   line-height: 0;
   color: var(--white);

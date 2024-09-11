@@ -1,6 +1,7 @@
 @import './header/header.css';
 @import './main/main.css';
 @import './misc.css';
+@import './nft.css';
 
 .material-symbols-rounded {
   user-select: none;
@@ -15,7 +16,7 @@
   --black: #0e0e0e;
   --dark-gray: hsl(209, 5%, 12%);
   --gray: hsl(209, 5%, 35%);
-  --light-gray: hsl(209, 5%, 58%);
+  --light-gray: hsl(216, 5%, 58%);
   --lighter-gray: hsl(216, 5%, 81%);
   --pri: hsl(209, 69%, 50%);
   --pri-d: hsl(209, 69%, 40%);
@@ -172,7 +173,6 @@ input[tag][type='checkbox'] {
 
 .overlay .icon {
   font-size: 2rem;
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
   color: var(--black);
   opacity: 0;
   transform: scale(0.5);
@@ -223,7 +223,7 @@ a.fancy:is(:hover, :focus-visible)::before {
   font-size: 2rem;
 }
 
-.collapsible > div:first-child {
+.collapsible .toggle-collapse {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -231,18 +231,20 @@ a.fancy:is(:hover, :focus-visible)::before {
   border: 1px solid var(--gray);
   border-radius: var(--radius-m);
   position: relative;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.5rem;
+  height: 3.5rem;
   z-index: 1;
   transition: border-color 150ms;
+  will-change: transform;
 }
 
-.collapsible > div:first-child h2 {
+.collapsible .toggle-collapse h2 {
   flex: 1;
   font-size: 1.25rem;
   margin: 0;
 }
 
-.collapsible > div:first-child button {
+.collapsible .toggle-collapse button {
   user-select: none;
   background-color: transparent;
   border: 0;
@@ -251,23 +253,23 @@ a.fancy:is(:hover, :focus-visible)::before {
   opacity: 0;
 }
 
-.collapsible > div:first-child button + .icon {
+.collapsible .toggle-collapse button + .icon {
   transition: color 150ms, transform 150ms linear;
 }
 
-.collapsible > div:first-child:has(button:is(:hover, :focus-visible)) {
+.collapsible .toggle-collapse:has(button:is(:hover, :focus-visible)) {
   border: 1px solid var(--pri);
 }
 
-.collapsible > div:first-child button:is(:hover, :focus-visible) + .icon {
+.collapsible .toggle-collapse button:is(:hover, :focus-visible) + .icon {
   color: var(--pri);
 }
 
-.collapsible:has(> div:last-child[aria-expanded='true']) > div:first-child button + .icon {
+.collapsible:has(> div:last-child[aria-expanded='true']) .toggle-collapse button + .icon {
   transform: rotate(180deg);
 }
 
-.collapsible > div:first-child > .icon:last-child {
+.collapsible .toggle-collapse > .icon:last-child {
   order: -1;
   color: var(--pri);
 }
@@ -275,10 +277,10 @@ a.fancy:is(:hover, :focus-visible)::before {
 .collapsible > div:last-child {
   background-color: var(--black);
   border: 1px solid var(--gray);
-  border-top: 0;
-  margin-top: -0.5rem;
+  border-radius: var(--radius-m);
+  margin-top: -3.5rem;
   padding: 1rem;
-  padding-bottom: 1.5rem;
+  padding-top: 4rem;
 }
 
 .collapsible > div:last-child[aria-expanded='false'] {
@@ -380,7 +382,6 @@ a.fancy:is(:hover, :focus-visible)::before {
     margin: auto;
     perspective: 1600rem;
     transform-style: preserve-3d;
-    transform: perspective(160rem);
   }
 
   #app > div {
@@ -396,8 +397,8 @@ a.fancy:is(:hover, :focus-visible)::before {
     transform: perspective(160rem) rotateY(-180deg);
   }
 
-  #app[data-flip='false'] main:last-of-type :is(a, button, input, select, textarea),
-  #app[data-flip='true'] :is(header, main:first-of-type) :is(a, button, input, select, textarea) {
+  #app[data-flip='false'] main:last-of-type,
+  #app[data-flip='true'] :is(header, main:first-of-type) {
     pointer-events: none;
   }
 }

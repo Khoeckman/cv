@@ -32,11 +32,11 @@ document.addEventListener('readystatechange', () => {
           .getComputedStyle(container)
           .getPropertyValue('padding-top')
           .match(/(\d*)([\s\S]*)/)[1]
+        const threshold = Math.min(~~(window.innerHeight * 0.25), ~~(container.offsetHeight * 0.5))
 
         titles.unshift({
           navButton: nav.querySelector('ul').children[i],
-          innerText: h1?.innerText,
-          offsetTop: article.offsetTop - paddingTop - ~~(container.offsetHeight / 3), // Select next article when its scrolled past half the screen
+          offsetTop: article.offsetTop - paddingTop - threshold, // Select next article when its scrolled past ${treshold}% of the container
         })
         i++
       }
@@ -83,14 +83,6 @@ document.querySelectorAll('.icon').forEach(icon => {
   icon.ariaHidden = true
 })
 
-// Replace anchor's external class
-document
-  .querySelectorAll('a.external')
-  .forEach(a => (a.innerHTML = '<span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>'))
-
-// Clone image to blur it as background
-document.querySelectorAll('.image-blur').forEach(a => (a.innerHTML += a.innerHTML))
-
 // Apply class to active nav button
 const header = document.querySelector('header')
 const nav = header.querySelector('nav')
@@ -115,6 +107,9 @@ closeNav.addEventListener('click', () => (nav.ariaExpanded = false))
 
 // Mobile / desktop switch
 
+const aboutList = document.querySelectorAll('#personal li > *')
+const odiseeContent = document.querySelectorAll('#education .timeline .odisee > div :is(h2, h2 + span, p)')
+const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
 let oldWidth = window.innerWidth
 
 const resetCSSTransition = elements =>
@@ -126,6 +121,9 @@ const resetCSSTransition = elements =>
 
 window.addEventListener('resize', () => {
   if ((oldWidth > 960) ^ (window.innerWidth > 960)) {
+    const els = [app, ...aboutList, ...odiseeContent, ...collapsibleSummaries]
+    els.forEach(el => el.removeAttribute('style'))
+
     nav.ariaExpanded = window.innerWidth > 960
 
     resetCSSTransition(header)
@@ -149,28 +147,26 @@ const backFocuseable = [...app.querySelectorAll('main:last-of-type :is(a, button
 
 settingsButton.addEventListener('click', () => {
   app.setAttribute('data-flip', true)
-  app.querySelector('main:last-of-type').focus()
+  app.querySelector('main:last-of-type a').focus()
 
-  frontFocuseable.forEach(el => (el.tabindex = -1))
+  frontFocuseable.forEach(el => el.setAttribute('tabindex', -1))
   backFocuseable.forEach(el => el.removeAttribute('tabindex'))
 })
 
 exitSettingsButton.addEventListener('click', () => {
   app.setAttribute('data-flip', false)
-  app.querySelector('main:first-of-type').focus()
+  nav.querySelector('li:last-child a').focus()
 
-  backFocuseable.forEach(el => (el.tabindex = -1))
+  backFocuseable.forEach(el => el.setAttribute('tabindex', -1))
   frontFocuseable.forEach(el => el.removeAttribute('tabindex'))
 })
-const disableEls = [...app.querySelectorAll('main:last-of-type :is(a, button, input, select, textarea')]
-disableEls.forEach(el => (el.tabindex = -1))
 
 // Toggle collapsibles
 
-const collapsibles = [...document.querySelectorAll('.toggle-collapse')]
+const collapsibleToggleButtons = [...document.querySelectorAll('.collapsible .toggle-collapse button')]
 
-collapsibles.forEach(collapsible => {
-  collapsible.addEventListener('click', function () {
+collapsibleToggleButtons.forEach(button => {
+  button.addEventListener('click', function () {
     const target = document.getElementById(this.getAttribute('formtarget'))
     target.ariaExpanded = target.ariaExpanded !== 'true'
   })
@@ -206,27 +202,3 @@ setInterval(() => {
   }, 50)
 }, 1000)
 updateAge()
-
-// Programming skills filter
-
-const filterForm = document.querySelector('#programming-skills form')
-const psFieldsets = [...document.querySelectorAll('#programming-skills .skills-list fieldset')]
-
-const psFilter = tag => {
-  psFieldsets.forEach(fieldset => {
-    const tags = fieldset.getAttribute('data-tags').split(',')
-
-    if (tags.includes(tag)) fieldset.removeAttribute('style')
-    else fieldset.style.display = 'none'
-  })
-}
-
-filterForm.addEventListener(
-  'click',
-  e => {
-    if (!e.target.matches('input')) return
-    psFilter(e.target.getAttribute('data-tag'))
-  },
-  true
-)
-psFilter('lang')
