@@ -2,18 +2,12 @@
   margin: 1.5rem 0;
 }
 
-#skills fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
 #skills .skills-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   gap: 3rem;
-  margin: 2rem auto;
+  margin: 1rem 0;
 }
 
 #skills .skills-list[aria-expanded='false'] {
@@ -90,6 +84,8 @@
 }
 
 #skills .skills-list .card .image-blur img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 10%;
   width: 100%;
   height: 100%;
@@ -105,20 +101,34 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 2.5em;
+  padding: 2em;
   transform-style: preserve-3d;
-  transform: translateZ(-1px) rotateY(180deg);
+  transform: translateZ(-4rem) rotateY(180deg);
 }
 
 #skills .skills-list .back > * {
   display: inline-block;
   backface-visibility: hidden;
-  transform: translateZ(2em);
 }
 
 #skills .skills-list .back h4 {
-  font-size: 1.25em;
-  margin-top: 0;
+  display: block;
+  font-variant: all-petite-caps;
+  text-align: center;
+  line-height: 1;
+  margin: 0 0 0.2em 0;
+  width: 100%;
+}
+
+#skills .skills-list .back h4:last-child {
+  font-weight: normal;
+  font-variant: initial;
+  white-space: nowrap;
+  margin-top: 1em;
+}
+
+#skills .skills-list .back h4:last-child span:last-child {
+  font-weight: 700;
 }
 
 #skills .skills-list .back p {
@@ -129,19 +139,66 @@
   margin-bottom: 0;
 }
 
+#skills .skills-list li .progress-bar {
+  background-color: var(--white);
+  border: 0;
+  border-radius: var(--radius-m);
+  font-size: 1em;
+  color: var(--black);
+}
+
+#skills .skills-list li .progress-bar span:first-child {
+  background-color: var(--green);
+  z-index: 1;
+}
+
+#skills .skills-list li .progress-bar span:last-child {
+  mix-blend-mode: initial;
+  position: relative;
+  z-index: 1;
+}
+
+#skills .skills-list li .stars {
+  backface-visibility: hidden;
+  color: var(--pri);
+}
+
+#skills .skills-list li .stars span {
+  font-size: 2em;
+  position: absolute;
+}
+
+#skills .skills-list li .stars span:nth-of-type(1) {
+  top: calc(2.5em + sin(342deg) * 20%);
+  left: calc(2.5em + cos(342deg) * 20%);
+}
+
+#skills .skills-list li .stars span:nth-of-type(2) {
+  top: calc(2.5em + sin(54deg) * 20%);
+  left: calc(2.5em + cos(54deg) * 20%);
+}
+
+#skills .skills-list li .stars span:nth-of-type(3) {
+  top: calc(2.5em + sin(126deg) * 20%);
+  left: calc(2.5em + cos(126deg) * 20%);
+}
+
+#skills .skills-list li .stars span:nth-of-type(4) {
+  top: calc(2.5em + sin(198deg) * 20%);
+  left: calc(2.5em + cos(198deg) * 20%);
+}
+
+#skills .skills-list li .stars span:nth-of-type(5) {
+  top: calc(2.5em + sin(270deg) * 20%);
+  left: calc(2.5em + cos(270deg) * 20%);
+}
+
 #programming-skills form {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 #programming-skills form h3 {
   margin: 0.5em 0;
-}
-
-#programming-skills form fieldset {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 0.5rem;
-  margin: 0 0.15rem;
 }
 
 #programming-skills form label {
@@ -149,6 +206,7 @@
   display: inline-block;
   background-color: var(--dark-gray);
   padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
   transform: skewX(-8deg);
   transition: background 150ms, color 150ms;
 }
@@ -170,4 +228,5 @@
 
 #programming-skills form label:has(input:checked) {
   background-color: var(--pri);
+  color: var(--black);
 }

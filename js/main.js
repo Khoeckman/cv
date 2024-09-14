@@ -1,7 +1,7 @@
 const loadingBar = document.querySelector('#loading-screen h2 span:first-child')
 
 const updateLoaded = () => {
-  loadingBar.style.right = 100 - loaded + '%'
+  loadingBar.style.width = loaded + '%'
 }
 let loaded = 20
 updateLoaded()
@@ -16,59 +16,6 @@ document.addEventListener('readystatechange', () => {
     clearInterval(loader)
     loaded = 100
     updateLoaded()
-
-    // Auto change active nav button on scroll
-
-    const container = document.querySelector('main .container')
-    const articles = [...container.querySelectorAll('article')]
-
-    const computeArticleOffsets = () => {
-      let titles = []
-      let i = 1
-
-      for (let article of articles) {
-        const h1 = article.querySelector('h1')
-        const paddingTop = window
-          .getComputedStyle(container)
-          .getPropertyValue('padding-top')
-          .match(/(\d*)([\s\S]*)/)[1]
-        const threshold = Math.min(~~(window.innerHeight * 0.25), ~~(container.offsetHeight * 0.5))
-
-        titles.unshift({
-          navButton: nav.querySelector('ul').children[i],
-          offsetTop: article.offsetTop - paddingTop - threshold, // Select next article when its scrolled past ${treshold}% of the container
-        })
-        i++
-      }
-      return titles
-    }
-
-    const odiseeImage = document.querySelector('#education .timeline .odisee > div')
-    let debounceNav
-
-    const scrollEventHandler = scrollTop => {
-      // Odisee image parallax effect
-      odiseeImage.style.backgroundPosition = 'center ' + -scrollTop / 5 + '%'
-
-      // Auto update active nav button on scroll
-      clearTimeout(debounceNav)
-
-      debounceNav = setTimeout(() => {
-        for (let article of computeArticleOffsets()) {
-          if (article.offsetTop <= scrollTop) {
-            nav.querySelector('.active').classList.remove('active')
-            article.navButton.classList.add('active')
-
-            // Update url with current article
-            history?.pushState(null, null, article.navButton.children[0].hash)
-            break
-          }
-        }
-      }, 500)
-    }
-
-    document.addEventListener('scroll', () => scrollEventHandler(document.documentElement.scrollTop))
-    container.addEventListener('scroll', () => scrollEventHandler(container.scrollTop))
   }
 })
 
@@ -83,33 +30,18 @@ document.querySelectorAll('.icon').forEach(icon => {
   icon.ariaHidden = true
 })
 
-// Apply class to active nav button
+// Mobile / desktop switch
+
 const header = document.querySelector('header')
 const nav = header.querySelector('nav')
-const navButtons = nav.querySelectorAll('li:not(:first-child):not(:last-child) a')
-
-navButtons.forEach(el =>
-  el.addEventListener('click', e => {
-    if (e.currentTarget.ariaLabel === 'Translate') return
-
-    header.querySelector('nav .active').classList.remove('active')
-    e.currentTarget.parentElement.classList.add('active')
-  })
-)
-
-// Toggle nav
-
 const openNav = document.getElementById('open-nav')
 const closeNav = document.getElementById('close-nav')
 
-openNav.addEventListener('click', () => (nav.ariaExpanded = true))
-closeNav.addEventListener('click', () => (nav.ariaExpanded = false))
-
-// Mobile / desktop switch
-
 const aboutList = document.querySelectorAll('#personal li > *')
-const odiseeContent = document.querySelectorAll('#education .timeline .odisee > div :is(h2, h2 + span, p)')
+const timeline = document.querySelector('#education .timeline')
+const odiseeContent = timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')
 const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
+const collapsibleToggleButtons = [...document.querySelectorAll('.collapsible button[aria-controls]')]
 let oldWidth = window.innerWidth
 
 const resetCSSTransition = elements =>
@@ -120,16 +52,19 @@ const resetCSSTransition = elements =>
   })
 
 window.addEventListener('resize', () => {
+  collapsibleToggleButtons.forEach(button => toggleCollapse(button, false))
+
   if ((oldWidth > 960) ^ (window.innerWidth > 960)) {
+    nav.ariaExpanded = window.innerWidth > 960
+
     const els = [app, ...aboutList, ...odiseeContent, ...collapsibleSummaries]
     els.forEach(el => el.removeAttribute('style'))
-
-    nav.ariaExpanded = window.innerWidth > 960
 
     resetCSSTransition(header)
     resetCSSTransition([openNav, closeNav])
     resetCSSTransition([...nav.querySelectorAll('li::after')])
-    resetCSSTransition(app.querySelector(':scope > div'))
+
+    if (window.innerWidth <= 960) timeline.removeAttribute('style')
   }
   oldWidth = window.innerWidth
 })
@@ -163,14 +98,26 @@ exitSettingsButton.addEventListener('click', () => {
 
 // Toggle collapsibles
 
-const collapsibleToggleButtons = [...document.querySelectorAll('.collapsible .toggle-collapse button')]
+collapsibleToggleButtons.forEach(button => button.addEventListener('click', () => toggleCollapse(button)))
 
-collapsibleToggleButtons.forEach(button => {
-  button.addEventListener('click', function () {
-    const target = document.getElementById(this.getAttribute('formtarget'))
-    target.ariaExpanded = target.ariaExpanded !== 'true'
-  })
-})
+function toggleCollapse(el, expand) {
+  const content = document.getElementById(el.getAttribute('formtarget'))
+  expand ??= content.ariaHidden === 'true'
+
+  el.innerText = expand ? 'Collapse' : 'Expand'
+  el.ariaExpanded = expand
+  content.style.setProperty(
+    'height',
+    expand
+      ? `calc(${content.scrollHeight}px + 1rem + ${getComputedStyle(content).getPropertyValue(
+          '--toggle-collapse-height'
+        )})`
+      : '0'
+  )
+  content.ariaHidden = !expand
+
+  if (expand) content.focus()
+}
 
 // Age counter
 

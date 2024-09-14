@@ -51,8 +51,8 @@
   font-weight: 700;
 }
 .nft .main .tokenInfo .price ins {
-  margin-left: -0.3rem;
   margin-right: 0.5rem;
+  margin-left: -0.3rem;
 }
 .nft .main .tokenInfo .duration {
   display: flex;

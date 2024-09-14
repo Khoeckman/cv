@@ -1,7 +1,8 @@
+let observing
+
 document.addEventListener('readystatechange', () => {
   document.readyState
   if (document.readyState === 'complete') {
-    const timelineElements = [...document.querySelectorAll('#education .timeline li > div')]
     const loadingScreen = document.getElementById('loading-screen')
 
     loadingScreen.className = 'anim-out'
@@ -13,12 +14,15 @@ document.addEventListener('readystatechange', () => {
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('anim-in')
+            if (entry.isIntersecting) {
+              entry.target.classList.remove('observe')
+              entry.target.classList.add('observed')
+            }
           })
         },
         { threshold: 0.75 }
       )
-      timelineElements.forEach(el => observer.observe(el))
+      observing.forEach(el => observer.observe(el))
     })
 
     // Disable backface focus
@@ -36,4 +40,16 @@ document.addEventListener('readystatechange', () => {
     document.querySelector(window.location.hash + ' h1 a').focus()
   }
 })
-document.addEventListener('DOMContentLoaded', () => (document.getElementById('loading-screen').className = ''))
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('loading-screen').className = ''
+
+  const observed = document.querySelectorAll('.observe')
+  const aboutList = document.querySelectorAll('#personal .personal-info li')
+  const languagesTable = document.querySelectorAll('#personal .languages')
+  const hobbies = document.querySelectorAll('#personal .hobbies li')
+  const timelineElements = document.querySelectorAll('#education .timeline li > div')
+  const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
+
+  observing = [...observed, ...aboutList, ...languagesTable, ...hobbies, ...timelineElements, ...collapsibleSummaries]
+  observing.forEach(el => el.classList.add('observe'))
+})

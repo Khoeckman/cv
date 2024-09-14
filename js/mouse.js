@@ -1,8 +1,11 @@
+import { enable3D } from './settings.js'
+
 const tracker = document.getElementById('tracker')
 const app = document.getElementById('app')
-const timeline = document.querySelector('.timeline')
-const aboutList = [...document.querySelectorAll('#personal li > *')]
-const odiseeContent = [...document.querySelectorAll('#education .timeline .odisee > div :is(h2, h2 + span, p)')]
+const aboutList = [...document.querySelectorAll('#personal .personal-info li > *')]
+const languagesTable = [...document.querySelectorAll('#personal .languages')]
+const timeline = document.querySelector('#education .timeline')
+const odiseeContent = [...timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')]
 const collapsibleSummaries = [...document.querySelectorAll('.collapsible .toggle-collapse')]
 
 let currentRotX = 0
@@ -21,6 +24,7 @@ document.addEventListener('mousemove', e => {
   tracker.style.top = e.pageY + 'px'
 
   // 3D rotation effect towards mouse
+  if (!enable3D) return
   currentRotX = e.clientY / window.innerHeight - 0.5
   currentRotY = e.clientX / window.innerWidth - 0.5
 })
@@ -41,6 +45,7 @@ setInterval(() => {
     'perspective(160rem) rotateX(' + (-rotX * 16).toFixed(2) + 'deg) rotateY(' + (rotY * 16).toFixed(2) + 'deg)'
 
   depth(aboutList, 6)
+  depth(languagesTable, 6)
   depth(odiseeContent, 6)
   depth(collapsibleSummaries, 6)
 }, 16)

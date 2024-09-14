@@ -61,3 +61,81 @@
   width: 2rem;
   height: 2rem;
 }
+
+#personal .languages {
+  border: 0;
+  border-radius: var(--radius-m);
+  border-collapse: collapse;
+  box-shadow: 0 0 0 2px var(--gray), 0 0 1rem var(--black);
+  will-change: transform;
+}
+
+#personal .languages tr:not(:first-child) {
+  border-top: 1px solid var(--gray);
+}
+
+#personal .languages td:first-child {
+  padding-right: 0;
+}
+
+#personal .languages td {
+  padding: 1rem 1.5rem;
+}
+
+#personal .languages td h3 {
+  margin: 0;
+}
+
+#personal .languages td:first-child img {
+  width: 2rem;
+  height: 2rem;
+}
+
+#personal .languages td:last-child span {
+  display: inline-block;
+  background-color: var(--dark-gray);
+  border: 1px solid var(--gray);
+  border-radius: 3rem;
+  text-align: center;
+  color: var(--lighter-gray);
+  padding: 0.25rem 1rem;
+  width: 8rem;
+}
+
+#personal .languages td:last-child span.native {
+  background-color: hsl(130, 100%, 20%);
+  border-color: hsl(130, 100%, 50%);
+  color: hsl(130, 100%, 50%);
+}
+
+#personal .languages td:last-child span.fluent {
+  background-color: hsl(90, 100%, 20%);
+  border-color: hsl(90, 100%, 50%);
+  color: hsl(90, 100%, 50%);
+}
+
+#personal .languages td:last-child span.basic {
+  background-color: hsl(55, 100%, 20%);
+  border-color: hsl(55, 100%, 50%);
+  color: hsl(55, 100%, 50%);
+}
+
+#personal .hobbies li {
+  display: flex;
+  align-items: center;
+  margin: 1.5em 0;
+}
+
+#personal .hobbies li span {
+  background-color: var(--gray);
+  border: 1px solid var(--lighter-gray);
+  border-radius: 50%;
+  font-size: 2rem;
+  margin-right: 0.5em;
+  padding: 0.5rem;
+  transition: transform 1s;
+}
+
+#personal .hobbies li:hover span {
+  transform: rotateY(360deg);
+}

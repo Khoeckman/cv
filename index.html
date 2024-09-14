@@ -33,16 +33,18 @@
 
   <!-- JS -->
   <script src="./js/load.js"></script>
+  <script src="./js/settings.js" type="module"></script>
   <script src="./js/main.js" type="module"></script>
+  <script src="./js/nav.js" type="module"></script>
   <script src="./js/skills.js" type="module"></script>
-  <script src="./js/initParticles.js" type="module"></script>
   <script src="./js/mouse.js" type="module"></script>
+  <script src="./js/initParticles.js" type="module"></script>
 </head>
 
 <body>
   <div id="loading-screen" aria-hidden="true">
     <h1>Curriculum Vitae</h1>
-    <h2>
+    <h2 class="progress-bar">
       <span></span><span>Loading</span>
     </h2>
     <img src="./img/favicon.webp" alt="Logo with initials KH" width="160" height="160">
@@ -192,30 +194,51 @@
 
             <h2>Languages</h2>
 
-            <ul class="card-list languages">
-              <li>
-                <h3>Dutch</h3>
-                <div class="progress-bar" data-progress="100%"><span>Native</span></div>
-              </li>
-              <li>
-                <h3>English</h3>
-                <div class="progress-bar" data-progress="80%"><span>Conversational</span></div>
-              </li>
-              <li>
-                <h3>French</h3>
-                <div class="progress-bar" data-progress="40%"><span>Basic</span></div>
-              </li>
-            </ul>
+            <table class="card-list languages">
+              <tr>
+                <td><img src="./img/lang/dutch.webp" alt="Flag of Belgium" width="32" height="32"></td>
+                <td>
+                  <h3>Dutch</h3>
+                </td>
+                <td>
+                  <span class="native">Native</span>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="./img/lang/english.webp" alt="Flag of the USA" width="32" height="32"></td>
+                <td>
+                  <h3>English</h3>
+                </td>
+                <td>
+                  <span class="fluent">Fluent</span>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="./img/lang/french.webp" alt="Flag of France" width="32" height="32"></td>
+                <td>
+                  <h3>French</h3>
+                </td>
+                <td>
+                  <span class="basic">Basic</span>
+                </td>
+              </tr>
+            </table>
 
             <h2>Hobbies</h2>
 
-            <ul>
-              <li><span>🏋🏻‍♂️</span>I like solving programming challenges in my freetime on
-                <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
-                and
-                <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
+            <ul class="hobbies card-list">
+              <li>
+                <span>👨‍💻</span>
+                <p>I like solving coding challenges on
+                  <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
+                  and
+                  <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
+                </p>
               </li>
-              <li><span>🏋🏻‍♂️</span>I love doing sports and regularly lift weights since 2019.</li>
+              <li>
+                <span>🏋🏻‍♂️</span>
+                <p>I love sports and have been regularly lifting weights since 2019.</p>
+              </li>
             </ul>
           </article>
 
@@ -269,52 +292,55 @@
             <div class="programming-skills collapsible">
               <div class="toggle-collapse">
                 <h2>Programming</h2>
-                <button class="overlay transparent" formtarget="programming-skills">Toggle
-                  collapse</button>
+                <button class="overlay transparent" formtarget="programming-skills" aria-expanded="false"
+                  aria-controls="programming-skills">Expand</button>
                 <span class="icon">expand_circle_down</span>
                 <span class="icon">code</span>
               </div>
 
-              <div id="programming-skills" aria-expanded="false">
+              <div id="programming-skills" class="content" aria-hidden="true">
                 <form>
                   <h3>Filter</h3>
 
-                  <fieldset>
-                    <label>
-                      <input data-tag="lang" type="radio" name="ps-filter" checked>
-                      <span>Languages</span>
-                    </label>
+                  <label>
+                    <input data-tag="all" type="radio" name="ps-filter">
+                    <span>All</span>
+                  </label>
 
-                    <label>
-                      <input data-tag="fw" type="radio" name="ps-filter">
-                      <span>Frameworks</span>
-                    </label>
+                  <label>
+                    <input data-tag="lang" type="radio" name="ps-filter" checked>
+                    <span>Languages</span>
+                  </label>
 
-                    <label>
-                      <input data-tag="db" type="radio" name="ps-filter">
-                      <span>Data</span>
-                    </label>
+                  <label>
+                    <input data-tag="fw" type="radio" name="ps-filter">
+                    <span>Frameworks</span>
+                  </label>
 
-                    <label>
-                      <input data-tag="design" type="radio" name="ps-filter">
-                      <span>Design</span>
-                    </label>
+                  <label>
+                    <input data-tag="db" type="radio" name="ps-filter">
+                    <span>Data</span>
+                  </label>
 
-                    <label>
-                      <input data-tag="fun" type="radio" name="ps-filter">
-                      <span>Fun</span>
-                    </label>
+                  <label>
+                    <input data-tag="design" type="radio" name="ps-filter">
+                    <span>Design</span>
+                  </label>
 
-                    <label>
-                      <input data-tag="front" type="radio" name="ps-filter">
-                      <span>Front-end</span>
-                    </label>
+                  <label>
+                    <input data-tag="fun" type="radio" name="ps-filter">
+                    <span>Fun</span>
+                  </label>
 
-                    <label>
-                      <input data-tag="back" type="radio" name="ps-filter">
-                      <span>Back-end</span>
-                    </label>
-                  </fieldset>
+                  <label>
+                    <input data-tag="front" type="radio" name="ps-filter">
+                    <span>Front-end</span>
+                  </label>
+
+                  <label>
+                    <input data-tag="back" type="radio" name="ps-filter">
+                    <span>Back-end</span>
+                  </label>
                 </form>
 
                 <ul class="card-list skills-list"></ul>
@@ -324,40 +350,14 @@
             <div class="communicative-skills collapsible">
               <div class="toggle-collapse">
                 <h2>Communicative</h2>
-                <button class="overlay transparent" formtarget="communicative-skills">Toggle
-                  collapse</button>
+                <button class="overlay transparent" formtarget="communicative-skills" aria-expanded="false"
+                  aria-controls="communicative-skills">Expand</button>
                 <span class="icon">expand_circle_down</span>
                 <span class="icon">groups</span>
               </div>
 
-              <div id="communicative-skills" aria-expanded="false">
-                <ul class="card-list skills-list">
-                  <li tabindex="0">
-                    <div class="card">
-                      <h3>Presenting</h3>
-
-                      <div class="back">
-                        <h4>Experience</h4>
-
-                        <span>Skill level</span>
-                        <div class="progress-bar" data-progress="90%"></div>
-
-                        <span>Joy</span>
-                        <div class="progress-bar" data-progress="100%"></div>
-
-                        <p>
-                          <span>Using since</span>
-                          <span></span>
-                          <span>2019</span>
-                        </p>
-                      </div>
-
-                      <div class="image-blur">
-                        <img src="./img/skills/js.webp" alt="JavaScript logo" width="160" height="160">
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+              <div id="communicative-skills" class="content" aria-hidden="true">
+                <ul class="card-list skills-list"></ul>
               </div>
             </div>
           </article>
@@ -368,7 +368,17 @@
               <span class="icon">dashboard</span>
             </h1>
 
-            <ul class="card-list">
+            <h2>Websites</h2>
+
+            <a href="http://kylehoeckman.great-site.net/Portfolio/" class="button icon-button" target="_blank">
+              <span class="icon">link</span>
+              External portfolio website
+            </a>
+
+            <h2>Projects</h2>
+            <p>Coming soon...</p>
+
+            <!-- <ul class="card-list">
               <li>
                 <div class="nft">
                   <div class='main'>
@@ -399,7 +409,7 @@
                   </div>
                 </div>
               </li>
-            </ul>
+            </ul> -->
           </article>
 
           <article id="contact">
@@ -413,7 +423,7 @@
               <span class="icon">alternate_email</span>
             </div>
 
-            <form action="#" aria-disabled="true" disabled tabindex="-1">
+            <form action="#" disabled aria-hidden="true" tabindex="-1">
               <label for="contact-name">Name</label>
               <input id="contact-name" name="name" type="text" autocomplete="name" tabindex="-1">
 
@@ -460,16 +470,42 @@
                 <span class="icon">settings</span>
               </h1>
 
+              <h2>Accessibility<span class="icon">settings_accessibility</span></h2>
               <label>
                 <span>Language</span>
-                <select>
+                <select id="language">
                   <option selected>English</option>
                   <option>Dutch</option>
                   <option>French</option>
                 </select>
               </label>
 
-              <button type="submit">Apply</button>
+              <label>
+                <span>Full screen</span>
+                <input id="fullscreen" type="checkbox" checked>
+              </label>
+
+              <h2>Peformance<span class="icon">speed</span></h2>
+              <label>
+                <span>Particles</span>
+                <input id="particles" type="checkbox" checked>
+              </label>
+
+              <label>
+                <span>3D rotation effect</span>
+                <input id="enable-3d" type="checkbox" checked>
+              </label>
+
+              <h2>Gits 'n' shiggles<span class="icon">celebration</span></h2>
+              <label>
+                <span>Rainbow</span>
+                <input id="rainbow" type="checkbox">
+              </label>
+
+              <div>
+                <button id="settings-default" class="button error" type="button">Default</button>
+                <button class="button" type="submit">Apply</button>
+              </div>
             </form>
           </article>
 

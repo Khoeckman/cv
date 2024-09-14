@@ -152,7 +152,7 @@ header nav li:last-child .icon {
 
   header #open-nav {
     background: var(--pri);
-    color: var(--white);
+    color: var(--black);
   }
 
   header #close-nav {

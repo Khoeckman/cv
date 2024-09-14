@@ -15,7 +15,7 @@ const options = {
 
   particles: {
     color: '#88c8ffa0',
-    ppm: 80,
+    ppm: 70,
     relSpeed: 0.8,
     rotationSpeed: 1,
   },

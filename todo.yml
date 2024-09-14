@@ -1,29 +1,24 @@
 first:
-  - 'make fancy link css'
-  - 'make loading bar, hint use :after z-index -1; before might render above it'
-  - 'make lanuages custom overlay'
+  - 'make languages custom overlay'
 
 important:
-  - 'computeArticleOffsets() only on resize and load, not on each event'
-  - 'make collapsible a details element with summary'
-  - 'change all h1 to h2 and h2 to h3 ...'
   - 'move settings from second main inside first main .container'
   - 'move profile part to top instead of dissapear'
   - 'place nav buttons ::after in span for semantics'
-  - 'make tracker outline over the target element'
   - 'make js copy for email'
+  - 'make profile image scroll on desktop'
 
 problems:
-  - 'make timeline button animation better on black side'
-  - 'scrollintoview doesnt work on mobile'
-  - ' nav should be unfocusable when hidden + the opposite nav button'
-  - 'make profile image scroll on desktop'
-  - 'reset transition ? no longer ? works'
+  - 'after leaving settings, update hash before scroll'
+  - 'not responsive on desktop with less height'
+  - 'Filter form is not tabbable'
+  - 'scrollintoview doesnt work on mobile (with reload)'
+  - 'nav should be unfocusable when hidden + the opposite nav button'
   - 'tracker blocks scroll events (magic fix?)'
 
 optional:
-  - 'make white shadow on timeline buttons roatte with 3d effect'
-  - 'loading bar on loading screen check for use of after or .progress-bar class'
+  - 'change all h1 to h2 and h2 to h3 ...'
+  - 'make tracker outline over the target element'
 
 other:
   - 'add weatherfy and horseacademy to portfolio'
