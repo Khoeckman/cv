@@ -1,0 +1,86 @@
+.collapsible {
+  --toggle-collapse-height: 4rem;
+}
+
+.collapsible button[aria-controls] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.collapsible button[aria-controls] + .icon {
+  transition: color 150ms, transform 500ms;
+}
+
+.collapsible :has(button[aria-controls]:is(:hover, :focus-visible)) {
+  border: 1px solid var(--pri);
+}
+
+.collapsible button[aria-controls]:is(:hover, :focus-visible) + .icon {
+  color: var(--pri);
+}
+
+.collapsible:has(.content[aria-hidden='false']) button[aria-controls] + .icon {
+  transform: rotate(180deg);
+}
+
+.collapsible .toggle-collapse {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--black);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius-m);
+  position: relative;
+  padding: 0 1.5rem;
+  height: var(--toggle-collapse-height);
+  z-index: 2;
+  transition: border-color 150ms;
+}
+
+.collapsible .toggle-collapse h2 {
+  flex: 1;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.collapsible .toggle-collapse .icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 2rem;
+}
+
+.collapsible .toggle-collapse > .icon:last-child {
+  order: -1;
+  color: var(--pri);
+}
+
+.collapsible .content {
+  overflow: hidden;
+  background-color: var(--black);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius-m);
+  margin-top: calc(-1 * var(--toggle-collapse-height));
+  padding: 1rem clamp(1rem, 2.5%, 3rem);
+  padding-top: 0;
+  min-height: var(--toggle-collapse-height);
+  transition: visibility 500ms, padding-top 500ms, height 500ms;
+}
+
+.collapsible .content[aria-hidden='true'] {
+  visibility: collapse;
+}
+
+.collapsible .content[aria-hidden='false'] {
+  padding-top: calc(1rem + var(--toggle-collapse-height));
+}
+
+@media only screen and (width > 60em) {
+  #app:not(.fullscreen) .collapsible .toggle-collapse {
+    will-change: transform;
+  }
+}

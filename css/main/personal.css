@@ -1,4 +1,4 @@
-#personal p:first-of-type {
+#personal > p:first-of-type {
   text-align: justify;
   line-height: 1.5;
 }
@@ -29,12 +29,6 @@
   transition: border-color 150ms;
 }
 
-#personal .personal-info li > * {
-  transform-style: preserve-3d;
-  transform: translateZ(2rem);
-  will-change: transform;
-}
-
 #personal .personal-info li:hover {
   border-color: var(--pri);
 }
@@ -54,10 +48,8 @@
   justify-content: flex-end;
 }
 
-#personal .personal-info li:nth-child(2) div:last-child {
+#personal .personal-info li:nth-child(2) img {
   order: -1;
-  background: linear-gradient(90deg, black 33%, yellow 33%, yellow 67%, red 67%);
-  border-radius: var(--radius-xs);
   width: 2rem;
   height: 2rem;
 }
@@ -67,7 +59,6 @@
   border-radius: var(--radius-m);
   border-collapse: collapse;
   box-shadow: 0 0 0 2px var(--gray), 0 0 1rem var(--black);
-  will-change: transform;
 }
 
 #personal .languages tr:not(:first-child) {
@@ -138,4 +129,16 @@
 
 #personal .hobbies li:hover span {
   transform: rotateY(360deg);
+}
+
+@media only screen and (width > 60em) {
+  #app:not(.fullscreen) #personal .personal-info li > * {
+    transform-style: preserve-3d;
+    transform: translateZ(2rem);
+    will-change: transform;
+  }
+
+  #app:not(.fullscreen) #personal .languages {
+    will-change: transform;
+  }
 }

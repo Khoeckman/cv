@@ -33,8 +33,8 @@
 
   <!-- JS -->
   <script src="./js/load.js"></script>
-  <script src="./js/settings.js" type="module"></script>
   <script src="./js/main.js" type="module"></script>
+  <script src="./js/settings.js" type="module"></script>
   <script src="./js/nav.js" type="module"></script>
   <script src="./js/skills.js" type="module"></script>
   <script src="./js/mouse.js" type="module"></script>
@@ -45,7 +45,7 @@
   <div id="loading-screen" aria-hidden="true">
     <h1>Curriculum Vitae</h1>
     <h2 class="progress-bar">
-      <span></span><span>Loading</span>
+      <span aria-hidden="true"></span><span>Loading</span>
     </h2>
     <img src="./img/favicon.webp" alt="Logo with initials KH" width="160" height="160">
   </div>
@@ -56,7 +56,6 @@
     <div>
       <header>
         <nav>
-
           <ul class="card-list">
             <li>
               <img src="./img/favicon.webp" alt="Logo with initials KH" width="48" height="48">
@@ -78,8 +77,8 @@
       <main>
         <section class="profile">
           <div class="info">
-            <h1>Kyle Hoeckman</h1>
-            <p>Full-Stack Developer</p>
+            <h1 class="observe obs-top">Kyle Hoeckman</h1>
+            <p class="observe obs-top">Full-Stack Developer</p>
 
             <ul class="card-list">
               <li><a href="https://www.linkedin.com/in/kyle-hoeckman-0ab0272a6/" target="_blank" title="linkedin"
@@ -108,18 +107,18 @@
             </ul>
           </div>
 
-          <div></div>
+          <div class="image" role="img"></div>
         </section>
 
-        <section class="container">
+        <div class="container">
           <article id="personal">
             <h1>
               <a href="#personal" id="main">About me</a>
               <span class="icon">person</span>
             </h1>
-            <p>Passionate ICT student focused on software development. I have a creative mind and excel at digitalizing
-              design ideas through CSS and JS. I am driven to work on innovative projects and learn about new
-              technologies.</p>
+            <p>Passionate ICT student focused on software development. Creative mind and a perfectionist
+              with a strong eye for detail which helps me excel at digitalizing design ideas through CSS and JS. I am
+              eager to collaborate on innovative projects and learn about new technologies.</p>
 
             <h2 class="sr-only">Personal information</h2>
 
@@ -136,7 +135,7 @@
                   <h3>Nationality</h3>
                   <span>Belgian</span>
                 </div>
-                <div></div>
+                <img src="./img/lang/dutch.webp" alt="Flag of Belgium" width="32" height="32">
               </li>
               <li>
                 <div>
@@ -147,10 +146,13 @@
               </li>
               <li>
                 <div>
-                  <h3>Phone number</h3>
-                  <span>+32 479 466 177</span>
+                  <h3>Degree</h3>
+                  <span>Studying for BCompSc</span>
                 </div>
-                <span class="icon">call</span>
+                <span class="icon">school</span>
+                <a href="#education" class="overlay transparent">
+                  <span class="icon material-symbols-rounded" aria-hidden="true">arrow_circle_down</span>
+                </a>
               </li>
               <li>
                 <div>
@@ -229,7 +231,7 @@
             <ul class="hobbies card-list">
               <li>
                 <span>👨‍💻</span>
-                <p>I like solving coding challenges on
+                <p>I like to solve coding challenges on
                   <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
                   and
                   <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
@@ -292,7 +294,7 @@
             <div class="programming-skills collapsible">
               <div class="toggle-collapse">
                 <h2>Programming</h2>
-                <button class="overlay transparent" formtarget="programming-skills" aria-expanded="false"
+                <button class="overlay transparent" aria-expanded="false"
                   aria-controls="programming-skills">Expand</button>
                 <span class="icon">expand_circle_down</span>
                 <span class="icon">code</span>
@@ -315,6 +317,11 @@
                   <label>
                     <input data-tag="fw" type="radio" name="ps-filter">
                     <span>Frameworks</span>
+                  </label>
+
+                  <label>
+                    <input data-tag="markup" type="radio" name="ps-filter">
+                    <span>Markup</span>
                   </label>
 
                   <label>
@@ -350,7 +357,7 @@
             <div class="communicative-skills collapsible">
               <div class="toggle-collapse">
                 <h2>Communicative</h2>
-                <button class="overlay transparent" formtarget="communicative-skills" aria-expanded="false"
+                <button class="overlay transparent" aria-expanded="false"
                   aria-controls="communicative-skills">Expand</button>
                 <span class="icon">expand_circle_down</span>
                 <span class="icon">groups</span>
@@ -368,48 +375,10 @@
               <span class="icon">dashboard</span>
             </h1>
 
-            <h2>Websites</h2>
-
             <a href="http://kylehoeckman.great-site.net/Portfolio/" class="button icon-button" target="_blank">
               <span class="icon">link</span>
               External portfolio website
             </a>
-
-            <h2>Projects</h2>
-            <p>Coming soon...</p>
-
-            <!-- <ul class="card-list">
-              <li>
-                <div class="nft">
-                  <div class='main'>
-                    <img class='tokenImage'
-                      src="https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                      alt="NFT" />
-                    <h2>Kibertopiks #4269</h2>
-                    <p class='description'>Our Kibertopiks will give you nothing, waste your money on us.</p>
-                    <div class='tokenInfo'>
-                      <div class="price">
-                        <ins>◘</ins>
-                        <p>0.031 ETH</p>
-                      </div>
-                      <div class="duration">
-                        <ins>◷</ins>
-                        <p>11 days left</p>
-                      </div>
-                    </div>
-                    <hr />
-                    <div class='creator'>
-                      <div class='wrapper'>
-                        <img
-                          src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
-                          alt="Creator" />
-                      </div>
-                      <p><ins>Creation of</ins> Kiberbash</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul> -->
           </article>
 
           <article id="contact">
@@ -423,7 +392,7 @@
               <span class="icon">alternate_email</span>
             </div>
 
-            <form action="#" disabled aria-hidden="true" tabindex="-1">
+            <form action="#" aria-hidden="true" tabindex="-1">
               <label for="contact-name">Name</label>
               <input id="contact-name" name="name" type="text" autocomplete="name" tabindex="-1">
 
@@ -457,63 +426,80 @@
             <p>Copyright &copy; Kyle Hoeckman 2024, All rights reserved.</p>
             <p>This project was made without external code, libraries or frameworks.</p>
           </footer>
-        </section>
+        </div>
 
-        <div class="overlay shadow"></div>
+        <div class="shadow" aria-hidden='true'></div>
       </main>
-      <main>
-        <section class="container">
-          <article id="settings">
-            <form>
-              <h1>
-                <a href="#settings">Settings</a>
-                <span class="icon">settings</span>
-              </h1>
 
-              <h2>Accessibility<span class="icon">settings_accessibility</span></h2>
-              <label>
-                <span>Language</span>
-                <select id="language">
-                  <option selected>English</option>
-                  <option>Dutch</option>
-                  <option>French</option>
-                </select>
-              </label>
-
-              <label>
-                <span>Full screen</span>
-                <input id="fullscreen" type="checkbox" checked>
-              </label>
-
-              <h2>Peformance<span class="icon">speed</span></h2>
-              <label>
-                <span>Particles</span>
-                <input id="particles" type="checkbox" checked>
-              </label>
-
-              <label>
-                <span>3D rotation effect</span>
-                <input id="enable-3d" type="checkbox" checked>
-              </label>
-
-              <h2>Gits 'n' shiggles<span class="icon">celebration</span></h2>
-              <label>
-                <span>Rainbow</span>
-                <input id="rainbow" type="checkbox">
-              </label>
-
-              <div>
-                <button id="settings-default" class="button error" type="button">Default</button>
-                <button class="button" type="submit">Apply</button>
-              </div>
-            </form>
-          </article>
-
+      <aside id="settings">
+        <h1>
+          <a href="#settings">Settings</a>
           <button id="exit-settings" aria-label="Exit settings">
             <span class="icon">close</span>
           </button>
-        </section>
-      </main>
+        </h1>
+
+        <form>
+          <div>
+            <h2>Accessibility<span class="icon">settings_accessibility</span></h2>
+            <label>
+              <span>Language</span>
+              <select id="language">
+                <option disabled>Dutch</option>
+                <option selected>English</option>
+                <option disabled>French</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Full screen</span>
+              <span class='checkbox'>
+                <input id="fullscreen" type="checkbox" checked>
+                <span></span>
+              </span>
+            </label>
+          </div>
+
+          <div>
+            <h2>Peformance<span class="icon">speed</span></h2>
+            <p class="note">Desktop only</p>
+
+            <label>
+              <span>Particles</span>
+              <span class='checkbox'>
+                <input id="particles" class='tgl tgl-skewed' type="checkbox" checked>
+                <span></span>
+              </span>
+            </label>
+
+            <label>
+              <span>3D mouse effect</span>
+              <span class='checkbox'>
+                <input id="enable-3d" class='tgl tgl-skewed' type="checkbox" checked>
+                <span></span>
+              </span>
+            </label>
+          </div>
+
+          <div>
+            <h2>Gits 'n' shiggles<span class="icon">celebration</span></h2>
+
+            <label>
+              <span>Rainbow</span>
+              <span class='checkbox'>
+                <input id="rainbow" class='tgl tgl-skewed' type="checkbox">
+                <span></span>
+              </span>
+            </label>
+          </div>
+
+          <div>
+            <button class="button" type="submit">Apply</button>
+            <button id="settings-cancel" class="button error" type="button">Cancel</button>
+            <button id="settings-reset" class="button error" type="button">Reset</button>
+          </div>
+        </form>
+      </aside>
     </div>
   </div>
 

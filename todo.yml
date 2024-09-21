@@ -1,24 +1,25 @@
 first:
-  - 'make languages custom overlay'
+  - 'cards for portfolio'
 
 important:
-  - 'move settings from second main inside first main .container'
-  - 'move profile part to top instead of dissapear'
+  - 'reset active nav button on resize (layout height change)'
   - 'place nav buttons ::after in span for semantics'
-  - 'make js copy for email'
   - 'make profile image scroll on desktop'
 
 problems:
-  - 'after leaving settings, update hash before scroll'
+  - 'skills doesnt keep height perfectly when resizing'
   - 'not responsive on desktop with less height'
-  - 'Filter form is not tabbable'
-  - 'scrollintoview doesnt work on mobile (with reload)'
-  - 'nav should be unfocusable when hidden + the opposite nav button'
-  - 'tracker blocks scroll events (magic fix?)'
 
-optional:
+important extra:
+  - 'prevent psFilter moving scroll pos'
   - 'change all h1 to h2 and h2 to h3 ...'
+
+extra:
+  - 'find a way to keep skills filter sticky'
+  - 'make js copy for email'
   - 'make tracker outline over the target element'
+  - 'make languages custom overlay'
+  - 'code reuseability on load.js'
 
 other:
   - 'add weatherfy and horseacademy to portfolio'

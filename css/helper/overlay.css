@@ -1,0 +1,39 @@
+.overlay {
+  -webkit-user-drag: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit;
+  text-decoration: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  transition: background 150ms ease-in-out;
+  z-index: 1;
+}
+
+.overlay .icon {
+  font-size: 2rem;
+  color: var(--black);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.overlay:not(.transparent):is(:hover, :focus-visible) {
+  background-color: #fff9;
+}
+
+.overlay:is(:hover, :focus-visible) .icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.overlay.transparent .icon {
+  background-color: #1119;
+  border-radius: 50%;
+  padding: 0.5rem;
+}

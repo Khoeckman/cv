@@ -2,6 +2,20 @@
   margin: 1.5rem 0;
 }
 
+#skills .image-blur {
+  position: relative;
+}
+
+#skills .image-blur > img:first-child {
+  filter: blur(1rem);
+}
+
+#skills .image-blur > img:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #skills .skills-list {
   display: flex;
   flex-flow: row wrap;
@@ -18,6 +32,22 @@
   width: 12rem;
   height: 12rem;
   perspective: 30rem;
+}
+
+#skills .skills-list li:is(:hover, :focus-visible, .flip) .card {
+  transform: translate(-25%, -25%) rotateY(-180deg) scale(0.5);
+}
+
+#skills .skills-list li:is(:hover, :focus-visible, .flip) .card::before {
+  opacity: 0;
+}
+
+#skills .skills-list li:is(:hover, :focus-visible, .flip) .card::after {
+  opacity: 1;
+}
+
+#skills .skills-list li:is(:hover, :focus-visible, .flip) .card .image-blur {
+  filter: brightness(0.3);
 }
 
 #skills .skills-list .card {
@@ -51,18 +81,6 @@
   transform: translateZ(-1em) rotateY(180deg);
 }
 
-#skills .skills-list li:is(:hover, :focus-visible) .card {
-  transform: translate(-25%, -25%) rotateY(-180deg) scale(0.5);
-}
-
-#skills .skills-list li:is(:hover, :focus-visible) .card::before {
-  opacity: 0;
-}
-
-#skills .skills-list li:is(:hover, :focus-visible) .card::after {
-  opacity: 1;
-}
-
 #skills .skills-list .card h3 {
   background-color: #fff9;
   color: var(--black);
@@ -89,10 +107,6 @@
   border-radius: 10%;
   width: 100%;
   height: 100%;
-}
-
-#skills .skills-list li:is(:hover, :focus-visible) .card .image-blur {
-  filter: brightness(0.3);
 }
 
 #skills .skills-list .back {
@@ -122,7 +136,7 @@
 
 #skills .skills-list .back h4:last-child {
   font-weight: normal;
-  font-variant: initial;
+  font-variant: unset;
   white-space: nowrap;
   margin-top: 1em;
 }
@@ -153,13 +167,13 @@
 }
 
 #skills .skills-list li .progress-bar span:last-child {
-  mix-blend-mode: initial;
+  mix-blend-mode: unset;
   position: relative;
   z-index: 1;
 }
 
 #skills .skills-list li .stars {
-  backface-visibility: hidden;
+  backface-visibility: visible;
   color: var(--pri);
 }
 
@@ -194,7 +208,11 @@
 }
 
 #programming-skills form {
+  display: block;
+  position: sticky;
+  top: 1.5rem;
   margin-bottom: 2rem;
+  z-index: 1;
 }
 
 #programming-skills form h3 {
@@ -205,6 +223,7 @@
   cursor: pointer;
   display: inline-block;
   background-color: var(--dark-gray);
+  border: 2px solid transparent;
   padding: 0.25rem 0.5rem;
   margin-bottom: 0.25rem;
   transform: skewX(-8deg);
@@ -228,5 +247,16 @@
 
 #programming-skills form label:has(input:checked) {
   background-color: var(--pri);
-  color: var(--black);
+  color: var(--text-pri);
+}
+
+#programming-skills form label:has(input:focus-visible) {
+  border: 2px solid var(--white);
+}
+
+#programming-skills ul {
+  will-change: contents;
+}
+
+@media only screen and (width > 60em) and (width <= 85em) {
 }

@@ -1,3 +1,7 @@
+import { fullscreen, isWindowed } from './settings.js'
+import { computeArticleOffsets } from './nav.js'
+import { canvas } from './initParticles.js'
+
 const loadingBar = document.querySelector('#loading-screen h2 span:first-child')
 
 const updateLoaded = () => {
@@ -34,17 +38,22 @@ document.querySelectorAll('.icon').forEach(icon => {
 
 const header = document.querySelector('header')
 const nav = header.querySelector('nav')
-const openNav = document.getElementById('open-nav')
-const closeNav = document.getElementById('close-nav')
+const openNavButton = document.getElementById('open-nav')
+const closeNavButton = document.getElementById('close-nav')
 
 const aboutList = document.querySelectorAll('#personal li > *')
 const timeline = document.querySelector('#education .timeline')
 const odiseeContent = timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')
 const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
 const collapsibleToggleButtons = [...document.querySelectorAll('.collapsible button[aria-controls]')]
+const collapsibleContent = [...document.querySelectorAll('.collapsible .content')]
+
+const settings = document.getElementById('settings')
+const tracker = document.getElementById('tracker')
+
 let oldWidth = window.innerWidth
 
-const resetCSSTransition = elements =>
+const resetCSSTransition = (...elements) =>
   [elements].flat().forEach(el => {
     el.style.transition = 'none'
     el.getBoundingClientRect() // Force reset transition
@@ -52,72 +61,61 @@ const resetCSSTransition = elements =>
   })
 
 window.addEventListener('resize', () => {
-  collapsibleToggleButtons.forEach(button => toggleCollapse(button, false))
+  collapsibleContent.forEach(content => reflowCollapseContent(content, true, true))
 
   if ((oldWidth > 960) ^ (window.innerWidth > 960)) {
-    nav.ariaExpanded = window.innerWidth > 960
+    const windowed = isWindowed()
+
+    if (windowed) {
+      canvas.start()
+      timeline.removeAttribute('style')
+    } else canvas.stop()
+
+    if (!fullscreen) nav.ariaExpanded = windowed
+    tracker.hidden = window.innerWidth <= 960
 
     const els = [app, ...aboutList, ...odiseeContent, ...collapsibleSummaries]
     els.forEach(el => el.removeAttribute('style'))
 
-    resetCSSTransition(header)
-    resetCSSTransition([openNav, closeNav])
-    resetCSSTransition([...nav.querySelectorAll('li::after')])
-
-    if (window.innerWidth <= 960) timeline.removeAttribute('style')
+    resetCSSTransition(header, openNavButton, closeNavButton, ...nav.querySelectorAll('li::after'), settings)
   }
   oldWidth = window.innerWidth
 })
-nav.ariaExpanded = window.innerWidth > 960
-
-// Flip app
-
-const settingsButton = nav.querySelector('li:last-child a')
-const exitSettingsButton = document.getElementById('exit-settings')
-
-const frontFocuseable = [
-  ...app.querySelectorAll(':is(header, main:first-of-type) :is(a, button, input, select, textarea'),
-]
-const backFocuseable = [...app.querySelectorAll('main:last-of-type :is(a, button, input, select, textarea')]
-
-settingsButton.addEventListener('click', () => {
-  app.setAttribute('data-flip', true)
-  app.querySelector('main:last-of-type a').focus()
-
-  frontFocuseable.forEach(el => el.setAttribute('tabindex', -1))
-  backFocuseable.forEach(el => el.removeAttribute('tabindex'))
-})
-
-exitSettingsButton.addEventListener('click', () => {
-  app.setAttribute('data-flip', false)
-  nav.querySelector('li:last-child a').focus()
-
-  backFocuseable.forEach(el => el.setAttribute('tabindex', -1))
-  frontFocuseable.forEach(el => el.removeAttribute('tabindex'))
-})
+nav.ariaExpanded = isWindowed()
+tracker.hidden = window.innerWidth <= 960
 
 // Toggle collapsibles
 
 collapsibleToggleButtons.forEach(button => button.addEventListener('click', () => toggleCollapse(button)))
 
-function toggleCollapse(el, expand) {
-  const content = document.getElementById(el.getAttribute('formtarget'))
+function toggleCollapse(el, expand = undefined) {
+  const content = document.getElementById(el.getAttribute('aria-controls'))
   expand ??= content.ariaHidden === 'true'
 
   el.innerText = expand ? 'Collapse' : 'Expand'
   el.ariaExpanded = expand
-  content.style.setProperty(
-    'height',
-    expand
-      ? `calc(${content.scrollHeight}px + 1rem + ${getComputedStyle(content).getPropertyValue(
-          '--toggle-collapse-height'
-        )})`
-      : '0'
-  )
-  content.ariaHidden = !expand
+  reflowCollapseContent(content, expand)
 
   if (expand) content.focus()
 }
+
+function reflowCollapseContent(content, expand, forced = false) {
+  const height = `calc(${content.scrollHeight}px + 1rem + ${getComputedStyle(content).getPropertyValue('--toggle-collapse-height')})`
+
+  if (forced) {
+    content.style.removeProperty('height')
+    height = `calc(${content.scrollHeight}px + 1rem)`
+  }
+
+  content.style.setProperty('height', expand ? height : 0)
+  content.ariaHidden = !expand
+}
+
+collapsibleContent.forEach(el =>
+  el.addEventListener('transitionend', e => {
+    if (e.propertyName === 'height') computeArticleOffsets()
+  })
+)
 
 // Age counter
 

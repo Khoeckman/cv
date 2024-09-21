@@ -1,10 +1,11 @@
 const header = document.querySelector('header')
 const nav = header.querySelector('nav')
 const main = document.querySelector('main')
-const container = document.querySelector('main .container')
+const container = main.querySelector('.container')
 const articles = [...container.querySelectorAll('article')]
 
-let articleOffsets = computeArticleOffsets()
+let articleOffsets
+computeArticleOffsets()
 
 document.addEventListener('readystatechange', () => {
   if (document.readyState === 'complete') {
@@ -23,7 +24,7 @@ document.addEventListener('readystatechange', () => {
       debounceNav = setTimeout(() => {
         for (let article of articleOffsets) {
           if (article.offsetTop <= scrollTop) {
-            nav.querySelector('.active').classList.remove('active')
+            nav.querySelector('.active').removeAttribute('class')
             article.navButton.classList.add('active')
 
             // Update url with current article
@@ -42,7 +43,7 @@ document.addEventListener('readystatechange', () => {
   }
 })
 
-function computeArticleOffsets() {
+export function computeArticleOffsets() {
   let titles = []
   let i = 1
 
@@ -59,7 +60,7 @@ function computeArticleOffsets() {
     })
     i++
   }
-  return titles
+  articleOffsets = titles // Assign to top-level variable
 }
 
 // Apply class to active nav button
@@ -67,17 +68,31 @@ const navButtons = nav.querySelectorAll('li:not(:first-child):not(:last-child) a
 
 navButtons.forEach(el =>
   el.addEventListener('click', e => {
-    if (e.currentTarget.ariaLabel === 'Translate') return
-
-    header.querySelector('nav .active').classList.remove('active')
+    header.querySelector('nav .active').removeAttribute('class')
     e.currentTarget.parentElement.classList.add('active')
   })
 )
 
-// Toggle nav
+// Toggle mobile nav
 
-const openNav = document.getElementById('open-nav')
-const closeNav = document.getElementById('close-nav')
+const openNavButton = document.getElementById('open-nav')
+const closeNavButton = document.getElementById('close-nav')
 
-openNav.addEventListener('click', () => (nav.ariaExpanded = true))
-closeNav.addEventListener('click', () => (nav.ariaExpanded = false))
+export const openNav = () => {
+  openNavButton.tabIndex = -1
+  closeNavButton.removeAttribute('tabindex')
+  closeNavButton.focus()
+  nav.ariaExpanded = true
+}
+openNavButton.addEventListener('click', openNav)
+
+export const closeNav = (focus = true) => {
+  closeNavButton.tabIndex = -1
+
+  if (focus) {
+    openNavButton.removeAttribute('tabindex')
+    openNavButton.focus()
+  }
+  nav.ariaExpanded = false
+}
+closeNavButton.addEventListener('click', () => closeNav())

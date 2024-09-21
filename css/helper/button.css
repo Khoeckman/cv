@@ -1,0 +1,42 @@
+.button {
+  background-color: transparent;
+  border: 0.25em solid var(--white);
+  border-radius: var(--radius-s);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--white);
+  height: 3em;
+  padding: 0.25em 1.5em;
+  transition: background 150ms, border-color 150ms, color 150ms;
+}
+
+.button:is(:hover, :focus-visible) {
+  background-color: var(--pri);
+  border-color: var(--pri);
+  color: var(--text-pri);
+}
+
+.button.error:is(:hover, :focus-visible) {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.button:active {
+  background-color: var(--pri-d);
+  border-color: var(--pri-d);
+  transition: none;
+}
+
+.button.error:active {
+  background-color: var(--red-d);
+  border-color: var(--red-d);
+}
+
+.button.icon-button {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-left: 1em;
+  width: fit-content;
+}

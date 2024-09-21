@@ -1,0 +1,82 @@
+.checkbox {
+  overflow: hidden;
+  border-radius: var(--radius-xs);
+}
+
+.checkbox input {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox > span {
+  overflow: hidden;
+  display: block;
+  background-color: var(--gray);
+  position: relative;
+  width: 4em;
+  height: 2em;
+  /* transition: background 300ms ease-in-out, color 300ms ease-in-out; */
+}
+
+.checkbox > span::before,
+.checkbox > span::after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.checkbox > span::after {
+  left: 0;
+}
+
+.checkbox input:checked + span::after {
+  left: 50%;
+}
+
+.checkbox > span::before,
+.checkbox > span::after {
+  font-weight: 700;
+  line-height: 2;
+  text-align: center;
+  color: var(--white);
+  position: absolute;
+  width: 100%;
+  transition: left 300ms ease-in-out;
+}
+
+.checkbox > span::before {
+  content: 'OFF';
+  left: 0;
+}
+
+.checkbox > span::after {
+  content: 'ON';
+  left: 100%;
+}
+.checkbox > span:active {
+  background-color: var(--gray);
+}
+
+.checkbox > span:active::before {
+  left: -8%;
+}
+
+.checkbox input:checked + span {
+  background-color: var(--pri);
+}
+
+.checkbox input:checked + span::before {
+  color: var(--text-pri);
+  left: -100%;
+}
+
+.checkbox input:checked + span::after {
+  color: var(--text-pri);
+  left: 0;
+}
+
+.checkbox input:checked + span:active::after {
+  left: 8%;
+}

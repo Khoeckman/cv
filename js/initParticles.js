@@ -1,4 +1,4 @@
-import { canvasParticles } from './canvasParticles.js'
+import canvasParticles from './canvasParticles.js'
 
 // Init particles
 const selector = '#canvas-particles'
@@ -20,10 +20,10 @@ const options = {
     rotationSpeed: 1,
   },
   gravity: {
-    // !!! IMPORTANT !!!: Heavily reduces performance if one of these value is not 0
     repulsive: 2,
     pulling: 0.0,
     friction: 0.8,
   },
 }
-canvasParticles(selector, options)
+
+export const canvas = new canvasParticles(selector, options)

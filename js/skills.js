@@ -1,22 +1,24 @@
 const programmingSkills = [
-  { name: 'JavaScript', imgName: 'js', tags: ['lang', 'front'], level: 100, fun: 100, usingSince: 2018 },
-  { name: 'Vue.js', imgName: 'vue-js', tags: ['fw', 'front'], level: 70, fun: 90, usingSince: 2024 },
-  { name: 'Node.js', imgName: 'node-js', tags: ['fw', 'back'], level: 80, fun: 95, usingSince: 2021 },
-  { name: 'Python', imgName: 'python', tags: ['lang', 'back'], level: 80, fun: 90, usingSince: 2020 },
-  { name: 'PHP', imgName: 'php', tags: ['lang', 'back'], level: 60, fun: 50, usingSince: 2023 },
-  { name: 'Laravel', imgName: 'laravel', tags: ['fw', 'back'], level: 70, fun: 80, usingSince: 2024 },
-  { name: 'Java', imgName: 'java', tags: ['lang', 'back'], level: 60, fun: 70, usingSince: 2022 },
-  { name: 'C#', imgName: 'c-sharp', tags: ['lang', 'back'], level: 40, fun: 10, usingSince: 2023 },
-  { name: 'MySQL', imgName: 'mysql', tags: ['db'], level: 80, fun: 75, usingSince: 2023 },
-  { name: 'MongoDB', imgName: 'mongodb', tags: ['db'], level: 20, fun: 60, usingSince: 2024 },
-  { name: 'Figma', imgName: 'figma', tags: ['design', 'front'], level: 40, fun: 40, usingSince: 2022 },
-  { name: 'HTML5', imgName: 'html5', tags: ['lang', 'front'], level: 100, fun: 100, usingSince: 2016 },
-  { name: 'CSS3', imgName: 'css3', tags: ['lang', 'design', 'front'], level: 95, fun: 100, usingSince: 2018 },
-  { name: 'Sass', imgName: 'sass', tags: ['design', 'front'], level: 95, fun: 100, usingSince: 2023 },
-  { name: 'SVG', imgName: 'svg', tags: ['lang', 'design', 'front'], level: 30, fun: 90, usingSince: 2024 },
-  { name: 'RegEx', imgName: 'regex', tags: ['lang'], level: 70, fun: 80, usingSince: 2021 },
-  { name: 'Scratch', imgName: 'scratch', tags: ['fun'], level: 100, fun: 100, usingSince: 2017 },
-  { name: 'Minecraft CB', imgName: 'minecraft-cb', tags: ['fun'], level: 80, fun: 100, usingSince: 2016 },
+  { name: 'HTML5', imgName: 'html5', tags: ['markup', 'front'], skill: 100, fun: 100, usingSince: 2016 },
+  { name: 'CSS3', imgName: 'css3', tags: ['markup', 'design', 'front'], skill: 95, fun: 100, usingSince: 2018 },
+  { name: 'JavaScript', imgName: 'js', tags: ['lang', 'front'], skill: 95, fun: 100, usingSince: 2018 },
+  { name: 'Vue.js', imgName: 'vue-js', tags: ['fw', 'front'], skill: 70, fun: 90, usingSince: 2024 },
+  { name: 'Vite', imgName: 'vite', tags: ['front'], skill: 60, fun: '?', usingSince: 2023 },
+  { name: 'Node.js', imgName: 'node-js', tags: ['fw', 'back'], skill: 80, fun: 95, usingSince: 2021 },
+  { name: 'Python', imgName: 'python', tags: ['lang', 'back'], skill: 80, fun: 90, usingSince: 2020 },
+  { name: 'PHP', imgName: 'php', tags: ['lang', 'back'], skill: 70, fun: 50, usingSince: 2023 },
+  { name: 'Laravel', imgName: 'laravel', tags: ['fw', 'back'], skill: 75, fun: 80, usingSince: 2024 },
+  { name: 'Java', imgName: 'java', tags: ['lang', 'back'], skill: 65, fun: 70, usingSince: 2022 },
+  { name: 'C#', imgName: 'c-sharp', tags: ['lang', 'back'], skill: 40, fun: '?', usingSince: 2023 },
+  { name: 'Arduino', imgName: 'arduino', tags: ['lang', 'fun'], skill: 75, fun: 100, usingSince: 2020 },
+  { name: 'MySQL', imgName: 'mysql', tags: ['db'], skill: 80, fun: 75, usingSince: 2023 },
+  // { name: 'MongoDB', imgName: 'mongodb', tags: ['db'], skill: 20, fun: 60, usingSince: 2024 },
+  { name: 'Figma', imgName: 'figma', tags: ['design', 'front'], skill: 40, fun: 40, usingSince: 2022 },
+  { name: 'Sass', imgName: 'sass', tags: ['markup', 'front'], skill: 95, fun: 100, usingSince: 2023 },
+  { name: 'SVG', imgName: 'svg', tags: ['markup', 'design', 'front'], skill: 30, fun: 90, usingSince: 2024 },
+  { name: 'RegEx', imgName: 'regex', tags: ['markup'], skill: 70, fun: '?', usingSince: 2020 },
+  { name: 'Scratch', imgName: 'scratch', tags: ['fun'], skill: 100, fun: 100, usingSince: 2017 },
+  { name: 'Minecraft CB', imgName: 'minecraft-cb', tags: ['fun'], skill: 80, fun: 100, usingSince: 2016 },
 ]
 
 const communicativeSkills = [
@@ -43,13 +45,13 @@ for (let skill of programmingSkills) {
         <div class="back">
           <h4>Skill</h4>
           <div class="progress-bar">
-            <span style="background-color: hsl(${1.2 * skill.level}, 100%, 50%); width: ${skill.level}%"></span>
-            <span>${skill.level}</span>
+            <span aria-hidden="true" style="background-color: hsl(${1.2 * skill.skill}, 100%, 50%); width: ${skill.skill}%"></span>
+            <span>${skill.skill}</span>
           </div>
 
           <h4>Fun</h4>
           <div class="progress-bar">
-            <span style="background-color: hsl(${1.2 * skill.fun}, 100%, 50%); width: ${skill.fun}%">
+            <span aria-hidden="true" style="background-color: hsl(${1.2 * skill.fun}, 100%, 50%); width: ${skill.fun}%">
             </span><span>${skill.fun}</span>
           </div>
 
@@ -73,7 +75,7 @@ for (let skill of communicativeSkills) {
           <img src="./img/skills/${skill.imgName}.webp" alt="${skill.name} logo" width="160" height="160">
         </div>
 
-        <div class="back" aria-label="${skill.stars} stars">
+        <div class="back" aria-label="${skill.stars} out of 5 stars">
           <div class="stars" aria-hidden="true">
             ${`<span class="icon fill material-symbols-rounded">star</span>`.repeat(skill.stars)}
             ${`<span class="icon material-symbols-rounded">star</span>`.repeat(5 - skill.stars)}
@@ -102,6 +104,7 @@ const psFilter = tag => {
 
 filterForm.addEventListener('click', e => {
   if (!e.target.matches('input')) return
+
   psFilter(e.target.getAttribute('data-tag'))
 
   const content = filterForm.closest('.content')
@@ -112,3 +115,20 @@ psFilter('lang')
 
 const content = [...document.querySelectorAll('.collapsible .content')]
 content.forEach(el => (el.style.height = 0))
+
+// Keep hover effect for extended period
+
+const skillCards = [...document.querySelectorAll('.skills-list li')]
+
+skillCards.forEach(card => {
+  let timeoutId
+
+  card.addEventListener('mouseenter', () => {
+    card.classList.add('flip')
+    clearTimeout(timeoutId)
+  })
+
+  card.addEventListener('mouseleave', () => {
+    timeoutId = setTimeout(() => card.removeAttribute('class'), 5000)
+  })
+})

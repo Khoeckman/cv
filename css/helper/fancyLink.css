@@ -1,0 +1,30 @@
+a.fancy {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  margin: 0 -0.1em;
+  padding: 0 0.1em;
+  transition: color 150ms;
+}
+
+a.fancy::before {
+  content: '';
+  display: block;
+  background-color: var(--pri);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transition: height 150ms;
+  z-index: -1;
+}
+
+a.fancy:is(:hover, :focus-visible) {
+  color: var(--text-pri);
+}
+
+a.fancy:is(:hover, :focus-visible)::before {
+  content: '';
+  height: 100%;
+}

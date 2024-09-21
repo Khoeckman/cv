@@ -1,10 +1,3 @@
-#contact form[disabled] {
-  cursor: not-allowed;
-  pointer-events: none;
-  position: relative;
-  filter: brightness(0.25);
-}
-
 #contact form {
   background-color: var(--form);
   display: flex;
@@ -13,6 +6,15 @@
   color: var(--black);
   margin: 1.5rem 0;
   padding: 1.5rem;
+}
+
+/* TEMP DISABLE */
+
+#contact form {
+  cursor: not-allowed;
+  pointer-events: none;
+  position: relative;
+  filter: brightness(0.25);
 }
 
 #contact form :is(label, button) {
@@ -25,14 +27,10 @@
   min-height: 5rem;
 }
 
-#contact form :is(label, input, textarea) {
+#contact form :is(label, input, textarea, button) {
   padding-bottom: 0.25rem;
   width: 100%;
-  /* max-width: 24em; */
-}
-
-#contact form :is(label, textarea) {
-  will-change: transform;
+  max-width: 24em;
 }
 
 #contact form :is(input, textarea) {
@@ -56,7 +54,7 @@
   background-color: var(--pri);
   border: 1px solid var(--pri-d);
   border-radius: var(--radius-s);
-  color: var(--white);
+  color: var(--text-pri);
   padding: 0.5rem 1.5rem;
   height: 3rem;
   transition: all 150ms;
@@ -113,11 +111,6 @@
   transition: border-color 150ms;
 }
 
-#contact .email > * {
-  will-change: transform;
-  z-index: 1;
-}
-
 #contact .email:hover {
   border-color: var(--pri);
 }
@@ -139,12 +132,19 @@
   line-height: 1.5;
 }
 
-#contact .email .icon {
+#contact .email > .icon {
   order: -1;
   color: var(--pri);
   font-size: 2rem;
 }
 
-#contact .email .overlay .icon {
-  color: var(--black);
+@media only screen and (width > 60em) {
+  #app:not(.fullscreen) #contact form :is(label, textarea) {
+    will-change: transform;
+  }
+
+  #app:not(.fullscreen) #contact .email > * {
+    will-change: transform;
+    z-index: 1;
+  }
 }

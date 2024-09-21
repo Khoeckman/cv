@@ -1,12 +1,13 @@
-import { enable3D } from './settings.js'
+import { fullscreen, enable3D } from './settings.js'
 
 const tracker = document.getElementById('tracker')
 const app = document.getElementById('app')
-const aboutList = [...document.querySelectorAll('#personal .personal-info li > *')]
-const languagesTable = [...document.querySelectorAll('#personal .languages')]
+const aboutList = document.querySelectorAll('#personal .personal-info li > *')
+const languagesTable = document.querySelectorAll('#personal .languages')
 const timeline = document.querySelector('#education .timeline')
-const odiseeContent = [...timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')]
-const collapsibleSummaries = [...document.querySelectorAll('.collapsible .toggle-collapse')]
+const odiseeContent = timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')
+const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
+const depthEls = [...aboutList, ...languagesTable, ...odiseeContent, ...collapsibleSummaries]
 
 let currentRotX = 0
 let currentRotY = 0
@@ -15,11 +16,6 @@ let rotY = 0
 
 document.addEventListener('mousemove', e => {
   // Mouse tracker
-  if (window.innerWidth <= 960) {
-    tracker.hidden = true
-    return
-  }
-  tracker.hidden = false
   tracker.style.left = e.pageX + 'px'
   tracker.style.top = e.pageY + 'px'
 
@@ -30,32 +26,39 @@ document.addEventListener('mousemove', e => {
 })
 
 setInterval(() => {
+  // Disable 3D styles when disabled or on mobile
+  if (fullscreen || !enable3D || window.innerWidth <= 960) {
+    app.removeAttribute('style')
+    currentRotX = rotX = 0
+    currentRotY = rotY = 0
+    depth(depthEls, false)
+    return
+  }
+
   rotX += (currentRotX - rotX) / 16
   rotY += (currentRotY - rotY) / 16
-
-  // Disable 3D styles on mobile
-  if (window.innerWidth <= 960) return
 
   // Rotate timeline dots light shine
   timeline.style.setProperty('--shadow-x', (-rotY * 16).toFixed(2) + 'px')
   timeline.style.setProperty('--shadow-y', (-rotX * 16).toFixed(2) + 'px')
 
   // 3D rotation effect towards mouse
-  app.style.transform =
-    'perspective(160rem) rotateX(' + (-rotX * 16).toFixed(2) + 'deg) rotateY(' + (rotY * 16).toFixed(2) + 'deg)'
+  app.style.transform = 'perspective(160rem) rotateX(' + (-rotX * 16).toFixed(2) + 'deg) rotateY(' + (rotY * 16).toFixed(2) + 'deg)'
 
-  depth(aboutList, 6)
-  depth(languagesTable, 6)
-  depth(odiseeContent, 6)
-  depth(collapsibleSummaries, 6)
+  depth(depthEls, 6)
 }, 16)
 
-const depth = (elements, depth) =>
-  [elements]
-    .flat()
-    .forEach(
-      el => (el.style.transform = 'translate(' + (rotY * depth).toFixed(2) + 'px, ' + (rotX * depth).toFixed(2) + 'px)')
-    )
+const depth = (els, depth) => {
+  els = [els].flat()
+
+  if (depth === false) {
+    els.forEach(el => el.style.removeProperty('transform'))
+    return
+  }
+
+  const transform = 'translate(' + (rotY * depth).toFixed(2) + 'px, ' + (rotX * depth).toFixed(2) + 'px)'
+  els.forEach(el => (el.style.transform = transform))
+}
 
 document.addEventListener('mousedown', () => tracker.classList.add('active'))
 document.addEventListener('mouseup', () => tracker.classList.remove('active'))

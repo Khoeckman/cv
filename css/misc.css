@@ -2,6 +2,9 @@
 
 #skip-to-content:not(:focus-visible) {
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   text-indent: -100%;
   white-space: nowrap;
@@ -45,7 +48,7 @@
 
 #loading-screen h2 {
   padding: 0.25rem 5.5rem;
-  width: initial;
+  width: unset;
 }
 
 #loading-screen img {
@@ -130,10 +133,4 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-}
-
-@media only screen and (width <= 60em) {
-  #canvas-particles {
-    display: none;
-  }
 }

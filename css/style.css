@@ -1,17 +1,16 @@
 @import './header/header.css';
 @import './main/main.css';
 @import './misc.css';
-@import './nft.css';
 
-.material-symbols-rounded {
-  user-select: none;
-  display: block;
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-}
+/* COMPLEX HELPER CLASSES */
 
-.material-symbols-rounded.fill {
-  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-}
+@import './helper/button.css';
+@import './helper/checkbox.css';
+@import './helper/collapsible.css';
+@import './helper/fancyLink.css';
+@import './helper/overlay.css';
+@import './helper/progressBar.css';
+@import './helper/timeline.css';
 
 :root {
   isolation: isolate;
@@ -25,9 +24,9 @@
   /* --pri: hsl(209, 69%, 50%); */
   /* --pri-d: hsl(209, 69%, 40%); */
   /* --pri-l: hsl(209, 69%, 60%); */
-  --pri: hsl(200, 100%, 60%);
-  --pri-d: hsl(200, 100%, 40%);
-  --pri-l: hsl(200, 100%, 70%);
+  --pri: hsl(209, 100%, 60%);
+  --pri-d: hsl(209, 100%, 40%);
+  --pri-l: hsl(209, 100%, 70%);
   /* --sec: #ff7; */
   --red: hsl(8, 100%, 50%);
   --red-d: hsl(8, 100%, 40%);
@@ -37,9 +36,13 @@
   --green-l: hsl(128, 100%, 60%);
   --form: hsl(216, 100%, 98%);
 
+  --text-pri: var(--white);
+
   --radius-xs: 0.1rem;
   --radius-s: 0.3rem;
   --radius-m: 0.5rem;
+
+  --scroll-width: 0.6875rem;
 }
 
 html {
@@ -67,7 +70,24 @@ body {
 
 footer {
   color: var(--light-gray);
-  margin-top: 5rem;
+  margin-top: 6rem;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+::-webkit-scrollbar {
+  width: var(--scroll-width);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: var(--scroll-width);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-gray);
 }
 
 *,
@@ -78,13 +98,24 @@ footer {
 
 *::selection {
   background-color: var(--pri);
-  color: var(--white);
+  color: var(--text-pri);
 }
 
 #app > div {
   display: flex;
   background: var(--dark-gray);
   position: relative;
+}
+
+#app .shadow {
+  pointer-events: none;
+  box-shadow: inset 0 2.5rem 1rem -1.25rem var(--dark-gray), inset 0 -2.5rem 1rem -1.25rem var(--dark-gray);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 /* ATOMS */
@@ -128,28 +159,19 @@ svg {
   display: inherit;
 }
 
-/* Custom Checkbox Tags */
+/* SIMPLE HELPER CLASSES */
 
-input[tag][type='checkbox'] {
-  -webkit-appearance: none;
-  appearance: none;
-  /* For iOS < 15 to remove gradient background */
-  background-color: #fff;
-  /* Not removed via appearance */
-  margin: 0;
+.material-symbols-rounded {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: block;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
-/* HELPER CLASSES */
-
-.overlay {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transition: background-color 0.2s ease-in-out;
-  z-index: 1;
+.material-symbols-rounded.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
 .sr-only {
@@ -172,300 +194,26 @@ input[tag][type='checkbox'] {
   padding: 0;
 }
 
-.overlay {
-  -webkit-user-drag: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: inherit;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: background 150ms ease-in-out;
-}
-
-.overlay .icon {
-  font-size: 2rem;
-  color: var(--black);
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-}
-
-.overlay:not(.transparent):is(:hover, :focus-visible) {
-  background-color: #fff9;
-}
-
-.overlay:is(:hover, :focus-visible) .icon {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.overlay.transparent .icon {
-  background-color: #1119;
-  border-radius: 50%;
-  padding: 0.5rem;
-}
-
-.button {
-  background-color: transparent;
-  border: 0.25em solid var(--white);
-  border-radius: var(--radius-s);
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--white);
-  height: 3em;
-  padding: 0 1.5em;
-  transition: background 150ms, border-color 150ms, color 150ms;
-}
-
-.button:is(:hover, :focus-visible) {
-  background-color: var(--pri);
-  border-color: var(--pri);
-  color: var(--black);
-}
-
-.button.error:is(:hover, :focus-visible) {
-  background-color: var(--red);
-  border-color: var(--red);
-  color: var(--white);
-}
-
-.button:active {
-  background-color: var(--pri-d);
-  border-color: var(--pri-d);
-  transition: none;
-}
-
-.button.error:active {
-  background-color: var(--red-d);
-  border-color: var(--red-d);
-}
-
-.button.icon-button {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  padding-left: 1em;
-  width: fit-content;
-}
-
-a.fancy {
-  text-decoration: none;
-  position: relative;
-  margin: 0 -0.1em;
-  padding: 0 0.1em;
-  transition: color 150ms;
-}
-
-a.fancy::before {
-  content: '';
-  display: block;
-  background-color: var(--pri);
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  transition: height 150ms;
-  z-index: -1;
-}
-
-a.fancy:is(:hover, :focus-visible) {
-  color: var(--black);
-}
-
-a.fancy:is(:hover, :focus-visible)::before {
-  content: '';
-  height: 100%;
-}
-
-/* Prgoress bar */
-
-.progress-bar {
-  overflow: hidden;
-  border: 2px solid var(--gray);
-  border-radius: var(--radius-s);
-  font-size: 1rem;
-  position: relative;
-  color: var(--white);
-  width: 100%;
-}
-
-.progress-bar span:first-child {
-  background-color: var(--white);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  transition: width 500ms ease-in-out;
-  z-index: -1;
-}
-
-.progress-bar span:last-child {
-  mix-blend-mode: difference;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-}
-
-/* Collapsible */
-
-.collapsible {
-  --toggle-collapse-height: 4rem;
-}
-
-.collapsible button[aria-controls] {
-  user-select: none;
-  background-color: transparent;
-  border: 0;
-  color: var(--white);
-  padding: 0;
-  opacity: 0;
-}
-
-.collapsible button[aria-controls] + .icon {
-  transition: color 150ms, transform 500ms;
-}
-
-.collapsible :has(button[aria-controls]:is(:hover, :focus-visible)) {
-  border: 1px solid var(--pri);
-}
-
-.collapsible button[aria-controls]:is(:hover, :focus-visible) + .icon {
-  color: var(--pri);
-}
-
-.collapsible:has(.content[aria-hidden='false']) button[aria-controls] + .icon {
-  transform: rotate(180deg);
-}
-
-.collapsible .toggle-collapse {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--black);
-  border: 1px solid var(--gray);
-  border-radius: var(--radius-m);
-  position: relative;
-  padding: 0 1.5rem;
-  height: var(--toggle-collapse-height);
-  z-index: 1;
-  transition: border-color 150ms;
-  will-change: transform;
-}
-
-.collapsible .toggle-collapse h2 {
-  flex: 1;
-  font-size: 1.25rem;
-  margin: 0;
-}
-
-.collapsible .toggle-collapse .icon {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  font-size: 2rem;
-}
-
-.collapsible .toggle-collapse > .icon:last-child {
-  order: -1;
-  color: var(--pri);
-}
-
-.collapsible .content {
-  overflow: hidden;
-  background-color: var(--black);
-  border: 1px solid var(--gray);
-  border-radius: var(--radius-m);
-  margin-top: calc(-1 * var(--toggle-collapse-height));
-  padding: 1rem;
-  padding-top: 0;
-  min-height: var(--toggle-collapse-height);
-  transition: visibility 500ms, padding-top 500ms, height 500ms;
-}
-
-.collapsible .content[aria-hidden='true'] {
-  visibility: collapse;
-}
-
-.collapsible .content[aria-hidden='false'] {
-  padding-top: calc(1rem + var(--toggle-collapse-height));
-}
-
-/* Progress bar */
-
-.image-blur {
-  position: relative;
-}
-
-.image-blur > img:first-child {
-  filter: blur(1rem);
-}
-
-.image-blur > img:last-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* Timeline */
-
-.timeline {
-  position: relative;
-  margin: 1.5rem 0;
-  --shadow-x: 0.3rem;
-  --shadow-y: 0.3rem;
-}
-
-.timeline::after {
-  content: '';
-  background-color: var(--gray);
-  border-radius: 0.6rem; /* = width */
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 1rem;
-  margin-left: -0.3rem;
-  width: 0.6rem;
-}
-
-.timeline li {
-  padding: 2rem 0;
-  position: relative;
-  width: 100%;
-}
-
-/* The circles on the timeline */
-.timeline li::after {
-  content: '';
-  background-color: var(--light-gray);
-  border-radius: 50%;
-  box-shadow: inset var(--shadow-x) var(--shadow-y) 0.5rem #fff,
-    inset calc(0px - var(--shadow-x) / 2) calc(0px - var(--shadow-y) / 2) 0.3rem #0006;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 2rem;
-  height: 2rem;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
-.timeline li > div {
-  background-color: var(--black);
-  border: 1px solid var(--gray);
-  border-radius: var(--radius-s);
-  color: var(--light-gray);
-  position: relative;
-  margin-left: 3rem;
-  padding: 1rem 1.5rem;
-  transition: border-color 150ms;
-}
-
 .observe {
   opacity: 0;
 }
 
-.observed {
+.observed.obs-top {
+  animation: fade-from-top 300ms ease-out forwards;
+}
+
+@keyframes fade-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.observed:not(.obs-top) {
   animation: fade-from-right 300ms ease-out forwards;
 }
 
@@ -483,13 +231,13 @@ a.fancy:is(:hover, :focus-visible)::before {
 /* BREAKPOINTS */
 
 @media only screen and (width > 60em) {
-  #app {
+  #app:not(.fullscreen) {
     margin: auto;
     perspective: 1600rem;
     transform-style: preserve-3d;
   }
 
-  #app > div {
+  #app:not(.fullscreen) > div {
     box-shadow: 0 0 2rem var(--black);
     border-radius: var(--radius-s);
     max-width: 80rem;
@@ -498,13 +246,34 @@ a.fancy:is(:hover, :focus-visible)::before {
     transform-style: preserve-3d;
   }
 
-  #app[data-flip='true'] > div {
+  #app:not(.fullscreen)[data-flip='true'] > div {
     transform: perspective(160rem) rotateY(-180deg);
   }
 
-  #app[data-flip='false'] main:last-of-type,
-  #app[data-flip='true'] :is(header, main:first-of-type) {
+  #app:not(.fullscreen)[data-flip='false'] #settings,
+  #app:not(.fullscreen)[data-flip='true'] :is(header, main .profile, main .container) {
     pointer-events: none;
+  }
+
+  body:has(#app.fullscreen) {
+    overflow: unset;
+    padding: 0;
+  }
+
+  body:has(#app[data-flip='true'].fullscreen) {
+    overflow: hidden;
+  }
+
+  #app.fullscreen {
+    width: 100%;
+  }
+
+  #app.fullscreen > div {
+    flex-direction: column;
+  }
+
+  #app.fullscreen .shadow {
+    display: none;
   }
 }
 
@@ -514,9 +283,13 @@ a.fancy:is(:hover, :focus-visible)::before {
   }
 
   body {
-    overflow-y: auto;
+    overflow: unset;
     padding: 0;
     --scroll-width: 0.6875rem;
+  }
+
+  body:has(#app[data-flip='true']) {
+    overflow: hidden;
   }
 
   ::-webkit-scrollbar {
@@ -530,6 +303,14 @@ a.fancy:is(:hover, :focus-visible)::before {
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--light-gray);
+  }
+
+  #app > div {
+    flex-direction: column;
+  }
+
+  #app .shadow {
+    display: none;
   }
 }
 

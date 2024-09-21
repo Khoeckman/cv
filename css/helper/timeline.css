@@ -1,0 +1,51 @@
+.timeline {
+  position: relative;
+  margin: 1.5rem 0;
+  --shadow-x: 0.3rem;
+  --shadow-y: 0.3rem;
+}
+
+.timeline::after {
+  content: '';
+  background-color: var(--gray);
+  border-radius: 0.6rem; /* = width */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1rem;
+  margin-left: -0.3rem;
+  width: 0.6rem;
+}
+
+.timeline li {
+  padding: 2rem 0;
+  position: relative;
+  width: 100%;
+}
+
+/* The circles on the timeline */
+.timeline li::after {
+  content: '';
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  box-shadow: inset var(--shadow-x) var(--shadow-y) 0.5rem #fff,
+    inset calc(0px - var(--shadow-x) / 2) calc(0px - var(--shadow-y) / 2) 0.3rem #0006;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline li > div {
+  background-color: var(--black);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius-s);
+  color: var(--light-gray);
+  position: relative;
+  margin-left: 3rem;
+  padding: 1rem 1.5rem;
+  transition: border-color 150ms;
+}

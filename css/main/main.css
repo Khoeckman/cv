@@ -1,3 +1,4 @@
+@import 'profile.css';
 @import 'personal.css';
 @import 'education.css';
 @import 'skills.css';
@@ -6,79 +7,59 @@
 @import 'settings.css';
 
 main {
-  display: flex;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
   --scroll-width: 0.6875rem;
-}
-
-main .profile {
   display: flex;
   backface-visibility: hidden;
   position: relative;
-  height: 100%;
-  transform-style: preserve-3d;
 }
 
-main .profile div:last-child {
-  order: -1;
-  background-image: linear-gradient(transparent 75%, var(--black)), url('../../img/profile-ver.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 0 1.5rem var(--black);
-  margin-top: -3rem;
-  width: 28rem;
-  height: calc(100% + 6rem);
-}
-
-main .profile .info {
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  transform: translateZ(2rem);
-}
-
-main .profile .info h1 {
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--black);
-  font-size: 3rem;
-  margin: 0;
-}
-
-main .profile .info p {
-  display: inline-block;
-  background-color: #0009;
-  border-radius: 9rem;
-  font-size: 1.25rem;
-  font-weight: normal;
-  line-height: 1.5;
-  color: var(--pri);
-  padding: 0 1rem;
-  height: 2rem;
-}
-
-main .profile .info ul {
+:is(main .container, #settings) h1 {
   display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding-top: 1.25rem;
 }
 
-main .profile .info li a {
+:is(main, #settings) h1 a {
   display: block;
-  border-radius: 50%;
-  padding: 0.25rem;
-  transition: background 150ms;
+  text-decoration: none;
+  color: var(--white);
 }
 
-main .profile .info li a:is(:hover, :focus-visible) {
-  background-color: #fff3;
+:is(main, #settings) h1 a:focus-visible {
+  outline: thin solid;
 }
 
-main .profile .info li svg {
-  width: 2rem;
-  height: 2rem;
+:is(main, #settings) h1 a:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
+
+:is(main, #settings) h1 a::before {
+  content: '#';
+  display: inline-block;
+  font-size: 0.8em;
+  text-decoration: none;
+  color: var(--pri);
+  line-height: 1;
+  margin-left: -0.8em;
+  width: 0.8em;
+  opacity: 0;
+  transition: opacity 150ms;
+}
+
+:is(main, #settings) h1 a:is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+
+main h1 .icon {
+  font-size: 3rem;
+  color: var(--light-gray);
+  transition: color 150ms;
+}
+
+main :is(section, article):hover > h1 .icon {
+  color: var(--pri);
 }
 
 main .container {
@@ -101,148 +82,63 @@ main .container article:not(:first-child) {
   margin-top: 3.75rem;
 }
 
-main .container article h1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding-top: 1.25rem;
-}
-
-main .container article h1 a {
-  display: block;
-  text-decoration: none;
-  color: var(--white);
-}
-
-main .container article h1 a:focus-visible {
-  outline: thin solid;
-}
-
-main .container article h1 a:is(:hover, :focus-visible) {
-  text-decoration: underline;
-}
-
-main .container article h1 a::before {
-  content: '#';
-  display: inline-block;
-  font-size: 0.8em;
-  text-decoration: none;
-  color: var(--pri);
-  line-height: 1;
-  margin-left: -0.8em;
-  width: 0.8em;
-  opacity: 0;
-  transition: opacity 150ms;
-}
-
-main .container article h1 a:is(:hover, :focus-visible)::before {
-  opacity: 1;
-}
-
-main .container article h1 .icon {
-  font-size: 3rem;
-  color: var(--light-gray);
-  transition: color 150ms;
-}
-
-main .container article:hover h1 .icon {
-  color: var(--pri);
-}
-
-main .container + .shadow {
-  pointer-events: none;
-  box-shadow: inset 0 2.5rem 1rem -1.25rem var(--dark-gray), inset 0 -2.5rem 1rem -1.25rem var(--dark-gray);
-}
-
-@media only screen and (width > 85em) {
-  main .profile {
-    transform: translateZ(2rem);
-  }
-
-  main .container::-webkit-scrollbar {
-    width: var(--scroll-width);
-  }
-
-  main .container::-webkit-scrollbar-thumb {
-    background: var(--gray);
-    border-radius: var(--scroll-width);
-  }
-
-  main .container::-webkit-scrollbar-thumb:hover {
-    background: var(--light-gray);
-  }
-}
-
 @media only screen and (width <= 85em) {
   main {
     scroll-behavior: smooth;
     overflow-x: hidden;
     flex-direction: column;
+    border: 1px solid var(--dark-gray);
   }
 
-  main::-webkit-scrollbar {
+  main .container {
+    overflow: unset;
+    border: 0;
+    padding: 1.5rem 4%;
+  }
+}
+
+@media only screen and (width > 60em) {
+  #app:not(.fullscreen) main {
+    transform-style: preserve-3d;
+  }
+
+  #app.fullscreen main {
+    overflow: unset;
+    flex-direction: column;
+    background-color: var(--dark-gray);
+    border: 0;
+    margin: 0 auto;
+    padding: 0 4%;
+    max-width: calc(60em + 8%);
+  }
+
+  #app.fullscreen main::-webkit-scrollbar {
     width: var(--scroll-width);
   }
 
-  main::-webkit-scrollbar-thumb {
+  #app.fullscreen main::-webkit-scrollbar-thumb {
     background: var(--gray);
     border-radius: var(--scroll-width);
   }
 
-  main::-webkit-scrollbar-thumb:hover {
+  #app.fullscreen main::-webkit-scrollbar-thumb:hover {
     background: var(--light-gray);
   }
 
-  main .profile {
-    width: 100%;
-    height: initial;
-    z-index: 2;
-  }
-
-  main .profile .info {
-    position: static;
-    padding: 1.5rem 0 3rem 0;
-    z-index: 1;
-  }
-
-  main .profile .info ul {
-    margin: 0;
-  }
-
-  main .profile div:last-child {
-    background-image: linear-gradient(transparent, var(--dark-gray)), url(../../img/profile-hor.webp);
-    box-shadow: none;
-    position: absolute;
-    margin-top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  main .container {
-    overflow: initial;
+  #app.fullscreen main .container {
+    overflow: unset;
+    border: 0;
+    padding: 1.5rem 0;
   }
 }
 
 @media only screen and (width <= 60em) {
   main {
-    overflow: initial;
-  }
-
-  main .container {
+    overflow: unset;
     border: 0;
   }
 
-  main .container + .shadow {
-    position: fixed;
-    top: 0;
-    max-height: 100vh;
-  }
-}
-
-@media only screen and (width <= 30em) {
   main .container {
-    padding-right: 1.5em;
-    padding-left: 1.5em;
+    padding-right: max(1.5em, calc(4% - var(--scroll-width)));
   }
 }

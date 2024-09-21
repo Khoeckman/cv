@@ -8,6 +8,7 @@ document.addEventListener('readystatechange', () => {
     loadingScreen.className = 'anim-out'
 
     loadingScreen.addEventListener('animationend', function () {
+      document.body.removeAttribute('style')
       document.body.removeChild(this)
 
       // Scroll animations for education
@@ -25,22 +26,25 @@ document.addEventListener('readystatechange', () => {
       observing.forEach(el => observer.observe(el))
     })
 
-    // Disable backface focus
-    const disableEls =
-      window.location.hash === '#settings'
-        ? [...app.querySelectorAll(':is(header, main:first-of-type) :is(a, button, input, select, textarea')]
-        : [...app.querySelectorAll('main:last-of-type :is(a, button, input, select, textarea')]
-    disableEls.forEach(el => el.setAttribute('tabindex', -1))
-
     // Scroll to url hash
     if (window.location.hash === '' || !(document.querySelector(window.location.hash) instanceof HTMLElement)) return
-    if (window.location.hash === '#settings') app.setAttribute('data-flip', true)
+
+    if (window.location.hash === '#settings') {
+      app.setAttribute('data-flip', true)
+
+      const disableEls = [...app.querySelectorAll(':is(header, main) :is(a, button, input, select, textarea):not(#open-nav)')]
+      disableEls.forEach(el => el.setAttribute('tabindex', -1))
+
+      document.getElementById('close-nav').tabIndex = -1
+      document.querySelector('header nav').ariaExpanded = false
+    }
 
     document.querySelector(window.location.hash).scrollIntoView({ block: 'start', behavior: 'instant' })
     document.querySelector(window.location.hash + ' h1 a').focus()
   }
 })
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.style.overflow = 'hidden'
   document.getElementById('loading-screen').className = ''
 
   const observed = document.querySelectorAll('.observe')
@@ -48,8 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const languagesTable = document.querySelectorAll('#personal .languages')
   const hobbies = document.querySelectorAll('#personal .hobbies li')
   const timelineElements = document.querySelectorAll('#education .timeline li > div')
-  const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
 
-  observing = [...observed, ...aboutList, ...languagesTable, ...hobbies, ...timelineElements, ...collapsibleSummaries]
+  observing = [...observed, ...aboutList, ...languagesTable, ...hobbies, ...timelineElements]
   observing.forEach(el => el.classList.add('observe'))
 })

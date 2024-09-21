@@ -9,7 +9,6 @@ header {
 
 header nav {
   height: 100%;
-  max-height: calc(100vh - 3rem);
 }
 
 header nav ul {
@@ -106,6 +105,90 @@ header nav li:last-child .icon {
 #open-nav,
 #close-nav {
   display: none;
+  border: 0;
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  box-shadow: 0 0 0.9rem 0.1rem var(--dark-gray);
+  position: fixed;
+  top: 1.5rem;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  transition: color 300ms ease-in-out, left 300ms ease-in-out, opacity 300ms ease-in-out, filter 150ms;
+}
+
+#open-nav span,
+#close-na span {
+  font-size: 1.75rem;
+}
+
+@media only screen and (width > 60em) {
+  #app.fullscreen header {
+    background-color: var(--dark-gray);
+    box-shadow: 0 0 1rem var(--black);
+    position: fixed;
+    top: 0;
+    --header-width: 8rem;
+    left: calc(0px - var(--header-width));
+    padding-bottom: 4rem;
+    width: var(--header-width);
+    height: 100vh;
+    opacity: 0.95;
+    transition: left 300ms ease-in-out;
+  }
+
+  #app.fullscreen header nav ul {
+    gap: 3rem;
+  }
+
+  #app.fullscreen header nav img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  #app.fullscreen header:has(nav[aria-expanded='true']) {
+    left: 0;
+  }
+
+  #app.fullscreen :is(#open-nav, #close-nav) {
+    display: unset;
+  }
+
+  #app.fullscreen #open-nav {
+    background: var(--pri);
+    color: var(--text-pri);
+  }
+
+  #app.fullscreen #close-nav {
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--dark-gray), var(--red));
+    color: var(--white);
+    opacity: 0;
+  }
+
+  #app.fullscreen :is(#open-nav, #close-nav):is(:hover, :focus-visible) {
+    filter: brightness(1.2);
+  }
+
+  #app.fullscreen :is(#open-nav, #close-nav):active {
+    filter: brightness(0.8);
+  }
+
+  #app.fullscreen header nav[aria-expanded='true'] ~ #open-nav {
+    pointer-events: none;
+    left: var(--header-width);
+  }
+
+  #app.fullscreen header nav[aria-expanded='true'] ~ #close-nav {
+    pointer-events: unset;
+    left: var(--header-width);
+    opacity: 1;
+  }
+}
+
+@media only screen and (width > 60em) and (height <= 42.5em) {
+  #app.fullscreen header nav ul {
+    gap: 1rem;
+  }
 }
 
 @media only screen and (width <= 60em) {
@@ -115,7 +198,7 @@ header nav li:last-child .icon {
     position: fixed;
     top: 0;
     --header-width: 8rem;
-    left: calc(0% - var(--header-width));
+    left: calc(0px - var(--header-width));
     padding-bottom: 4rem;
     width: var(--header-width);
     height: 100vh;
@@ -138,35 +221,26 @@ header nav li:last-child .icon {
 
   #open-nav,
   #close-nav {
-    display: initial;
-    border: 0;
-    border-radius: 0 var(--radius-s) var(--radius-s) 0;
-    box-shadow: 0 0 0.9rem 0.1rem var(--dark-gray);
-    position: fixed;
-    top: 1.5rem;
-    left: 0;
-    width: 3rem;
-    height: 3rem;
-    transition: color 300ms ease-in-out, left 300ms ease-in-out, opacity 300ms ease-in-out, filter 150ms;
+    display: unset;
   }
 
-  header #open-nav {
+  #open-nav {
     background: var(--pri);
-    color: var(--black);
+    color: var(--text-pri);
   }
 
-  header #close-nav {
+  #close-nav {
     pointer-events: none;
     background: linear-gradient(90deg, var(--dark-gray), var(--red));
     color: var(--white);
     opacity: 0;
   }
 
-  header :is(#open-nav, #close-nav):is(:hover, :focus-visible) {
+  :is(#open-nav, #close-nav):is(:hover, :focus-visible) {
     filter: brightness(1.2);
   }
 
-  header :is(#open-nav, #close-nav):active {
+  :is(#open-nav, #close-nav):active {
     filter: brightness(0.8);
   }
 
@@ -176,7 +250,7 @@ header nav li:last-child .icon {
   }
 
   header nav[aria-expanded='true'] ~ #close-nav {
-    pointer-events: initial;
+    pointer-events: unset;
     left: var(--header-width);
     opacity: 1;
   }

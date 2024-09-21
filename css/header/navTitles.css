@@ -38,7 +38,7 @@ header nav li:nth-child(7)::after {
 }
 
 @media only screen and (width > 60em) {
-  header nav li::after {
+  #app:not(.fullscreen) header nav li::after {
     background-color: #0009;
     font-size: 0.8rem;
     top: 50%;
@@ -48,9 +48,27 @@ header nav li:nth-child(7)::after {
     transition: opacity 150ms, transform 150ms;
   }
 
-  header nav li:is(:hover, :focus-visible)::after {
+  #app:not(.fullscreen) header nav li:is(:hover, :focus-visible)::after {
     opacity: 1;
     transform: translateY(-50%) translateZ(0);
+  }
+
+  #app.fullscreen header nav li::after {
+    font-weight: 700;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateZ(0);
+    transition: color 150ms, opacity 150ms, transform 150ms;
+  }
+
+  #app.fullscreen header nav li.active::after {
+    color: var(--pri);
+  }
+}
+
+@media only screen and (width > 60em) and (height <= 42.5em) {
+  #app.fullscreen header nav li:not(:last-child)::after {
+    opacity: 0;
   }
 }
 
@@ -59,7 +77,7 @@ header nav li:nth-child(7)::after {
     font-weight: 700;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateZ(0);
+    transform: translateX(-50%);
     transition: color 150ms, opacity 150ms, transform 150ms;
   }
 

@@ -41,7 +41,6 @@
   background-color: #fffb;
   border-radius: var(--radius-s);
   padding: 0.25rem 0.5rem;
-  will-change: transform;
 }
 
 #education .timeline .odisee > div > p {
@@ -51,4 +50,10 @@
 
 #education .timeline .odisee > div:hover {
   border-color: var(--white);
+}
+
+@media only screen and (width > 60em) {
+  #app:not(.fullscreen) #education .timeline .odisee > div :is(h2, h2 + span, p) {
+    will-change: transform;
+  }
 }
