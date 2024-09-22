@@ -100,15 +100,21 @@ function toggleCollapse(el, expand = undefined) {
 }
 
 function reflowCollapseContent(content, expand, forced = false) {
-  const height = `calc(${content.scrollHeight}px + 1rem + ${getComputedStyle(content).getPropertyValue('--toggle-collapse-height')})`
+  content.ariaHidden = !expand
+
+  if (!expand) {
+    content.style.setProperty('height', 0)
+    return
+  }
+
+  let height = `calc(${content.scrollHeight}px + 1rem + ${getComputedStyle(content).getPropertyValue('--toggle-collapse-height')})`
 
   if (forced) {
     content.style.removeProperty('height')
     height = `calc(${content.scrollHeight}px + 1rem)`
   }
 
-  content.style.setProperty('height', expand ? height : 0)
-  content.ariaHidden = !expand
+  content.style.setProperty('height', height)
 }
 
 collapsibleContent.forEach(el =>

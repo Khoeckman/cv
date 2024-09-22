@@ -7,7 +7,11 @@ important:
   - 'make profile image scroll on desktop'
 
 problems:
-  - 'skills doesnt keep height perfectly when resizing'
+  - 'height on expandables in not perfect when resizing'
+  - 'shadow is not fixed on 60-85em'
+  - 'navbar opens when to mobile'
+  - 'expandable takes height when to desktop while remaining closed'
+  - 'window jumps up and down when toggling settings'
   - 'not responsive on desktop with less height'
 
 important extra:

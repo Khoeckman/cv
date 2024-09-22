@@ -48,7 +48,7 @@ header nav li:nth-child(7)::after {
     transition: opacity 150ms, transform 150ms;
   }
 
-  #app:not(.fullscreen) header nav li:is(:hover, :focus-visible)::after {
+  #app:not(.fullscreen) header nav li:is(:hover, :focus-within)::after {
     opacity: 1;
     transform: translateY(-50%) translateZ(0);
   }
