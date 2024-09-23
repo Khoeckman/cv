@@ -1,50 +1,73 @@
-#portfolio a {
+#portfolio > a.button {
   margin-top: 1.5rem;
 }
 
 #portfolio .projects {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
-  gap: 1.5rem;
+  gap: 3rem 1.5rem;
 }
 
 #portfolio .projects li {
   overflow: hidden;
-  flex: 0 1 calc(50% - 1.5rem);
+  flex: 1 0 max(17rem, calc(50% - 1.5rem));
   display: flex;
+  background-color: var(--black);
   border-radius: var(--radius-m);
   flex-direction: column;
   position: relative;
-  height: 24rem;
+  height: 28rem;
+  will-change: transform;
 }
 
 #portfolio .projects li div {
-  background-color: var(--white);
-  border-top-left-radius: var(--radius-m);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  background-color: #fffc;
+  border-radius: var(--radius-m);
+  border-top-right-radius: 0;
   color: var(--black);
   position: absolute;
-  top: 100%;
-  padding: 1rem;
+  bottom: -50%;
+  padding: 1.5rem;
   width: 100%;
   height: 50%;
-  opacity: 0.8;
-  transition: top 300ms;
-}
-
-#portfolio .projects li div :is(h3, p) {
-  opacity: 0;
-  transition: opacity 300ms, transform 300ms;
-  transform: translateY(1.5rem);
+  transition: bottom 300ms;
+  z-index: 2;
 }
 
 #portfolio .projects li div h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  color: var(--white);
+  margin: 0 0 0.5rem 0;
+  transition: color 300ms, transform 250ms 50ms;
+  transform: translateY(-5rem);
 }
 
 #portfolio .projects li div p {
   margin: 0;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+  transition-delay: 250ms;
+  transform: translateY(1.5rem);
+}
+
+#portfolio .projects li div p.year {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  transition-delay: 300ms;
+}
+
+#portfolio .projects li div p.year span {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  color: var(--pri);
 }
 
 #portfolio .projects li img {
@@ -52,18 +75,59 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+  transition: transform 300ms;
+  transform-origin: 50% 100%;
 }
 
-#portfolio .projects li:is(:hover, :focus-visible) div {
-  top: 50%;
+#portfolio .projects li .fancy {
+  pointer-events: all;
 }
 
-#portfolio .projects li:not(:is(:hover, :focus-visible)) div {
-  transition-delay: 200ms;
+#portfolio .projects li .overlay {
+  justify-content: flex-end;
+  align-items: flex-start;
+  background: linear-gradient(180deg, #0000, #0000 50%, #000d);
+  padding: 1rem;
 }
 
-#portfolio .projects li:is(:hover, :focus-visible) div :is(h3, p) {
-  opacity: 1;
-  transition-delay: 200ms;
+#portfolio .projects li .overlay .icon {
+  background-color: #fffc;
+}
+
+#portfolio .projects li:has(.overlay:is(:focus-visible)) {
+  box-shadow: 0 0 0 2px var(--pri);
+}
+
+#portfolio .projects li:is(:hover, :focus-visible, :focus-within) div {
+  bottom: 0;
+}
+
+#portfolio .projects li:is(:hover, :focus-visible, :focus-within) div h3 {
+  color: var(--black);
   transform: none;
+}
+
+#portfolio .projects li:is(:hover, :focus-visible, :focus-within) div p {
+  opacity: 1;
+  transform: none;
+}
+
+#portfolio .projects li:is(:hover, :focus-visible, :focus-within) img {
+  transform: scale(1.1);
+}
+
+@media only screen and (width <= 60em) {
+  #portfolio .projects li div {
+    bottom: 0;
+  }
+
+  #portfolio .projects li div h3 {
+    color: var(--black);
+    transform: none;
+  }
+
+  #portfolio .projects li div p {
+    opacity: 1;
+    transform: none;
+  }
 }

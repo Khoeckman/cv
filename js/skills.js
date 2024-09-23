@@ -1,7 +1,9 @@
+import { computeArticleOffsets } from './nav.js'
+
 const programmingSkills = [
   { name: 'HTML5', imgName: 'html5', tags: ['markup', 'front'], skill: 100, fun: 100, usingSince: 2016 },
-  { name: 'CSS3', imgName: 'css3', tags: ['markup', 'design', 'front'], skill: 95, fun: 100, usingSince: 2018 },
-  { name: 'JavaScript', imgName: 'js', tags: ['lang', 'front'], skill: 95, fun: 100, usingSince: 2018 },
+  { name: 'CSS3', imgName: 'css3', tags: ['markup', 'design', 'front'], skill: 95, fun: 100, usingSince: 2019 },
+  { name: 'JavaScript', imgName: 'js', tags: ['lang', 'front'], skill: 95, fun: 100, usingSince: 2019 },
   { name: 'Vue.js', imgName: 'vue-js', tags: ['fw', 'front'], skill: 70, fun: 90, usingSince: 2024 },
   { name: 'Vite', imgName: 'vite', tags: ['front'], skill: 60, fun: '?', usingSince: 2023 },
   { name: 'Node.js', imgName: 'node-js', tags: ['fw', 'back'], skill: 80, fun: 95, usingSince: 2021 },
@@ -110,6 +112,8 @@ filterForm.addEventListener('click', e => {
   const content = filterForm.closest('.content')
   content.removeAttribute('style')
   content.style.height = content.scrollHeight + 'px'
+
+  computeArticleOffsets()
 })
 psFilter('lang')
 

@@ -48,6 +48,10 @@
   justify-content: flex-end;
 }
 
+#personal .personal-info li:has(.overlay) h3 {
+  text-decoration: underline;
+}
+
 #personal .personal-info li:nth-child(2) img {
   order: -1;
   width: 2rem;

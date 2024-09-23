@@ -61,7 +61,9 @@ const resetCSSTransition = (...elements) =>
   })
 
 window.addEventListener('resize', () => {
-  collapsibleContent.forEach(content => reflowCollapseContent(content, true, true))
+  collapsibleContent.forEach(content => {
+    if (content.ariaHidden === 'false') reflowCollapseContent(content, true, true)
+  })
 
   if ((oldWidth > 960) ^ (window.innerWidth > 960)) {
     const windowed = isWindowed()
@@ -111,7 +113,7 @@ function reflowCollapseContent(content, expand, forced = false) {
 
   if (forced) {
     content.style.removeProperty('height')
-    height = `calc(${content.scrollHeight}px + 1rem)`
+    height = `calc(${content.scrollHeight}px)`
   }
 
   content.style.setProperty('height', height)

@@ -62,9 +62,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --mx: 9rem;
-  --my: 6rem;
-  padding: var(--my) var(--mx);
+  padding: 3rem 9rem;
   min-height: 100vh;
 }
 
@@ -115,7 +113,7 @@ footer p {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 9;
 }
 
 /* ATOMS */
@@ -231,6 +229,23 @@ svg {
 /* BREAKPOINTS */
 
 @media only screen and (width > 60em) {
+  body:has(#app.fullscreen) {
+    overflow: unset;
+    padding: 0;
+  }
+
+  body:has(#app:not(.fullscreen)) {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+  }
+
+  body:has(#app[data-flip='true'].fullscreen) {
+    overflow: hidden;
+  }
+
   #app:not(.fullscreen) {
     margin: auto;
     perspective: 1600rem;
@@ -241,7 +256,7 @@ svg {
     box-shadow: 0 0 2rem var(--black);
     border-radius: var(--radius-s);
     max-width: 80rem;
-    height: 45.5rem;
+    height: clamp(28.5rem, calc(100vh - 9rem), 45.5rem);
     transition: transform 2s ease;
     transform-style: preserve-3d;
   }
@@ -253,15 +268,6 @@ svg {
   #app:not(.fullscreen)[data-flip='false'] #settings,
   #app:not(.fullscreen)[data-flip='true'] :is(header, main .profile, main .container) {
     pointer-events: none;
-  }
-
-  body:has(#app.fullscreen) {
-    overflow: unset;
-    padding: 0;
-  }
-
-  body:has(#app[data-flip='true'].fullscreen) {
-    overflow: hidden;
   }
 
   #app.fullscreen {

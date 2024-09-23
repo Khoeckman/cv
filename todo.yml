@@ -1,18 +1,12 @@
 first:
-  - 'cards for portfolio'
 
 important:
-  - 'reset active nav button on resize (layout height change)'
   - 'place nav buttons ::after in span for semantics'
   - 'make profile image scroll on desktop'
 
 problems:
-  - 'height on expandables in not perfect when resizing'
-  - 'shadow is not fixed on 60-85em'
-  - 'navbar opens when to mobile'
-  - 'expandable takes height when to desktop while remaining closed'
-  - 'window jumps up and down when toggling settings'
-  - 'not responsive on desktop with less height'
+  - 'skills backface hidden doesnt work on firefox'
+  - 'navbar opens when to mobile (auto fix?)'
 
 important extra:
   - 'prevent psFilter moving scroll pos'
@@ -26,5 +20,4 @@ extra:
   - 'code reuseability on load.js'
 
 other:
-  - 'add weatherfy and horseacademy to portfolio'
-  - 'grid van cubes 22.5deg gedraaid (dus geen recht grid). ze gaan met golven en randomness omhooog en omlaag in (fake) 3D. Muis laat blokjes erond omhoog gaan'
+  - 'grid van cubes 22.5deg gedraaid. ze gaan met golven en randomness omhooog en omlaag in (fake) 3D. Muis laat blokjes erond omhoog gaan'

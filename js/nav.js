@@ -5,41 +5,42 @@ const container = main.querySelector('.container')
 const articles = [...container.querySelectorAll('article')]
 
 let articleOffsets
-computeArticleOffsets()
+
+const odiseeImage = document.querySelector('#education .timeline .odisee > div')
+let debounceNav
+
+export const scrollEventHandler = el => {
+  const scrollTop = el.scrollTop
+
+  // Odisee image parallax effect
+  odiseeImage.style.backgroundPosition = 'center ' + -scrollTop / 5 + '%'
+
+  // Auto update active nav button 500ms after last event
+  clearTimeout(debounceNav)
+
+  debounceNav = setTimeout(() => {
+    for (let article of articleOffsets) {
+      if (article.offsetTop <= scrollTop) {
+        nav.querySelector('.active').removeAttribute('class')
+        article.navButton.classList.add('active')
+
+        // Update url with current article
+        history?.pushState(null, null, article.navButton.children[0].hash)
+        break
+      }
+    }
+  }, 500)
+}
 
 document.addEventListener('readystatechange', () => {
   if (document.readyState === 'complete') {
-    // Auto change active nav button on scroll
+    // Auto change active nav button on scroll or resize
+    window.addEventListener('resize', computeArticleOffsets)
+    computeArticleOffsets()
 
-    const odiseeImage = document.querySelector('#education .timeline .odisee > div')
-    let debounceNav
-
-    const scrollEventHandler = scrollTop => {
-      // Odisee image parallax effect
-      odiseeImage.style.backgroundPosition = 'center ' + -scrollTop / 5 + '%'
-
-      // Auto update active nav button on scroll
-      clearTimeout(debounceNav)
-
-      debounceNav = setTimeout(() => {
-        for (let article of articleOffsets) {
-          if (article.offsetTop <= scrollTop) {
-            nav.querySelector('.active').removeAttribute('class')
-            article.navButton.classList.add('active')
-
-            // Update url with current article
-            history?.pushState(null, null, article.navButton.children[0].hash)
-            break
-          }
-        }
-      }, 500)
-    }
-
-    document.addEventListener('resize', () => (articleOffsets = computeArticleOffsets()))
-
-    document.addEventListener('scroll', () => scrollEventHandler(document.documentElement.scrollTop))
-    main.addEventListener('scroll', () => scrollEventHandler(main.scrollTop))
-    container.addEventListener('scroll', () => scrollEventHandler(container.scrollTop))
+    document.addEventListener('scroll', () => scrollEventHandler(document.documentElement))
+    main.addEventListener('scroll', () => scrollEventHandler(main))
+    container.addEventListener('scroll', () => scrollEventHandler(container))
   }
 })
 
@@ -52,11 +53,10 @@ export function computeArticleOffsets() {
       .getComputedStyle(container)
       .getPropertyValue('padding-top')
       .match(/(\d*)([\s\S]*)/)[1]
-    const threshold = Math.min(~~(window.innerHeight * 0.25), ~~(container.offsetHeight * 0.5))
 
     titles.unshift({
       navButton: nav.querySelector('ul').children[i],
-      offsetTop: article.offsetTop - paddingTop - threshold, // Select next article when its scrolled past ${treshold}% of the container
+      offsetTop: article.offsetTop - paddingTop - window.innerHeight * 0.25, // Select next article when its scrolled past 25% of the container
     })
     i++
   }

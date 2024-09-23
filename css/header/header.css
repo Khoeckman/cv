@@ -117,7 +117,7 @@ header nav li:last-child .icon {
 }
 
 #open-nav span,
-#close-na span {
+#close-nav span {
   font-size: 1.75rem;
 }
 
@@ -204,6 +204,7 @@ header nav li:last-child .icon {
     height: 100vh;
     opacity: 0.95;
     transition: left 300ms ease-in-out;
+    z-index: 10;
   }
 
   header nav ul {

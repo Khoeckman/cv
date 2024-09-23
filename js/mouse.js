@@ -7,7 +7,8 @@ const languagesTable = document.querySelectorAll('#personal .languages')
 const timeline = document.querySelector('#education .timeline')
 const odiseeContent = timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')
 const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
-const depthEls = [...aboutList, ...languagesTable, ...odiseeContent, ...collapsibleSummaries]
+const settingsLabels = document.querySelectorAll('#settings form label > :is(span, input, select)')
+const depthEls = [...aboutList, ...languagesTable, ...odiseeContent, ...collapsibleSummaries, ...settingsLabels]
 
 let currentRotX = 0
 let currentRotY = 0

@@ -8,15 +8,6 @@
   padding: 1.5rem;
 }
 
-/* TEMP DISABLE */
-
-#contact form {
-  cursor: not-allowed;
-  pointer-events: none;
-  position: relative;
-  filter: brightness(0.25);
-}
-
 #contact form :is(label, button) {
   font-family: -apple-system, BlinkMacSystemFont, 'Mukta Malar', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
@@ -27,7 +18,7 @@
   min-height: 5rem;
 }
 
-#contact form :is(label, input, textarea, button) {
+#contact form :is(div, label, input, textarea, button) {
   padding-bottom: 0.25rem;
   width: 100%;
   max-width: 24em;
@@ -67,6 +58,21 @@
 #contact form button:active {
   background-color: var(--pri-d);
   transition: none;
+}
+
+#contact form .message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--red);
+  border-radius: var(--radius-s);
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.5rem;
+}
+
+#contact form .message[hidden] {
+  display: none;
 }
 
 #contact .hr {

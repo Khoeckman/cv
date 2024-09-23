@@ -11,6 +11,7 @@ main {
   display: flex;
   backface-visibility: hidden;
   position: relative;
+  transform-style: preserve-3d;
 }
 
 :is(main .container, #settings) h1 {
@@ -62,6 +63,10 @@ main :is(section, article):hover > h1 .icon {
   color: var(--pri);
 }
 
+main.disable3d {
+  transform-style: unset;
+}
+
 main .container {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -88,6 +93,7 @@ main .container article:not(:first-child) {
     overflow-x: hidden;
     flex-direction: column;
     border: 1px solid var(--dark-gray);
+    transform-style: unset;
   }
 
   main .container {
@@ -98,10 +104,6 @@ main .container article:not(:first-child) {
 }
 
 @media only screen and (width > 60em) {
-  #app:not(.fullscreen) main {
-    transform-style: preserve-3d;
-  }
-
   #app.fullscreen main {
     overflow: unset;
     flex-direction: column;

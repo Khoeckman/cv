@@ -1,7 +1,9 @@
-import { closeNav } from './nav.js'
+import { scrollEventHandler, closeNav } from './nav.js'
 import { canvas } from './initParticles.js'
 
 const app = document.getElementById('app')
+const main = document.querySelector('main')
+const container = main.querySelector('.container')
 const form = document.querySelector('#settings form')
 if (!(form instanceof HTMLFormElement)) console.error('Form element not found')
 
@@ -52,11 +54,13 @@ const saveToStorage = () => {
   if (fullscreen) app.classList.add('fullscreen')
   else {
     app.removeAttribute('class')
-    window.scrollTo({ top: 1, left: 0, behavior: 'instant' })
   }
 
   if (isWindowed()) canvas.start()
   else canvas.stop()
+
+  if (enable3D) main.removeAttribute('class')
+  else main.classList.add('disable3d')
 
   if (rainbow) animateHue()
 
@@ -117,6 +121,12 @@ exitSettingsButton.addEventListener('click', () => {
 
   backFocuseable.forEach(el => el.setAttribute('tabindex', -1))
   frontFocuseable.forEach(el => el.removeAttribute('tabindex'))
+
+  // Use trickery to find out which container is currently being used 🤕
+  // Set url hash to active article
+  const activeScrollEls = [document.documentElement, main, container]
+  const scrollTop = activeScrollEls.map(el => el.scrollTop)
+  scrollEventHandler(activeScrollEls[scrollTop.indexOf(Math.max(...scrollTop))])
 
   loadFromStorage()
 })
