@@ -1,4 +1,4 @@
-import canvasParticles from './canvasParticles.js'
+import CanvasParticles from './canvasParticles.js'
 
 // Init particles
 const selector = '#canvas-particles'
@@ -14,7 +14,7 @@ const options = {
   },
 
   particles: {
-    color: '#88c8ffa0',
+    color: '#88c8ff',
     ppm: 70,
     relSpeed: 0.8,
     rotationSpeed: 1,
@@ -26,4 +26,4 @@ const options = {
   },
 }
 
-export const canvas = new canvasParticles(selector, options)
+export const canvas = new CanvasParticles(selector, options)

@@ -4,15 +4,7 @@
 'use strict'
 
 /**
- * Interactive particles on a javaScript canvas.
- *
- * @param {string} selector querySelector for the canvas
- * @param {object} options https://github.com/Khoeckman/canvasParticles#readme
- * @returns {canvasParticles} canvasParticles class
- */
-
-/**
- * A class to create, animate, and manage particles within an HTML5 canvas element.
+ * Visualize, animate and customize particles within an HTML5 canvas element.
  * Particles are animated with properties like velocity, gravity, and can interact with the mouse.
  */
 export default class canvasParticles {
@@ -24,7 +16,7 @@ export default class canvasParticles {
    *
    * @param {Object} options - The configuration options for the particle system.
    * @param {string} [options.background='transparent'] - Background of the canvas. Can be any CSS-supported value for the background property.
-   * @param {number} [options.framesPerUpdate=1] - The particles will update every `refreshRate / framesPerUpdate`.
+   * @param {number} [options.framesPerUpdate=1] - The particles will update every 'refreshRate / framesPerUpdate'.
    * Example: 60 fps / 2 framesPerUpdate = 30 updates/s; 144 fps / 3 framesPerUpdate = 48 updates/s.
    * Recommended values: 1 - 3.
    *
@@ -38,7 +30,7 @@ export default class canvasParticles {
    * 2 = The mouse can actually move the particles.
    * NOTE: mouse.distRatio should be less than 1 to allow dragging, closer to 0 is easier to drag
    *
-   * @param {number} [options.mouse.connectDistMult=2/3] - The maximum distance for the mouse to interact with the particles. This value is multiplied by `particles.connectDistance`.
+   * @param {number} [options.mouse.connectDistMult=2/3] - The maximum distance for the mouse to interact with the particles. This value is multiplied by 'particles.connectDistance'.
    * @param {number} [options.mouse.distRatio=2/3] - All particles within `mouse.connectDistance / distRatio` pixels from the mouse will be drawn towards the mouse.
    * Example: 150 connectDistance / 0.4 distRatio = all particles within a 375-pixel radius.
    * NOTE: Keep this value above mouse.connectDistMult
@@ -74,12 +66,13 @@ export default class canvasParticles {
    */
 
   constructor(selector = 'canvas', options = {}) {
-    // If canvas can not be selected
+    // Find and initialize canvas
     if (typeof selector !== 'string') throw new TypeError('selector is not a string')
-    if (!(document.querySelector(selector) instanceof Element)) throw new ReferenceError('selector is not defined')
 
-    // Initialize canvas
     this.canvas = document.querySelector(selector)
+    if (!(this.canvas instanceof HTMLCanvasElement)) throw new ReferenceError('selector does not point to a HTMLCanvasElement')
+
+    // Get 2d drawing functions
     this.ctx = this.canvas.getContext('2d')
 
     // Format and store options
@@ -89,7 +82,7 @@ export default class canvasParticles {
       resetOnResize: !!(options.resetOnResize ?? true),
       mouse: {
         interactionType: +(options.mouse?.interactionType ?? 1),
-        connectDist: +(options.mouse?.connectDistMult ?? 2 / 3),
+        connectDistMult: +(options.mouse?.connectDistMult ?? 2 / 3),
         distRatio: +(options.mouse?.distRatio ?? 2 / 3),
       },
       particles: {
@@ -108,11 +101,11 @@ export default class canvasParticles {
       },
     }
 
-    // Use default value if user value could not be formatted
+    // Use default value if number could not be formatted
     if (isNaN(this.options.framesPerUpdate)) this.options.framesPerUpdate = 1
 
     if (isNaN(this.options.mouse.interactionType)) this.options.mouse.interactionType = 1
-    if (isNaN(this.options.mouse.connectDist)) this.options.mouse.connectDist = 2 / 3
+    if (isNaN(this.options.mouse.connectDistMult)) this.options.mouse.connectDistMult = 2 / 3
     if (isNaN(this.options.mouse.distRatio)) this.options.mouse.distRatio = 2 / 3
 
     if (isNaN(this.options.particles.ppm)) this.options.particles.ppm = 100
@@ -126,7 +119,9 @@ export default class canvasParticles {
     if (isNaN(this.options.gravity.pulling)) this.options.gravity.pulling = 0
     if (isNaN(this.options.gravity.friction)) this.options.gravity.friction = 0.9
 
-    this.options.mouse.connectDist *= this.options.particles.connectDist
+    // Transform distance multiplier to absolute distance
+    this.options.mouse.connectDist = this.options.particles.connectDist * this.options.mouse.connectDistMult
+    delete this.options.mouse.connectDistMult
 
     // Format particle color and opacity
     this.ctx.fillStyle = this.options.particles.color
@@ -158,15 +153,22 @@ export default class canvasParticles {
       this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
     })
 
-    window.addEventListener('wheel', event => {
+    // window.addEventListener('wheel', event => {
+    //   if (!this.animating) return
+
+    //   let updateScrollPosition = setInterval(() => {
+    //     this.mouseX = event.clientX - this.canvas.offsetLeft + window.scrollX
+    //     this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
+    //   }, 1000 / this.options.framesPerUpdate)
+
+    //   setTimeout(() => clearInterval(updateScrollPosition), 100)
+    // })
+
+    window.addEventListener('scroll', event => {
       if (!this.animating) return
 
-      let updateScrollPosition = setInterval(() => {
-        this.mouseX = event.clientX - this.canvas.offsetLeft + window.scrollX
-        this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
-      }, 1000 / this.options.framesPerUpdate)
-
-      setTimeout(() => clearInterval(updateScrollPosition), 100)
+      this.mouseX = event.clientX - this.canvas.offsetLeft + window.scrollX
+      this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
     })
 
     this.start()

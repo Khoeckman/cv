@@ -47,7 +47,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: /* url('/img/ibrahim-mushan-qnjKufYqIIE-unsplash.jpg'), */ var(--dark-gray);
+  background: var(--dark-gray);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

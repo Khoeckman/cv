@@ -11,7 +11,7 @@ main.disable3d .profile {
 
 main .profile .image {
   order: -1;
-  background-image: linear-gradient(transparent 75%, var(--black)), url('../../img/profile-ver.webp');
+  background-image: linear-gradient(transparent 75%, var(--black)), url(../../img/profile/profile-ver.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -92,7 +92,7 @@ main .profile .info li svg {
   }
 
   main .profile .image {
-    background-image: linear-gradient(transparent, var(--dark-gray)), url(../../img/profile-hor.webp);
+    background-image: linear-gradient(transparent, var(--dark-gray)), url(../../img/profile/profile-hor.webp);
     box-shadow: none;
     position: absolute;
     margin-top: 0;
@@ -125,7 +125,7 @@ main .profile .info li svg {
   }
 
   #app.fullscreen main .profile .image {
-    background-image: linear-gradient(transparent, var(--dark-gray)), url(../../img/profile-hor.webp);
+    background-image: linear-gradient(transparent, var(--dark-gray)), url(../../img/profile/profile-hor.webp);
     box-shadow: none;
     position: absolute;
     margin-top: 0;

@@ -21,7 +21,7 @@ document.addEventListener('readystatechange', () => {
             }
           })
         },
-        { threshold: 0.75 }
+        { threshold: 0.6 }
       )
       observing.forEach(el => observer.observe(el))
     })

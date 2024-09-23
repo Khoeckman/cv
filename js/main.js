@@ -155,3 +155,15 @@ setInterval(() => {
   }, 50)
 }, 1000)
 updateAge()
+
+// Form error message
+
+const form = document.querySelector('#contact form')
+const message = form.querySelector('.message')
+
+const showFormError = e => {
+  if (e.target.matches('button, input, textarea')) message.removeAttribute('hidden')
+}
+
+form.addEventListener('click', showFormError)
+form.addEventListener('focusin', showFormError)
