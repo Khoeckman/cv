@@ -1,70 +1,23 @@
-// Copyright (c) 2023 Kyle Hoeckman, MIT License
+// Copyright (c) 2022 - 2024 Kyle Hoeckman, MIT License
 // https://github.com/Khoeckman/canvasParticles/blob/main/LICENSE
 
 'use strict'
 
 /**
- * Visualize, animate and customize particles within an HTML5 canvas element.
- * Particles are animated with properties like velocity, gravity, and can interact with the mouse.
+ * In an HTML canvas, a bunch of floating particles are drawn that connect with a line when they are close to eachother.
+ * Creating a smooth, interactive background by simply placing a canvas over the background.
+ * Colors, interaction, gravity and other complex settings can be customized!
+ *
+ * @module CanvasParticles
  */
-export default class canvasParticles {
-  /**
-   * Creates a new canvasParticles instance.
-   * @param {string} [selector='canvas'] - The CSS selector for the canvas element. Defaults to 'canvas'.
-   * @param {Object} [options={}] - Configuration options for the particles and their behavior.
-   *
-   *
-   * @param {Object} options - The configuration options for the particle system.
-   * @param {string} [options.background='transparent'] - Background of the canvas. Can be any CSS-supported value for the background property.
-   * @param {number} [options.framesPerUpdate=1] - The particles will update every 'refreshRate / framesPerUpdate'.
-   * Example: 60 fps / 2 framesPerUpdate = 30 updates/s; 144 fps / 3 framesPerUpdate = 48 updates/s.
-   * Recommended values: 1 - 3.
-   *
-   * @param {boolean} [options.resetOnResize=true] - Whether to create new particles when the canvas gets resized.
-   *
-   *
-   * @param {Object} [options.mouse] - Mouse interaction settings.
-   * @param {number} [options.mouse.interactionType=1] - Determines the type of interaction the mouse will have with particles.
-   * 0 = No interaction.
-   * 1 = The mouse can visually shift the particles.
-   * 2 = The mouse can actually move the particles.
-   * NOTE: mouse.distRatio should be less than 1 to allow dragging, closer to 0 is easier to drag
-   *
-   * @param {number} [options.mouse.connectDistMult=2/3] - The maximum distance for the mouse to interact with the particles. This value is multiplied by 'particles.connectDistance'.
-   * @param {number} [options.mouse.distRatio=2/3] - All particles within `mouse.connectDistance / distRatio` pixels from the mouse will be drawn towards the mouse.
-   * Example: 150 connectDistance / 0.4 distRatio = all particles within a 375-pixel radius.
-   * NOTE: Keep this value above mouse.connectDistMult
-   * Recommended values: 0.2 - 1.
-   *
-   *
-   * @param {Object} [options.particles] - Particle settings.
-   * @param {string} [options.particles.color='black'] - The color of the particles and their connections. Can be any CSS-supported color format.
-   * @param {number} [options.particles.ppm=100] - Particles per million (ppm). This determines how many particles are created per million pixels of the canvas.
-   * Example: If the canvas covers 1,920 x 937 = 1799040 pixels, 100 ppm would create approximately 180 particles.
-   * !!! IMPORTANT !!!: The amount of particles exponentially reduces performance. People with large screens will have a bad experience with high values. A solution is to use a higher particles.connectDistance with less particles.
-   *
-   * @param {number} [options.particles.max=500] - The maximum number of particles allowed.
-   * @param {number} [options.particles.maxWork=Infinity] - The maximum "work" a particle can perform before its connections are no longer drawn.
-   * 1 work = `particles.connectDistance` pixels of connection (or one line of 150 pixels).
-   * Example: 10 maxWork = 10 * 150 connectDistance = max 1,500 pixels of connections drawn per particle.
-   * !!! IMPORTANT !!!: Low values will stabilize performance at the cost of creating an ugly effect where connections might suddenly dissapear / reappear
-   *
-   * @param {number} [options.particles.connectDistance=150] - The maximum distance between particles to form a connection. Larger values reduce performance.
-   * Recommended values: 50 - 250.
-   *
-   * @param {number} [options.particles.relSpeed=1] - The relative movement speed of particles. The movement speed is a random value between 0.5 and 1 pixels per update.
-   * Example: 2 relSpeed = 1 to 2 pixels per update.
-   *
-   * @param {number} [options.particles.rotationSpeed=2] - The speed at which particles randomly change direction.
-   * Example: 1 rotationSpeed = max direction change of 0.01 radians (~0.573°) per update.
-   *
-   *
-   * @param {Object} [options.gravity] - Gravitational force settings. !!! IMPORTANT !!!: Heavily reduces performance
-   * @param {number} [options.gravity.repulsive=0] - The repulsive force between particles. Higher values increase repulsion between particles.
-   * @param {number} [options.gravity.pulling=0] - The attractive force pulling particles together. Works poorly if `gravity.repulsive` is too low.
-   * @param {number} [options.gravity.friction=0.9] - The smoothness of gravitational forces. The force remaining after x updates is calculated as `force * friction^x`.
-   */
+export default class CanvasParticles {
+  animating = false
 
+  /**
+   * Creates a new CanvasParticles instance.
+   * @param {string} [selector='canvas'] - The CSS selector for the canvas element. Defaults to 'canvas'.
+   * @param {Object} [options={}] - Object structure: https://github.com/Khoeckman/canvasParticles?tab=readme-ov-file#options
+   */
   constructor(selector = 'canvas', options = {}) {
     // Find and initialize canvas
     if (typeof selector !== 'string') throw new TypeError('selector is not a string')
@@ -78,10 +31,10 @@ export default class canvasParticles {
     // Format and store options
     this.options = {
       background: options.background ?? 'transparent',
-      framesPerUpdate: Math.max(1, options.framesPerUpdate ?? 1),
+      framesPerUpdate: Math.max(1, parseInt(options.framesPerUpdate) ?? 1),
       resetOnResize: !!(options.resetOnResize ?? true),
       mouse: {
-        interactionType: +(options.mouse?.interactionType ?? 1),
+        interactionType: +(parseInt(options.mouse?.interactionType) ?? 1),
         connectDistMult: +(options.mouse?.connectDistMult ?? 2 / 3),
         distRatio: +(options.mouse?.distRatio ?? 2 / 3),
       },
@@ -153,25 +106,12 @@ export default class canvasParticles {
       this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
     })
 
-    // window.addEventListener('wheel', event => {
-    //   if (!this.animating) return
-
-    //   let updateScrollPosition = setInterval(() => {
-    //     this.mouseX = event.clientX - this.canvas.offsetLeft + window.scrollX
-    //     this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
-    //   }, 1000 / this.options.framesPerUpdate)
-
-    //   setTimeout(() => clearInterval(updateScrollPosition), 100)
-    // })
-
     window.addEventListener('scroll', event => {
       if (!this.animating) return
 
       this.mouseX = event.clientX - this.canvas.offsetLeft + window.scrollX
       this.mouseY = event.clientY - this.canvas.offsetTop + window.scrollY
     })
-
-    this.start()
   }
 
   resizeCanvas = () => {
@@ -195,12 +135,18 @@ export default class canvasParticles {
     else this.matchParticlesAmount()
   }
 
+  /** Remove all particles and generates new ones.
+   * The amount of new particles will match 'options.particles.ppm'
+   * */
   newParticles = () => {
     if (this.len === Infinity) throw new RangeError('cannot create an infinite amount of particles')
     this.particles = []
     for (let i = 0; i < this.len; i++) this.createParticle()
   }
 
+  /** When resizing, add or remove some particles.
+   * The final amount of particles will match 'options.particles.ppm'
+   * */
   matchParticlesAmount = () => {
     if (this.len === Infinity) throw new RangeError('cannot create an infinite amount of particles')
     this.particles = this.particles.slice(0, this.len)
@@ -225,11 +171,14 @@ export default class canvasParticles {
     point.isVisible = this.isVisible(point) // Whether the particles position is within the bounds of the canvas
   }
 
+  /** Calculates the properties of each particle on the next frame.
+   * Is executed once every 'options.framesPerUpdate' frames.
+   * */
   update = () => {
     if (this.options.gravity.repulsive !== 0 || this.options.gravity.pulling !== 0) {
       for (let i = 0; i < this.len; i++) {
         for (let j = i + 1; j < this.len; j++) {
-          // Code in this scope runs [particles ** 2 / 2] times per frame!
+          // Code in this scope runs [particles ** 2 / 2] times!
           const pointA = this.particles[i]
           const pointB = this.particles[j]
           const dist = Math.hypot(pointA.posX - pointB.posX, pointA.posY - pointB.posY)
@@ -296,7 +245,7 @@ export default class canvasParticles {
   /**
    * Determines if a particle is visible on the canvas.
    * @param {Object} point - The particle to check visibility for.
-   * @returns {boolean} True if the particle is visible, false otherwise.
+   * @returns {boolean} - True if the particle is visible, false otherwise.
    */
   isVisible = function (point) {
     return !(
@@ -342,7 +291,7 @@ export default class canvasParticles {
       let particleWork = 0
 
       for (let j = i + 1; j < this.len; j++) {
-        // Code in this scope runs [particles ** 2 / 2] times per frame!
+        // Code in this scope runs [particles ** 2 / 2] times!
         const pointA = this.particles[i]
         const pointB = this.particles[j]
 
@@ -352,7 +301,7 @@ export default class canvasParticles {
 
           // Connect the 2 points with a line if the distance is small enough
           if (dist < this.options.particles.connectDist) {
-            // Draw the line more transparently
+            // Calculate the transparency of the line
             if (dist >= this.options.particles.connectDist / 2) {
               let alpha = Math.floor(
                 Math.min(this.options.particles.connectDist / dist - 1, 1) * 255 * this.options.particles.opacity.value
@@ -360,7 +309,7 @@ export default class canvasParticles {
               this.ctx.strokeStyle = this.options.particles.color + (alpha.length === 2 ? alpha : '0' + alpha)
             } else this.ctx.strokeStyle = this.options.particles.color + this.options.particles.opacity.hex
 
-            // Draw lines between the visual positions of the particles
+            // Draw the line
             this.ctx.beginPath()
             this.ctx.moveTo(pointA.x, pointA.y)
             this.ctx.lineTo(pointB.x, pointB.y)

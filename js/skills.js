@@ -14,7 +14,6 @@ const programmingSkills = [
   { name: 'C#', imgName: 'c-sharp', tags: ['lang', 'back'], skill: 40, fun: '?', usingSince: 2023 },
   { name: 'Arduino', imgName: 'arduino', tags: ['lang', 'fun'], skill: 75, fun: 100, usingSince: 2020 },
   { name: 'MySQL', imgName: 'mysql', tags: ['db'], skill: 80, fun: 75, usingSince: 2023 },
-  // { name: 'MongoDB', imgName: 'mongodb', tags: ['db'], skill: 20, fun: 60, usingSince: 2024 },
   { name: 'Figma', imgName: 'figma', tags: ['design', 'front'], skill: 40, fun: 40, usingSince: 2022 },
   { name: 'Sass', imgName: 'sass', tags: ['markup', 'front'], skill: 95, fun: 100, usingSince: 2023 },
   { name: 'SVG', imgName: 'svg', tags: ['markup', 'design', 'front'], skill: 30, fun: 90, usingSince: 2024 },
