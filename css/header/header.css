@@ -199,7 +199,7 @@ header nav li:last-child .icon {
     top: 0;
     --header-width: 8rem;
     left: calc(0px - var(--header-width));
-    padding-bottom: 4rem;
+    padding-bottom: 8rem;
     width: var(--header-width);
     height: 100vh;
     opacity: 0.95;

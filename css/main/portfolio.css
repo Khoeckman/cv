@@ -41,7 +41,7 @@
   font-size: 1.25rem;
   text-transform: capitalize;
   color: var(--white);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   transition: color 300ms, transform 250ms 50ms;
   transform: translateY(-5rem);
 }
@@ -129,5 +129,10 @@
   #portfolio .projects li div p {
     opacity: 1;
     transform: none;
+  }
+
+  #portfolio .projects li .overlay .icon {
+    opacity: 1;
+    transform: scale(1);
   }
 }

@@ -70,6 +70,7 @@ navButtons.forEach(el =>
   el.addEventListener('click', e => {
     header.querySelector('nav .active').removeAttribute('class')
     e.currentTarget.parentElement.classList.add('active')
+    closeNav()
   })
 )
 

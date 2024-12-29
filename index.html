@@ -22,7 +22,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@200;300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-
   <!-- Google Fonts: Material Symbols -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -153,9 +152,8 @@
                   <span>Studying for BCompSc</span>
                 </div>
                 <span class="icon">school</span>
-                <a href="#education" class="overlay transparent">
+                <a href="#education" class="overlay transparent" title="Scroll to education">
                   <span class="icon material-symbols-rounded" aria-hidden="true">arrow_circle_down</span>
-                  <span class="sr-only">Go to section education</span>
                 </a>
               </li>
               <li>
@@ -192,7 +190,7 @@
                   <span>kyle.hoeckman@gmail.com</span>
                 </div>
                 <span class="icon">mail</span>
-                <a href="#contact" class="overlay transparent">
+                <a href="#contact" class="overlay transparent" title="Scroll to contact">
                   <span class="icon material-symbols-rounded" aria-hidden="true">send</span>
                 </a>
               </li>
@@ -232,7 +230,7 @@
 
             <h2>Hobbies</h2>
 
-            <ul class="hobbies card-list">
+            <ul class="card-list hobbies">
               <li>
                 <span>👨‍💻</span>
                 <p>I like to solve coding challenges on
@@ -262,7 +260,8 @@
                     <span>2022 - now</span>
                   </div>
                   <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
-                  <a href="https://www.odisee.be/" class="overlay" target="_blank" aria-label="Odisee">
+                  <a href="https://www.odisee.be/" class="overlay" target="_blank" title="Navigate to school website"
+                    aria-label="Odisee">
                     <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                   </a>
                 </div>
@@ -393,9 +392,8 @@
               Secure Hash Encryption Algorithm
             </a>
 
-
             <h2>Projects</h2>
-            <ul class="projects card-list">
+            <ul class="card-list projects">
               <li>
                 <div>
                   <h3 id="p-gip">Automatic chessboard</h3>
@@ -450,7 +448,7 @@
               </li>
               <li>
                 <div>
-                  <h3 id="p-chess">Horse academy</h3>
+                  <h3 id="p-horse-academy">Horse academy</h3>
                   <p>Fun puzzle game. Digitalization of the physical <a
                       href="https://www.smartgames.eu/nl/1-speler-spellen/horse-academy" class="fancy"
                       target="_blank">SmartGame</a>®
@@ -459,7 +457,7 @@
                 </div>
                 <img src="./img/projects/horse-academy.webp" alt="Game of Horse Academy">
                 <a href="http://kylehoeckman.great-site.net/horseAcademy/" class="overlay transparent" target="_blank"
-                  aria-labelledby="p-chess">
+                  aria-labelledby="p-horse-academy">
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
               </li>
@@ -521,8 +519,8 @@
                   <p class="year"><span class="icon">event</span>Anno 2019</p>
                 </div>
                 <img src="./img/projects/snake.webp" alt="Game of snake">
-                <a href="http://kylehoeckman.great-site.net/Portfolio/projecten/snake-js.html"
-                  class="overlay transparent" target="_blank" aria-labelledby="p-snake">
+                <a href="http://kylehoeckman.great-site.net/projects/html/snake.html" class="overlay transparent"
+                  target="_blank" aria-labelledby="p-snake">
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
               </li>
@@ -554,7 +552,7 @@
 
             <form action="javascript:">
               <div class="message" aria-live="assertive" hidden>
-                <span class="icon fill">warning</span>This form does not yet work
+                <span class="icon fill">warning</span>This form doesn't work yet.
               </div>
 
               <label for="contact-name">Name</label>
@@ -577,7 +575,7 @@
                 <span>kyle.hoeckman@gmail.com</span>
               </div>
               <span class="icon">mail</span>
-              <a href="mailto:kyle.hoeckman@gmail.com" class="overlay" aria-label="Create email">
+              <a href="mailto:kyle.hoeckman@gmail.com" class="overlay" aria-label="Create email" title="Open inbox">
                 <span class="icon material-symbols-rounded" aria-hidden="true">forward_to_inbox</span>
               </a>
             </div>
@@ -595,7 +593,7 @@
       <aside id="settings">
         <h1>
           <a href="#settings">Settings</a>
-          <button id="exit-settings" aria-label="Exit settings">
+          <button id="exit-settings" aria-label="Exit settings" title="Close">
             <span class="icon">close</span>
           </button>
         </h1>
@@ -628,7 +626,7 @@
             <label>
               <span>Particles</span>
               <span class='checkbox'>
-                <input id="particles" class='tgl tgl-skewed' type="checkbox" checked>
+                <input id="particles" type="checkbox" checked>
                 <span></span>
               </span>
             </label>
@@ -636,7 +634,7 @@
             <label>
               <span>3D mouse effect</span>
               <span class='checkbox'>
-                <input id="enable-3d" class='tgl tgl-skewed' type="checkbox" checked>
+                <input id="enable-3d" type="checkbox" checked>
                 <span></span>
               </span>
             </label>
@@ -648,7 +646,7 @@
             <label>
               <span>Rainbow</span>
               <span class='checkbox'>
-                <input id="rainbow" class='tgl tgl-skewed' type="checkbox">
+                <input id="rainbow" type="checkbox">
                 <span></span>
               </span>
             </label>
