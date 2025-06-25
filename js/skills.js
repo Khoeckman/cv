@@ -21,6 +21,7 @@ const programmingSkills = [
   { name: 'Scratch', imgName: 'scratch', tags: ['fun'], skill: 100, fun: 100, usingSince: 2017 },
   { name: 'Minecraft CB', imgName: 'minecraft-cb', tags: ['fun'], skill: 80, fun: 100, usingSince: 2016 },
 ]
+// Add: symfony, Shopware, npm
 
 const communicativeSkills = [
   { name: 'Presenting', imgName: 'presenting', stars: 4 },
@@ -44,18 +45,6 @@ for (let skill of programmingSkills) {
         </div>
 
         <div class="back">
-          <h4>Skill</h4>
-          <div class="progress-bar">
-            <span aria-hidden="true" style="background-color: hsl(${1.2 * skill.skill}, 100%, 50%); width: ${skill.skill}%"></span>
-            <span>${skill.skill}</span>
-          </div>
-
-          <h4>Fun</h4>
-          <div class="progress-bar">
-            <span aria-hidden="true" style="background-color: hsl(${1.2 * skill.fun}, 100%, 50%); width: ${skill.fun}%">
-            </span><span>${skill.fun}</span>
-          </div>
-
           <h4>
             <span>Since</span>
             <span>${skill.usingSince}</span> 

@@ -1,5 +1,3 @@
-import CanvasParticles from './canvasParticles.js'
-
 // Init particles
 const selector = '#canvas-particles'
 const options = {

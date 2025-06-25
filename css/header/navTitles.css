@@ -16,23 +16,23 @@ header nav li:nth-child(3)::after {
   content: 'Education';
 }
 
-/* header nav li:nth-child(4)::after {
-content: 'Work Experience';
-} */
-
 header nav li:nth-child(4)::after {
-  content: 'Skills';
+  content: 'Work Experience';
 }
 
 header nav li:nth-child(5)::after {
-  content: 'Portfolio';
+  content: 'Skills';
 }
 
 header nav li:nth-child(6)::after {
-  content: 'Contact';
+  content: 'Portfolio';
 }
 
 header nav li:nth-child(7)::after {
+  content: 'Contact';
+}
+
+header nav li:nth-child(8)::after {
   content: 'Settings';
   margin-right: 0.5rem;
 }

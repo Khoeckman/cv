@@ -110,6 +110,8 @@
 }
 
 #skills .skills-list .back {
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -129,8 +131,6 @@
   display: block;
   font-variant: all-petite-caps;
   text-align: center;
-  line-height: 1;
-  margin: 0 0 0.2em 0;
   width: 100%;
 }
 

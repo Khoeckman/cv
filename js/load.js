@@ -43,6 +43,7 @@ document.addEventListener('readystatechange', () => {
     document.querySelector(window.location.hash + ' h1 a').focus()
   }
 })
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.style.overflow = 'hidden'
   document.getElementById('loading-screen').className = ''

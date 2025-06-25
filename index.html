@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="./css/style.css" />
 
   <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/canvasparticles-js/canvasParticles.min.js" defer></script>
+
   <script src="./js/load.js"></script>
   <script src="./js/main.js" type="module"></script>
   <script src="./js/settings.js" type="module"></script>
@@ -62,7 +64,7 @@
             </li>
             <li class="active"><a href="#personal" aria-label="Personal"><span class="icon">person</span></a></li>
             <li><a href="#education" aria-label="Education"><span class="icon">school</span></a></li>
-            <!-- <li><a aria-label="Work Experience"><span class="icon">work</span></a></li> -->
+            <li><a href="#work" aria-label="Work Experience"><span class="icon">work</span></a></li>
             <li><a href="#skills" aria-label="Skills"><span class="icon">mouse</span></a></li>
             <li><a href="#portfolio" aria-label="Portfolio"><span class="icon">dashboard</span></a></li>
             <li><a href="#contact" aria-label="Contact"><span class="icon">mail</span></a></li>
@@ -98,14 +100,14 @@
                     </path>
                   </svg>
                 </a></li>
-              <li><a href="https://www.instagram.com/kyle.hoeckman/" target="_blank" title="instagram"
+              <!-- <li><a href="https://www.instagram.com/kyle.hoeckman/" target="_blank" title="instagram"
                   aria-label="instagram">
                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
                     <path fill="#fff"
                       d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 A 1 1 0 0 0 16 7 A 1 1 0 0 0 17 8 A 1 1 0 0 0 18 7 A 1 1 0 0 0 17 6 z M 12 7 C 9.243 7 7 9.243 7 12 C 7 14.757 9.243 17 12 17 C 14.757 17 17 14.757 17 12 C 17 9.243 14.757 7 12 7 z M 12 9 C 13.654 9 15 10.346 15 12 C 15 13.654 13.654 15 12 15 C 10.346 15 9 13.654 9 12 C 9 10.346 10.346 9 12 9 z">
                     </path>
                   </svg>
-                </a></li>
+                </a></li> -->
             </ul>
           </div>
 
@@ -149,7 +151,7 @@
               <li>
                 <div>
                   <h3>Degree</h3>
-                  <span>Studying for BCompSc</span>
+                  <span>BCompSc</span>
                 </div>
                 <span class="icon">school</span>
                 <a href="#education" class="overlay transparent" title="Scroll to education">
@@ -257,7 +259,7 @@
                 <div>
                   <div>
                     <h2>Odisee - Technologiecampus Gent</h2>
-                    <span>2022 - now</span>
+                    <span>2022 - 2025</span>
                   </div>
                   <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
                   <a href="https://www.odisee.be/" class="overlay" target="_blank" title="Navigate to school website"
@@ -286,6 +288,13 @@
                 </div>
               </li>
             </ul>
+          </article>
+
+          <article id="work">
+            <h1>
+              <a href="#work">Work experience</a>
+              <span class="icon">work</span>
+            </h1>
           </article>
 
           <article id="skills">
@@ -378,25 +387,7 @@
               <span class="icon">dashboard</span>
             </h1>
 
-            <h2>Webpages</h2>
-            <!-- <a href="https://vue.kylehoeckman.ikdoeict.be/" class="button icon-button" target="_blank">
-              <span class="icon">link</span>
-              Vue Portfolio
-            </a> -->
-            <a href="http://kylehoeckman.great-site.net/Portfolio/" class="button icon-button" target="_blank">
-              <span class="icon">link</span>
-              Portfolio website (old)
-            </a>
-            <!-- <a href="http://kylehoeckman.great-site.net/index_nl.html" class="button icon-button" target="_blank">
-              <span class="icon">link</span>
-              Portfolio website (very old)
-            </a> -->
-            <a href="http://kylehoeckman.great-site.net/SEA/" class="button icon-button" target="_blank">
-              <span class="icon">link</span>
-              Secure Hash Encryption Algorithm
-            </a>
-
-            <h2>Projects</h2>
+            <h2 class="sr-only">Projects</h2>
             <ul class="card-list projects">
               <li>
                 <div>
@@ -413,7 +404,12 @@
               </li>
               <li>
                 <div>
-                  <h3 id="p-canvas-particles-js">Canvas particles JS</h3>
+                  <h3 id="p-canvas-particles-js">Canvas particles JS
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                      <path fill="#cb3837"
+                        d="m2 38.5h124v43.71H64v7.29H36.44v-7.29H2zm6.89 36.43h13.78V53.07h6.89v21.86h6.89V45.79H8.89zm34.44-29.14v36.42h13.78v-7.28h13.78V45.79zm13.78 7.29H64v14.56h-6.89zm20.67-7.29v29.14h13.78V53.07h6.89v21.86h6.89V53.07h6.89v21.86h6.89V45.79z" />
+                    </svg>
+                  </h3>
                   <p>In an HTML canvas, a bunch of floating particles are drawn that connect with a
                     line when they are close to eachother.</p>
                   <p class="year"><span class="icon">event</span>Anno 2021 - 2024</p>
@@ -428,8 +424,7 @@
                 <div>
                   <h3 id="p-ledstrip">Ledstrip API interface</h3>
                   <p>Highschool Odisee has a hall with a 100 meter ledstrip that counts 2352 leds! This app
-                    communicates
-                    with the API of the ledstrip.</p>
+                    communicates with the API of the ledstrip.</p>
                   <p class="year"><span class="icon">event</span>Anno 2024</p>
                 </div>
                 <img src="./img/projects/ledstrip.webp" alt="A ledstrip">
@@ -491,7 +486,7 @@
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <div>
                   <h3 id="p-tictactoe">Tic-Tac-Toe JS (+ bot)</h3>
                   <p>Included with a bot that will never lose!</p>
@@ -502,8 +497,8 @@
                   target="_blank" aria-labelledby="p-tictactoe">
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
-              </li>
-              <li>
+              </li> -->
+              <!-- <li>
                 <div>
                   <h3 id="p-tetris">Tetris</h3>
                   <p>The first JavaScript project that made me scratch my head. Only finished after one year of teaching
@@ -515,8 +510,8 @@
                   target="_blank" aria-labelledby="p-tetris">
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
-              </li>
-              <li>
+              </li> -->
+              <!-- <li>
                 <div>
                   <h3 id="p-snake">Snake</h3>
                   <p>Behold my very first JavaScript project!</p>
@@ -527,8 +522,8 @@
                   target="_blank" aria-labelledby="p-snake">
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
-              </li>
-              <li>
+              </li> -->
+              <!-- <li>
                 <div>
                   <h3 id="p-chess">Offline chess</h3>
                   <p>Excellent for practicing chess on Antartica!</p>
@@ -539,8 +534,26 @@
                   target="_blank" aria-labelledby="p-chess">
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
-              </li>
+              </li> -->
             </ul>
+
+            <!-- <h2>Webpages</h2>
+            <a href="https://vue.kylehoeckman.ikdoeict.be/" class="button icon-button" target="_blank">
+              <span class="icon">link</span>
+              Vue Portfolio
+            </a>
+            <a href="http://kylehoeckman.great-site.net/Portfolio/" class="button icon-button" target="_blank">
+              <span class="icon">link</span>
+              Portfolio website (old)
+            </a>
+            <a href="http://kylehoeckman.great-site.net/index_nl.html" class="button icon-button" target="_blank">
+              <span class="icon">link</span>
+              Portfolio website (very old)
+            </a>
+            <a href="http://kylehoeckman.great-site.net/SEA/" class="button icon-button" target="_blank">
+              <span class="icon">link</span>
+              Secure Hash Encryption Algorithm
+            </a> -->
           </article>
 
           <article id="contact">
@@ -587,7 +600,7 @@
 
           <footer>
             <p>Copyright &copy; Kyle Hoeckman 2024, All rights reserved.</p>
-            <p>This project was made without external code, libraries or frameworks except fonts.</p>
+            <p>This project was made without external code, libraries and frameworks.</p>
           </footer>
         </div>
 
