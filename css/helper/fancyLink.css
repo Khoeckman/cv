@@ -5,6 +5,7 @@ a.fancy {
   margin: 0 -0.1em;
   padding: 0 0.1em;
   transition: color 150ms;
+  will-change: transform;
 }
 
 a.fancy::before {

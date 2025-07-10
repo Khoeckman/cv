@@ -1,4 +1,5 @@
-.timeline {
+.timeline,
+.timeline.card-list {
   position: relative;
   margin: 1.5rem 0;
   --shadow-x: 0.3rem;
@@ -17,14 +18,14 @@
   width: 0.6rem;
 }
 
-.timeline li {
+.timeline > li {
   padding: 2rem 0;
   position: relative;
   width: 100%;
 }
 
 /* The circles on the timeline */
-.timeline li::after {
+.timeline > li::after {
   content: '';
   background-color: var(--light-gray);
   border-radius: 50%;
@@ -39,7 +40,7 @@
   z-index: 1;
 }
 
-.timeline li > div {
+.timeline > li > div {
   background-color: var(--black);
   border: 1px solid var(--gray);
   border-radius: var(--radius-s);

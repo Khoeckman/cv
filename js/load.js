@@ -52,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutList = document.querySelectorAll('#personal .personal-info li')
   const languagesTable = document.querySelectorAll('#personal .languages')
   const hobbies = document.querySelectorAll('#personal .hobbies li')
+  const workExperiences = document.querySelectorAll('#work > ol > li')
   const timelineElements = document.querySelectorAll('#education .timeline li > div')
 
-  observing = [...observed, ...aboutList, ...languagesTable, ...hobbies, ...timelineElements]
+  observing = [...observed, ...aboutList, ...languagesTable, ...hobbies, ...workExperiences, ...timelineElements]
   observing.forEach(el => el.classList.add('observe'))
 })

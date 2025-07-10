@@ -1,0 +1,15 @@
+#work h2 {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+#work h2 .highlight {
+  color: var(--pri);
+}
+
+#work .duration {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--lighter-gray);
+  margin-top: 0.5rem;
+}

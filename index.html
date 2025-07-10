@@ -11,15 +11,16 @@
   <title>Web cv | Kyle Hoeckman</title>
   <link rel="icon" href="./img/favicon.webp" />
 
-  <!-- Google Fonts: Montserrat -->
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet"> -->
-
   <!-- Google Fonts: Mukta Malar -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Google Fonts: Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
     rel="stylesheet">
 
   <!-- Google Fonts: Material Symbols -->
@@ -63,8 +64,8 @@
               <a href="/" class="overlay transparent"></a>
             </li>
             <li class="active"><a href="#personal" aria-label="Personal"><span class="icon">person</span></a></li>
-            <li><a href="#education" aria-label="Education"><span class="icon">school</span></a></li>
             <li><a href="#work" aria-label="Work Experience"><span class="icon">work</span></a></li>
+            <li><a href="#education" aria-label="Education"><span class="icon">school</span></a></li>
             <li><a href="#skills" aria-label="Skills"><span class="icon">mouse</span></a></li>
             <li><a href="#portfolio" aria-label="Portfolio"><span class="icon">dashboard</span></a></li>
             <li><a href="#contact" aria-label="Contact"><span class="icon">mail</span></a></li>
@@ -143,10 +144,10 @@
               </li>
               <li>
                 <div>
-                  <h3>Address</h3>
-                  <span>9031 Drongen</span>
+                  <h3>Age</h3>
+                  <span id="age">--</span>
                 </div>
-                <span class="icon">home</span>
+                <span class="icon">cake</span>
               </li>
               <li>
                 <div>
@@ -160,25 +161,25 @@
               </li>
               <li>
                 <div>
-                  <h3>Age</h3>
-                  <span id="age">--</span>
+                  <h3>Address</h3>
+                  <span>9031 Drongen</span>
                 </div>
-                <span class="icon">cake</span>
+                <span class="icon">home</span>
               </li>
-              <li>
+              <!-- <li>
                 <div>
                   <h3>Place of birth</h3>
                   <span>Ghent</span>
                 </div>
                 <span class="icon">location_on</span>
-              </li>
-              <li>
+              </li> -->
+              <!-- <li>
                 <div>
                   <h3>Gender</h3>
                   <span>Male</span>
                 </div>
                 <span class="icon">wc</span>
-              </li>
+              </li> -->
               <li>
                 <div>
                   <h3>Driving license</h3>
@@ -201,6 +202,13 @@
             <h2>Languages</h2>
 
             <table class="card-list languages">
+              <thead class="sr-only">
+                <tr>
+                  <td>Flag</td>
+                  <td>Language</td>
+                  <td>Level</td>
+                </tr>
+              </thead>
               <tr>
                 <td><img src="./img/lang/dutch.webp" alt="Flag of Belgium" width="32" height="32"></td>
                 <td>
@@ -235,57 +243,11 @@
             <ul class="card-list hobbies">
               <li>
                 <span>👨‍💻</span>
-                <p>I like to solve coding challenges on
-                  <a href="https://www.codewars.com/" target="_blank" class="fancy">CodeWars</a>
-                  and
-                  <a href="https://codeforces.com/" target="_blank" class="fancy">CodeForces</a>.
-                </p>
+                <p>Programming, it never stops.</p>
               </li>
               <li>
                 <span>🏋🏻‍♂️</span>
-                <p>I love sports and have been regularly lifting weights since 2019.</p>
-              </li>
-            </ul>
-          </article>
-
-          <article id="education">
-            <h1>
-              <a href="#education">Education</a>
-              <span class="icon">school</span>
-            </h1>
-
-            <ul class="card-list timeline">
-              <li class="odisee">
-                <div>
-                  <div>
-                    <h2>Odisee - Technologiecampus Gent</h2>
-                    <span>2022 - 2025</span>
-                  </div>
-                  <p><strong>Highschool</strong> Bachelor's Degree in Electronics - ICT</p>
-                  <a href="https://www.odisee.be/" class="overlay" target="_blank" title="Navigate to school website"
-                    aria-label="Odisee">
-                    <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <div>
-                    <h2>Donbosco Sint-Denijs-Westrem</h2>
-                    <span>2020 - 2022</span>
-                  </div>
-                  <p><strong>3<sup>th</sup> grade of TSO</strong> Industrial ICT</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <div>
-                    <h2>Sint-Paulus Gent</h2>
-                    <span>2016 - 2020</span>
-                  </div>
-                  <p><strong>2<sup>nd</sup> grade of ASO</strong> Science</p>
-                  <p><strong>1<sup>st</sup> grade of ASO</strong> Modern Science</p>
-                </div>
+                <p>I love many sports and regularly lift weights.</p>
               </li>
             </ul>
           </article>
@@ -295,6 +257,80 @@
               <a href="#work">Work experience</a>
               <span class="icon">work</span>
             </h1>
+            <ol class="card-list">
+              <li>
+                <h2>Internship E-commerce webdeveloper <span class="highlight">@ <a href="https://meteor.be/"
+                      target="_blank" class="fancy">Meteor</a></span></h2>
+                <p class="duration">February - May 2025 (40 hr/week)</p>
+                <ul>
+                  <li>Completed onboarding for the Shopware e-commerce platform.</li>
+                  <li>Worked on the front- and backend of <a href="https://shop.lecot.be/"
+                      class="fancy">shop.lecot.be</a> and <a href="https://hermie.com/" class="fancy">hermie.com</a>.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h2>Bartender <span class="highlight">@ <a href="https://www.dullegriet.be/" target="_blank"
+                      class="fancy">Dulle Griet</a></span></h2>
+                <p class="duration">July 2024 - February 2025 (Weekends and holidays)</p>
+              </li>
+              <li>
+                <h2>Order picker <span class="highlight">@ <a href="https://www.volvogroup.com/en/" target="_blank"
+                      class="fancy">Volvo Group</a></span></h2>
+                <p class="duration">April - Dec 2023 (Holidays)</p>
+              </li>
+              <li>
+                <h2>Order picker <span class="highlight">@ <a href="https://www.dsv.com/" target="_blank"
+                      class="fancy">DSV</a></span>
+                </h2>
+                <p class="duration">August 2019 - Aug 2022 (Holidays)</p>
+              </li>
+            </ol>
+          </article>
+
+          <article id="education">
+            <h1>
+              <a href="#education">Education</a>
+              <span class="icon">school</span>
+            </h1>
+
+            <ol class="card-list timeline">
+              <li class="odisee">
+                <div>
+                  <div class="header">
+                    <h2 class="text">Odisee - Technologiecampus Gent</h2>
+                    <span class="text">2022 - 2025</span>
+                  </div>
+                  <p class="text full"><strong class="level">UAS</strong> Bachelor's Degree in Electronics - ICT</p>
+                  <a href="https://www.odisee.be/" class="overlay" target="_blank" title="Navigate to school website"
+                    aria-label="Odisee">
+                    <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <div class="header">
+                    <h2>Donbosco Sint-Denijs-Westrem</h2>
+                    <span>2020 - 2022</span>
+                  </div>
+                  <p><strong class="level">Grade 3</strong> Industrial ICT</p>
+                  <p>Won the prize for <strong>Best Integrated Final Project</strong>.
+                    <a href="#portfolio" class="fancy" title="Navigate to portfolio">Automatic Chessboard</a>
+                  </p>
+                </div>
+              </li>
+              <!-- <li>
+                <div>
+                  <div class="header">
+                    <h2>Sint-Paulus Gent</h2>
+                    <span>2016 - 2020</span>
+                  </div>
+                  <p><strong>2<sup>nd</sup> grade of ASO</strong> Science</p>
+                  <p><strong>1<sup>st</sup> grade of ASO</strong> Modern Science</p>
+                </div>
+              </li> -->
+            </ol>
           </article>
 
           <article id="skills">
@@ -486,55 +522,6 @@
                   <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
                 </a>
               </li>
-              <!-- <li>
-                <div>
-                  <h3 id="p-tictactoe">Tic-Tac-Toe JS (+ bot)</h3>
-                  <p>Included with a bot that will never lose!</p>
-                  <p class="year"><span class="icon">event</span>Anno 2021</p>
-                </div>
-                <img src="./img/projects/tictactoe.webp" alt="Game of tic-tac-toe">
-                <a href="http://kylehoeckman.great-site.net/projects/html/tic-tac-toe.html" class="overlay transparent"
-                  target="_blank" aria-labelledby="p-tictactoe">
-                  <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
-                </a>
-              </li> -->
-              <!-- <li>
-                <div>
-                  <h3 id="p-tetris">Tetris</h3>
-                  <p>The first JavaScript project that made me scratch my head. Only finished after one year of teaching
-                    myself JS.</p>
-                  <p class="year"><span class="icon">event</span>Anno 2021</p>
-                </div>
-                <img src="./img/projects/tetris.webp" alt="Game of tetris">
-                <a href="http://kylehoeckman.great-site.net/projects/html/tetris.html" class="overlay transparent"
-                  target="_blank" aria-labelledby="p-tetris">
-                  <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
-                </a>
-              </li> -->
-              <!-- <li>
-                <div>
-                  <h3 id="p-snake">Snake</h3>
-                  <p>Behold my very first JavaScript project!</p>
-                  <p class="year"><span class="icon">event</span>Anno 2019</p>
-                </div>
-                <img src="./img/projects/snake.webp" alt="Game of snake">
-                <a href="http://kylehoeckman.great-site.net/projects/html/snake.html" class="overlay transparent"
-                  target="_blank" aria-labelledby="p-snake">
-                  <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
-                </a>
-              </li> -->
-              <!-- <li>
-                <div>
-                  <h3 id="p-chess">Offline chess</h3>
-                  <p>Excellent for practicing chess on Antartica!</p>
-                  <p class="year"><span class="icon">event</span>Anno 2021</p>
-                </div>
-                <img src="./img/projects/chess.webp" alt="Game of chess">
-                <a href="http://kylehoeckman.great-site.net/projects/html/chess.html" class="overlay transparent"
-                  target="_blank" aria-labelledby="p-chess">
-                  <span class="icon material-symbols-rounded" aria-hidden="true">open_in_new</span>
-                </a>
-              </li> -->
             </ul>
 
             <!-- <h2>Webpages</h2>
@@ -562,7 +549,7 @@
               <span class="icon">mail</span>
             </h1>
 
-            <div class="email">
+            <!-- <div class="email">
               <span>kyle.hoeckman@gmail.com</span>
               <span class="icon">alternate_email</span>
             </div>
@@ -584,7 +571,7 @@
               <button type="submit">Send</button>
             </form>
 
-            <div class="hr">Or</div>
+            <div class="hr">Or</div> -->
 
             <div class="email">
               <div>
@@ -600,7 +587,7 @@
 
           <footer>
             <p>Copyright &copy; Kyle Hoeckman 2024, All rights reserved.</p>
-            <p>This project was made without external code, libraries and frameworks.</p>
+            <p>This project was made without external code, libraries or frameworks.</p>
           </footer>
         </div>
 

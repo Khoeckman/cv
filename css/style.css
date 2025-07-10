@@ -258,7 +258,7 @@ svg {
     border-radius: var(--radius-s);
     max-width: 80rem;
     height: clamp(28.5rem, calc(100vh - 9rem), 45.5rem);
-    transition: transform 2s ease;
+    transition: transform 1.5s ease;
     transform-style: preserve-3d;
   }
 

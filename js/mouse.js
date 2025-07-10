@@ -5,7 +5,7 @@ const app = document.getElementById('app')
 const aboutList = document.querySelectorAll('#personal .personal-info li > *')
 const languagesTable = document.querySelectorAll('#personal .languages')
 const timeline = document.querySelector('#education .timeline')
-const odiseeContent = timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')
+const odiseeContent = timeline.querySelectorAll('.odisee .text')
 const settingsLabels = document.querySelectorAll('#settings form label > :is(span, input, select)')
 const depthEls = [...aboutList, ...languagesTable, ...odiseeContent, ...settingsLabels]
 

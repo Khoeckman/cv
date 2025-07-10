@@ -13,11 +13,11 @@ header nav li:nth-child(2)::after {
 }
 
 header nav li:nth-child(3)::after {
-  content: 'Education';
+  content: 'Experience';
 }
 
 header nav li:nth-child(4)::after {
-  content: 'Work Experience';
+  content: 'Education';
 }
 
 header nav li:nth-child(5)::after {

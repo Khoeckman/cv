@@ -43,7 +43,7 @@ const closeNavButton = document.getElementById('close-nav')
 
 const aboutList = document.querySelectorAll('#personal li > *')
 const timeline = document.querySelector('#education .timeline')
-const odiseeContent = timeline.querySelectorAll('.odisee > div :is(h2, h2 + span, p)')
+const odiseeContent = timeline.querySelectorAll('.odisee .text')
 const collapsibleSummaries = document.querySelectorAll('.collapsible .toggle-collapse')
 const collapsibleToggleButtons = [...document.querySelectorAll('.collapsible button[aria-controls]')]
 const collapsibleContent = [...document.querySelectorAll('.collapsible .content')]
@@ -158,7 +158,7 @@ updateAge()
 
 // Form error message
 
-const form = document.querySelector('#contact form')
+/* const form = document.querySelector('#contact form')
 const message = form.querySelector('.message')
 
 const showFormError = e => {
@@ -167,3 +167,4 @@ const showFormError = e => {
 
 form.addEventListener('click', showFormError)
 form.addEventListener('focusin', showFormError)
+ */
