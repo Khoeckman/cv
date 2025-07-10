@@ -13,3 +13,17 @@
   color: var(--lighter-gray);
   margin-top: 0.5rem;
 }
+
+#work > ol > li ul {
+  list-style-type: none;
+  padding-left: 1.5em;
+}
+
+#work > ol > li li::before {
+  content: '▹';
+  font-size: 1.5rem;
+  line-height: 0.75;
+  color: var(--pri);
+  position: absolute;
+  left: 0;
+}
