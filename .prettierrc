@@ -4,5 +4,11 @@
   "singleQuote": true,
   "printWidth": 140,
   "semi": false,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+
+  "htmlWhitespaceSensitivity": "css",
+  "singleAttributePerLine": false,
+  "bracketSameLine": true,
+  "endOfLine": "lf",
+  "htmlSelfClosing": false
 }

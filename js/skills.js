@@ -66,7 +66,7 @@ for (let skill of communicativeSkills) {
           <img src="./img/skills/${skill.imgName}.webp" alt="${skill.name} logo" width="160" height="160">
         </div>
 
-        <div class="back" aria-label="${skill.stars} out of 5 stars">
+        <div class="back" role="img" aria-label="${skill.stars} out of 5 stars">
           <div class="stars" aria-hidden="true">
             ${`<span class="icon fill material-symbols-rounded">star</span>`.repeat(skill.stars)}
             ${`<span class="icon material-symbols-rounded">star</span>`.repeat(5 - skill.stars)}
