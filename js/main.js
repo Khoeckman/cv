@@ -130,7 +130,7 @@ collapsibleContent.forEach(el =>
 const age = document.getElementById('age')
 
 const updateAge = (now = ~~(Date.now() / 1000)) => {
-  const birthday = ~~(new Date('2004 8 30 11:15:00').getTime() / 1000)
+  const birthday = ~~(new Date('2004-08-30T11:15:00').getTime() / 1000)
   const diff = now - birthday
 
   const year = ~~(diff / 31536000)
