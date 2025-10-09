@@ -97,3 +97,12 @@ export const closeNav = (focus = true) => {
   nav.ariaExpanded = false
 }
 closeNavButton.addEventListener('click', () => closeNav())
+
+// Fix weird browser glitch where CSS classes don't correctly pickup browser focus
+
+document.querySelectorAll('a[data-focus]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault()
+    document.querySelector(a.dataset.focus).parentElement.parentElement.querySelector('a.overlay')?.focus()
+  })
+})
