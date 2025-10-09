@@ -101,7 +101,7 @@
   background-color: #fffc;
 }
 
-#portfolio .projects li:has(.overlay:is(:focus-visible)) {
+#portfolio .projects li:has(.overlay:is(:focus-visible, :focus-within)) {
   box-shadow: 0 0 0 2px var(--pri);
 }
 

@@ -23,11 +23,11 @@
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-.overlay:not(.transparent):is(:hover, :focus-visible) {
+.overlay:not(.transparent):is(:hover, :focus-visible, :focus-within) {
   background-color: #fff9;
 }
 
-.overlay:is(:hover, :focus-visible) .icon {
+.overlay:is(:hover, :focus-visible, :focus-within) .icon {
   opacity: 1;
   transform: scale(1);
 }

@@ -103,6 +103,9 @@ closeNavButton.addEventListener('click', () => closeNav())
 document.querySelectorAll('a[data-focus]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault()
-    document.querySelector(a.dataset.focus).parentElement.parentElement.querySelector('a.overlay')?.focus()
+    const target = document.querySelector(a.dataset.focus).parentElement.parentElement.querySelector('a.overlay')
+    if (!target) return
+
+    target.focus({ focusVisible: true })
   })
 })
