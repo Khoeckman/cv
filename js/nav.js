@@ -56,7 +56,7 @@ export function computeArticleOffsets() {
 
     titles.unshift({
       navButton: nav.querySelector('ul').children[i],
-      offsetTop: article.offsetTop - paddingTop - window.innerHeight * 0.25, // Select next article when its scrolled past 25% of the container
+      offsetTop: article.offsetTop - paddingTop - window.innerHeight * 0.5, // Select next article when its scrolled past 50% of the container
     })
     i++
   }
