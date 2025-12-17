@@ -122,12 +122,16 @@
 }
 
 #personal .hobbies li span {
+  user-select: none;
   background-color: var(--gray);
   border: 1px solid var(--lighter-gray);
   border-radius: 50%;
   font-size: 2rem;
+  line-height: 1.6;
+  text-align: center;
   margin-right: 0.5em;
-  padding: 0.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   transition: transform 1s;
 }
 
