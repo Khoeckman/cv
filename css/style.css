@@ -326,3 +326,64 @@ svg {
     font-size: 12px;
   }
 }
+
+@media print {
+  * {
+    transform-style: flat !important;
+  }
+
+  header,
+  #loading-screen,
+  #skip-to-content,
+  #app main .profile,
+  #app .shadow,
+  #settings,
+  #canvas-particles,
+  #tracker,
+  a.overlay {
+    display: none !important;
+  }
+
+  body {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .observe {
+    opacity: 1 !important;
+  }
+
+  #app {
+    margin: 0;
+  }
+
+  #app {
+    transform: none !important;
+  }
+
+  #app > div {
+    box-shadow: none !important;
+  }
+
+  #app .container {
+    overflow: visible;
+    margin: 0;
+    width: 100dvw;
+    max-width: 100%;
+  }
+
+  #portfolio ul.projects li {
+    border: 1px solid var(--pri);
+  }
+
+  #portfolio ul.projects li > div:first-child {
+    bottom: 0;
+  }
+
+  #portfolio ul.projects li > div:first-child > * {
+    color: var(--black);
+    transform: none;
+    opacity: 1;
+  }
+}
