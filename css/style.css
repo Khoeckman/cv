@@ -350,6 +350,11 @@ svg {
     padding: 0;
   }
 
+  h1 {
+    break-before: page;
+    page-break-before: always;
+  }
+
   .observe {
     opacity: 1 !important;
   }
