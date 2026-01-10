@@ -332,6 +332,10 @@ svg {
     transform-style: flat !important;
   }
 
+  html {
+    color: black;
+  }
+
   header,
   #loading-screen,
   #skip-to-content,
@@ -380,6 +384,8 @@ svg {
 
   #portfolio ul.projects li {
     border: 1px solid var(--pri);
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   #portfolio ul.projects li > div:first-child {
