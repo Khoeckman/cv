@@ -13,6 +13,7 @@
 @import './helper/timeline.css';
 
 :root {
+  color-scheme: dark;
   isolation: isolate;
 
   --white: #fff;
